@@ -23,7 +23,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:"Segoe UI", system-ui, -apple-system, sans-serif;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       color:var(--text);
       background:
         radial-gradient(circle at top, rgba(242,154,179,.18), transparent 28%),
@@ -40,74 +40,205 @@
       background-size:24px 24px;
       opacity:.08;
     }
-    .floating-hearts{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
-    .heart{ position:absolute; bottom:-40px; font-size:18px; opacity:.18; animation:rise linear infinite; filter:blur(.2px); }
-    @keyframes rise{ from{transform:translateY(0) scale(.8);opacity:0} 10%{opacity:.18} to{transform:translateY(-115vh) scale(1.2);opacity:0} }
+    .floating-hearts{
+      position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+    }
+    .heart{
+      position:absolute; bottom:-40px; font-size:18px; opacity:.18; animation:rise linear infinite;
+      filter:blur(.2px);
+    }
+    @keyframes rise{
+      from{ transform:translateY(0) scale(.8); opacity:0; }
+      10%{ opacity:.18; }
+      to{ transform:translateY(-115vh) scale(1.2); opacity:0; }
+    }
     .container{ width:min(1120px, calc(100% - 32px)); margin:0 auto; position:relative; z-index:1; }
-    .hero{ min-height:100svh; display:grid; place-items:center; position:relative; padding:32px 0 48px; }
+    .hero{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      padding:32px 0 48px;
+    }
     .hero::before{
-      content:""; position:absolute; inset:0;
+      content:"";
+      position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(18,13,18,.30), rgba(18,13,18,.78)),
+        linear-gradient(180deg, rgba(18,13,18,.35), rgba(18,13,18,.75)),
         url('Casamento.JPG') center/cover no-repeat;
+      filter:saturate(1.02);
     }
     .hero-card{
-      position:relative; width:min(920px,100%); padding:38px 28px; border:1px solid rgba(255,255,255,.15);
-      border-radius:32px; background:linear-gradient(180deg, rgba(18,13,18,.54), rgba(18,13,18,.72));
-      box-shadow:var(--shadow); backdrop-filter: blur(10px); text-align:center;
+      position:relative;
+      width:min(920px, 100%);
+      padding:38px 28px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:32px;
+      background:linear-gradient(180deg, rgba(18,13,18,.54), rgba(18,13,18,.72));
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      text-align:center;
     }
-    .eyebrow{ display:inline-block; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.14); color:var(--rose-2); letter-spacing:.12em; text-transform:uppercase; font-size:.72rem; margin-bottom:16px; }
-    h1{ font-size:clamp(2.3rem, 6vw, 5rem); line-height:.96; margin:0 0 16px; }
-    .subhero{ max-width:700px; margin:0 auto 10px; font-size:clamp(1rem,2.4vw,1.18rem); color:var(--muted); line-height:1.75; }
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--rose-2);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.72rem;
+      margin-bottom:16px;
+    }
+    h1{
+      font-size:clamp(2.3rem, 6vw, 5rem);
+      line-height:.96;
+      margin:0 0 16px;
+    }
+    .subhero{
+      max-width:700px;
+      margin:0 auto 10px;
+      font-size:clamp(1rem, 2.4vw, 1.18rem);
+      color:var(--muted);
+      line-height:1.75;
+    }
     .dates{ color:var(--gold); font-weight:700; margin:18px 0 28px; }
-    .typebox{ min-height:120px; max-width:740px; margin:0 auto 24px; font-size:clamp(1.05rem,2.8vw,1.45rem); line-height:1.8; color:#fff7fb; }
+    .typebox{
+      min-height:120px;
+      max-width:740px;
+      margin:0 auto 24px;
+      font-size:clamp(1.05rem, 2.8vw, 1.45rem);
+      line-height:1.8;
+      color:#fff7fb;
+    }
     .cursor{ display:inline-block; width:10px; animation:blink .8s infinite; }
     @keyframes blink{50%{opacity:0}}
     .btn-row{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
-    .btn{ text-decoration:none; color:#1a1117; font-weight:800; background:linear-gradient(135deg,var(--rose-2),var(--rose)); padding:15px 24px; border-radius:999px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
-    .btn.secondary{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18); box-shadow:none; }
+    .btn{
+      text-decoration:none; color:#1a1117; font-weight:800;
+      background:linear-gradient(135deg, var(--rose-2), var(--rose));
+      padding:15px 24px; border-radius:999px; box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn.secondary{
+      background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18);
+      box-shadow:none;
+    }
     .btn:hover{ transform:translateY(-2px); }
     .section{ padding:80px 0; }
-    .section-title{ font-size:clamp(1.9rem, 4vw, 3.2rem); margin:0 0 14px; text-align:center; }
-    .section-lead{ max-width:760px; margin:0 auto 34px; text-align:center; color:var(--muted); line-height:1.8; }
+    .section-title{
+      font-size:clamp(1.9rem, 4vw, 3.2rem);
+      margin:0 0 14px;
+      text-align:center;
+    }
+    .section-lead{
+      max-width:760px; margin:0 auto 34px; text-align:center; color:var(--muted); line-height:1.8;
+    }
     .story-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:center; }
-    .card{ background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05)); border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
     .story-card p, .chapter-text p, .final-letter p{ color:var(--muted); line-height:1.9; margin:0 0 16px; }
     .story-card p strong, .chapter-text p strong{ color:#fff; }
-    .polaroid{ background:#fff8fb; color:#351d2a; border-radius:20px; padding:14px 14px 18px; box-shadow:var(--shadow); transform:rotate(-2deg); }
-    .polaroid img{ width:100%; display:block; border-radius:12px; aspect-ratio:4/5; object-fit:cover; }
+    .hero-photo, .chapter-photo img, .gallery img, .split-photo img, .polaroid img{
+      width:100%; display:block; object-fit:cover;
+    }
+    .hero-photo{
+      aspect-ratio:4/5; border-radius:28px; border:1px solid var(--line); box-shadow:var(--shadow);
+    }
+    .polaroid{
+      background:#fff8fb; color:#351d2a; border-radius:20px; padding:14px 14px 18px; box-shadow:var(--shadow); transform:rotate(-2deg);
+    }
+    .polaroid img{ border-radius:12px; aspect-ratio:4/5; }
     .polaroid small{ display:block; padding-top:12px; text-align:center; font-weight:700; color:#7b596a; }
     .timeline{ position:relative; margin-top:20px; }
-    .timeline::before{ content:""; position:absolute; top:0; bottom:0; left:22px; width:2px; background:linear-gradient(var(--rose), rgba(255,255,255,.15)); }
-    .chapter{ position:relative; padding-left:72px; margin:0 0 28px; display:grid; grid-template-columns:1.05fr .95fr; gap:20px; align-items:center; }
+    .timeline::before{
+      content:""; position:absolute; top:0; bottom:0; left:22px; width:2px;
+      background:linear-gradient(var(--rose), rgba(255,255,255,.15));
+    }
+    .chapter{
+      position:relative; padding-left:72px; margin:0 0 28px;
+      display:grid; grid-template-columns:1.05fr .95fr; gap:20px; align-items:center;
+    }
     .chapter:last-child{ margin-bottom:0; }
-    .chapter::before{ content:"❤"; position:absolute; left:8px; top:28px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg,var(--rose),var(--gold)); color:#1f1018; font-size:14px; font-weight:900; box-shadow:0 0 0 8px rgba(242,154,179,.12); }
-    .chapter-text h3{ margin:0 0 10px; font-size:clamp(1.4rem,2.6vw,2rem); }
-    .chapter-text .tag{ display:inline-block; margin-bottom:12px; color:var(--gold); font-size:.85rem; font-weight:700; letter-spacing:.04em; }
+    .chapter::before{
+      content:"❤";
+      position:absolute; left:8px; top:28px;
+      width:30px; height:30px; border-radius:50%; display:grid; place-items:center;
+      background:linear-gradient(135deg, var(--rose), var(--gold)); color:#1f1018; font-size:14px; font-weight:900;
+      box-shadow:0 0 0 8px rgba(242,154,179,.12);
+    }
+    .chapter-text h3{ margin:0 0 10px; font-size:clamp(1.4rem, 2.6vw, 2rem); }
+    .chapter-text .tag{
+      display:inline-block; margin-bottom:12px; color:var(--gold); font-size:.85rem; font-weight:700; letter-spacing:.04em;
+    }
+    .chapter-photo img{
+      aspect-ratio:4/3; border-radius:22px; border:1px solid var(--line); box-shadow:var(--shadow);
+    }
     .chapter-photo.stack{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .chapter-photo.stack img, .gallery img, .split-photo img{ width:100%; display:block; object-fit:cover; border-radius:22px; border:1px solid var(--line); box-shadow:var(--shadow); }
-    .chapter-photo.stack img{ aspect-ratio:4/3; }
-    .quote-band{ margin:34px 0 8px; padding:28px; text-align:center; border-radius:28px; background:linear-gradient(135deg, rgba(242,154,179,.14), rgba(245,213,140,.10)); border:1px solid var(--line); box-shadow:var(--shadow); font-size:clamp(1.2rem,3vw,1.9rem); line-height:1.7; color:#fff6fb; }
-    .gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .chapter-photo.stack img{ aspect-ratio:1/1; }
+    .quote-band{
+      margin:34px 0 8px;
+      padding:28px;
+      text-align:center;
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(242,154,179,.14), rgba(245,213,140,.10));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      font-size:clamp(1.2rem, 3vw, 1.9rem);
+      line-height:1.7;
+      color:#fff6fb;
+    }
+    .gallery{
+      display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+    }
     .gallery figure{ margin:0; position:relative; overflow:hidden; border-radius:22px; border:1px solid var(--line); background:#170f17; }
     .gallery img{ aspect-ratio:1/1; transition:transform .45s ease; }
     .gallery figure:hover img{ transform:scale(1.04); }
-    .gallery figcaption{ position:absolute; left:0; right:0; bottom:0; padding:10px 12px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.68)); font-size:.9rem; }
-    .family-highlight{ display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:stretch; margin-top:28px; }
-    .split-photo img{ height:100%; min-height:300px; }
-    .reasons{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
-    .reason{ border-radius:22px; padding:22px; background:rgba(255,255,255,.06); border:1px solid var(--line); }
+    .gallery figcaption{
+      position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.68));
+      font-size:.9rem;
+    }
+    .family-highlight{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:stretch;
+      margin-top:28px;
+    }
+    .split-photo img{ height:100%; min-height:300px; border-radius:22px; border:1px solid var(--line); box-shadow:var(--shadow); }
+    .reasons{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px;
+    }
+    .reason{
+      border-radius:22px; padding:22px; background:rgba(255,255,255,.06); border:1px solid var(--line);
+    }
     .reason b{ display:block; margin-bottom:8px; color:var(--rose-2); font-size:1.1rem; }
     .reason span{ color:var(--muted); line-height:1.7; }
     .final-letter{ position:relative; overflow:hidden; }
-    .final-letter::after{ content:""; position:absolute; inset:auto -80px -80px auto; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(242,154,179,.18), transparent 68%); pointer-events:none; }
+    .final-letter::after{
+      content:""; position:absolute; inset:auto -80px -80px auto; width:220px; height:220px; border-radius:50%;
+      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 68%);
+      pointer-events:none;
+    }
     .signature{ margin-top:20px; color:var(--gold); font-weight:800; letter-spacing:.03em; }
-    .hidden-message{ margin-top:22px; padding-top:14px; border-top:1px solid rgba(255,255,255,.10); }
-    details{ background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:18px; padding:18px 20px; }
+    .hidden-message{
+      margin-top:22px; padding-top:14px; border-top:1px solid rgba(255,255,255,.10);
+    }
+    details{
+      background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:18px; padding:18px 20px;
+    }
     summary{ cursor:pointer; font-weight:800; color:#fff5fa; }
     details p{ color:var(--muted); line-height:1.85; margin:14px 0 0; }
-    .footer{ text-align:center; color:var(--muted); padding:42px 0 80px; font-size:.95rem; }
-    .music-note{ margin-top:16px; font-size:.94rem; color:var(--muted); text-align:center; }
+    .footer{
+      text-align:center; color:var(--muted); padding:42px 0 80px; font-size:.95rem;
+    }
+    .music-note{
+      margin-top:16px; font-size:.94rem; color:var(--muted); text-align:center;
+    }
     .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease; }
     .reveal.visible{ opacity:1; transform:none; }
     @media (max-width: 900px){
@@ -157,7 +288,7 @@
           <p>Hoje, olhando para trás, eu entendo que Deus já estava escrevendo a nossa história naquele momento. E desde então, entre todas as escolhas da minha vida, <strong>você continua sendo a mais bonita</strong>.</p>
         </div>
         <div class="polaroid reveal">
-          <img src="20140216_020353530_iOS.JPG" alt="Felipe e Jéssica em um retrato antigo, sorrindo juntos." />
+          <img src="Casamento.JPG" alt="Felipe e Jéssica em um retrato antigo, sorrindo juntos." />
           <small>Amor à primeira vista que virou vida inteira.</small>
         </div>
       </div>
@@ -166,7 +297,7 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title reveal">Nossa história em capítulos</h2>
-        <p class="section-lead reveal">Eu reorganizei a história para que as fotos acompanhem o tempo certo: começo, casamento, lutas, construção, gravidez, família e o hoje.</p>
+        <p class="section-lead reveal">Não foi uma história feita de facilidades. Foi uma história feita de presença, coragem, luta, fé e amor. E é exatamente por isso que ela é tão linda.</p>
 
         <div class="timeline">
           <article class="chapter reveal">
@@ -178,37 +309,37 @@
               <p>Desde aquele dia, eu descobri que casar com você foi dizer “sim” não apenas a um momento, mas a uma vida inteira ao seu lado.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="Casamento.JPG" alt="Foto do casamento de Felipe e Jéssica." />
-              <img src="IMG_9646.jpg" alt="Jéssica sorrindo no dia do casamento." />
+              <img src="Casamento.JPG" alt="Jéssica no dia do casamento, sorrindo dentro do carro." />
+              <img src="Casamento.JPG" alt="Felipe e Jéssica juntos em um retrato antigo." />
             </div>
           </article>
 
           <article class="chapter reveal">
             <div class="chapter-text card">
-              <span class="tag">Capítulo 2 • Os primeiros anos</span>
+              <span class="tag">Capítulo 2 • As primeiras lutas</span>
               <h3>Começamos sem certezas, mas juntos</h3>
               <p>Logo no início do nosso casamento já enfrentamos uma grande dificuldade: ainda não tínhamos um lugar certo para morar, porque a casa que alugamos não tinha sido desocupada.</p>
               <p>Até na lua de mel existia a incerteza. Mas quando voltamos, conseguimos entrar na casa. E ali aprendemos uma das maiores verdades da nossa história: <strong>quando estamos juntos, até o improviso vira começo</strong>.</p>
               <p>Moramos de aluguel por cinco anos. E mesmo sem luxo, fomos enchendo esse tempo de amor, cumplicidade e esperança.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="20141126_001818000_iOS.JPG" alt="Felipe e Jéssica em uma foto antiga juntos." />
-              <img src="20141111_135712000_iOS.JPG" alt="Foto antiga do casal com mensagem romântica." />
+              <img src="Ela linda.jpg" alt="Colagem com foto do casal e mensagem romântica." />
+              <img src="Ela linda.jpg" alt="Ambiente com desenho do casal e mensagem de amor." />
             </div>
           </article>
 
           <article class="chapter reveal">
             <div class="chapter-text card">
-              <span class="tag">Capítulo 3 • Quando a vida apertou</span>
-              <h3>O amor ficou, mesmo no aperto</h3>
+              <span class="tag">Capítulo 3 • O grande desafio</span>
+              <h3>Quando a vida apertou, o nosso amor não recuou</h3>
               <p>Depois de cinco anos, a dona pediu a casa e nós não tínhamos para onde ir. Foi um daqueles momentos em que a vida exige coragem.</p>
               <p>Minha mãe sugeriu construirmos a nossa casa no lote dela. E nós aceitamos o desafio.</p>
               <p>Para isso, tivemos que morar em um cômodo, dormir em cama de solteiro, sem espaço, sem privacidade, sem conforto. Mas mesmo no aperto, havia algo que permanecia forte: <strong>nós dois</strong>.</p>
               <p>Muita gente ama quando tudo está bonito. Você amou quando ainda era só promessa.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="construção da casa.JPG" alt="Registro da fase difícil da obra da casa." />
-              <img src="IMG_3984.JPG" alt="Estrutura inicial da construção da casa." />
+              <img src="contrução da casa.JPG" alt="Estrutura inicial da construção da casa." />
+              <img src="contrução da casa.JPG" alt="Início da cobertura da casa em construção." />
             </div>
           </article>
 
@@ -222,64 +353,50 @@
               <p>Hoje temos nosso lar, com cada parede marcada por oração, esforço e amor. E ainda existe espaço para o futuro, porque sonhar com você sempre vale a pena.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="IMG_3571.JPG" alt="Visão do espaço interno da casa ainda em obra." />
-              <img src="IMG_2567.JPG" alt="Trabalhos de acabamento da casa em construção." />
+              <img src="contrução da casa.JPG" alt="Visão do espaço interno da casa ainda em obra." />
+              <img src="contrução da casa.JPG" alt="Trabalhos de acabamento da casa em construção." />
             </div>
           </article>
 
           <article class="chapter reveal">
             <div class="chapter-text card">
-              <span class="tag">Capítulo 5 • Tijolo por tijolo</span>
-              <h3>Cada etapa vencida virou lembrança</h3>
+              <span class="tag">Capítulo 5 • Cada etapa vencida</span>
+              <h3>Tijolo por tijolo, fé por fé</h3>
               <p>A nossa casa foi sendo erguida como a nossa própria história: com trabalho, renúncia, persistência e confiança em Deus.</p>
               <p>Teve areia, concreto, poeira, parede sem reboco, laje, telhado, improviso e muito cansaço. Mas teve também o que nunca faltou: <strong>vontade de vencer juntos</strong>.</p>
               <p>Ver essas fotos hoje não é lembrar só de obra. É lembrar de amor em forma de resistência.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="IMG_2547.JPG" alt="Concretagem da laje da casa." />
-              <img src="IMG_2083.JPG" alt="Estrutura da laje antes da concretagem." />
+              <img src="contrução da casa.JPG" alt="Laje da casa sendo concretada." />
+              <img src="contrução da casa.JPG" alt="Estrutura da laje antes da concretagem." />
             </div>
           </article>
 
           <article class="chapter reveal">
             <div class="chapter-text card">
-              <span class="tag">Capítulo 6 • Um novo capítulo</span>
-              <h3>Antes da Alexandra chegar, ela já era esperada com amor</h3>
-              <p>Depois de tantas lutas e de finalmente estarmos no nosso espaço, chegou o tempo de sonhar com a nossa família crescendo.</p>
-              <p>A gravidez marcou uma fase muito especial: era a prova de que, depois de tudo o que vivemos, Deus ainda estava escrevendo capítulos ainda mais doces para nós.</p>
-              <p>Ali o nosso amor começou a ganhar um novo nome: <strong>família</strong>.</p>
-            </div>
-            <div class="chapter-photo stack">
-              <img src="Gestante.jpg" alt="Jéssica grávida em um momento especial." />
-              <img src="Gestante (2).jpg" alt="Outro registro da gravidez da Jéssica." />
-            </div>
-          </article>
-
-          <article class="chapter reveal">
-            <div class="chapter-text card">
-              <span class="tag">Capítulo 7 • De casal para família</span>
+              <span class="tag">Capítulo 6 • De casal para família</span>
               <h3>Alexandra chegou e deu um novo nome ao nosso amor</h3>
+              <p>Depois de estarmos em nosso espaço, entendemos que era hora de viver uma nova fase. Até então éramos um casal. Então Deus nos conduziu para algo ainda maior: <strong>nos tornarmos uma família</strong>.</p>
               <p>Depois de 10 anos de casados, chegou a nossa Alexandra. E com ela, a nossa história ganhou ainda mais sentido, mais cor, mais alegria e mais propósito.</p>
               <p>Ela não apenas aumentou a casa. Ela encheu a nossa vida.</p>
-              <p>Com você ao meu lado, eu entendi que felicidade mesmo é ver o amor que começou em dois se transformar em três.</p>
             </div>
             <div class="chapter-photo stack">
-              <img src="Alexandra-4-Anos-1.jpg" alt="Felipe, Jéssica e Alexandra reunidos em família." />
-              <img src="Alexandra-4-Anos-44.jpg" alt="Família sorrindo em um ensaio com Alexandra." />
+              <img src="Alexandra-4-Anos-44.jpg" alt="Felipe, Jéssica e Alexandra reunidos em família." />
+              <img src="Alexandra-4-Anos-1.jpg" alt="Família sorrindo em um ensaio com Alexandra." />
             </div>
           </article>
 
           <article class="chapter reveal">
             <div class="chapter-text card">
-              <span class="tag">Capítulo 8 • Hoje</span>
+              <span class="tag">Capítulo 7 • Hoje</span>
               <h3>Depois de tudo, eu ainda escolheria você</h3>
               <p>Vieram novas conquistas, veio o primeiro carro, vieram os problemas que hoje rendem até risada, veio um carro melhor, veio amadurecimento, vieram novos sonhos.</p>
               <p>Mas acima de tudo, veio a certeza de que a nossa história não é bonita porque foi fácil. Ela é bonita porque foi verdadeira.</p>
-              <p><strong>Eu escolheria você no congresso, no altar, no cômodo apertado, na casa em construção, na gravidez, na chegada da Alexandra e em cada próximo capítulo da nossa vida.</strong></p>
+              <p><strong>Eu escolheria você no congresso, no altar, no cômodo apertado, na casa em construção, na chegada da Alexandra e em cada próximo capítulo da nossa vida.</strong></p>
             </div>
             <div class="chapter-photo stack">
-              <img src="Ela linda.jpg" alt="Jéssica sorrindo, em um retrato especial." />
-              <img src="IMG-20181107-WA0056.jpg" alt="Felipe e Jéssica sorrindo juntos em um passeio." />
+              <img src="Casamento.JPG" alt="Felipe e Jéssica sentados e se beijando em frente a uma casa branca." />
+              <img src="Ela linda.jpg" alt="Jéssica sorrindo com os braços abertos." />
             </div>
           </article>
         </div>
@@ -295,16 +412,16 @@
     <section class="section">
       <div class="container reveal">
         <h2 class="section-title">Nossa casa também conta a nossa história</h2>
-        <p class="section-lead">Deixei essa galeria como uma sequência visual da obra, para ela sentir a evolução do sonho de vocês.</p>
+        <p class="section-lead">Essas imagens não mostram apenas uma construção. Elas mostram coragem, renúncia, esforço e uma vida levantada com as próprias mãos, com fé e com amor.</p>
         <div class="gallery">
-          <figure><img src="IMG_3972.JPG" alt="Frente da casa em fase inicial." /><figcaption>Quando ainda era começo</figcaption></figure>
-          <figure><img src="IMG_3971.JPG" alt="Telhado da casa em obra." /><figcaption>Cada etapa vencida</figcaption></figure>
-          <figure><img src="IMG_2086.JPG" alt="Espaço com areia e paredes da obra." /><figcaption>Sonho tomando forma</figcaption></figure>
-          <figure><img src="IMG_2567.JPG" alt="Estrutura metálica da construção da casa." /><figcaption>Construindo nosso espaço</figcaption></figure>
-          <figure><img src="IMG_2957.JPG" alt="Cobertura sendo finalizada na obra." /><figcaption>O teto do nosso lar</figcaption></figure>
-          <figure><img src="IMG_2547.JPG" alt="Concretagem da laje da casa." /><figcaption>Fé e esforço</figcaption></figure>
-          <figure><img src="IMG_2083.JPG" alt="Preparação da laje da construção." /><figcaption>Passo a passo</figcaption></figure>
-          <figure><img src="20150520_140648575_iOS.JPG" alt="Muro e área externa em construção." /><figcaption>Projetando o futuro</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Frente da casa em fase inicial." /><figcaption>Quando ainda era começo</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Telhado da casa em obra." /><figcaption>Cada etapa vencida</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Espaço com areia e paredes da obra." /><figcaption>Sonho tomando forma</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Estrutura metálica da construção da casa." /><figcaption>Construindo nosso espaço</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Cobertura sendo finalizada na obra." /><figcaption>O teto do nosso lar</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Concretagem da laje da casa." /><figcaption>Fé e esforço</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Preparação da laje da construção." /><figcaption>Passo a passo</figcaption></figure>
+          <figure><img src="contrução da casa.JPG" alt="Muro e área externa em construção." /><figcaption>Projetando o futuro</figcaption></figure>
         </div>
       </div>
     </section>
@@ -312,16 +429,16 @@
     <section class="section">
       <div class="container reveal">
         <h2 class="section-title">Os capítulos mais doces</h2>
-        <p class="section-lead">No fim, não ficou só a memória da luta. Ficaram também os sorrisos, a leveza e a certeza de que valeu a pena.</p>
+        <p class="section-lead">Entre tanta luta, Deus também nos deu momentos leves, sorrisos sinceros e lembranças que aquecem o coração.</p>
         <div class="family-highlight">
-          <div class="split-photo"><img src="IMG-20181107-WA0051.jpg" alt="Felipe e Jéssica se beijando sentados em um banco." /></div>
-          <div class="split-photo"><img src="2a3491f1-64c9-4995-ac0e-1e9d6094391f.jpg" alt="Jéssica sorrindo com os braços abertos." /></div>
+          <div class="split-photo"><img src="IMG-20181107-WA0056.jpg" alt="Felipe e Jéssica sorrindo juntos em um passeio." /></div>
+          <div class="split-photo"><img src="Casamento.JPG" alt="Felipe e Jéssica se beijando sentados em um banco." /></div>
         </div>
         <div class="gallery" style="margin-top:18px;">
-          <figure><img src="20151016_211617000_iOS.JPG" alt="Ambiente com desenho do casal e mensagem de amor." /><figcaption>Nosso amor em detalhes</figcaption></figure>
-          <figure><img src="20141126_001818000_iOS.JPG" alt="Felipe e Jéssica abraçados em uma selfie." /><figcaption>Nosso amor no começo</figcaption></figure>
-          <figure><img src="IMG_9646.jpg" alt="Foto do casamento de Jéssica." /><figcaption>O dia do nosso sim</figcaption></figure>
-          <figure><img src="Alexandra 3 Anos-50.jpg" alt="Momento especial da Alexandra." /><figcaption>Os dias ficaram mais coloridos</figcaption></figure>
+          <figure><img src="Casamento.JPG" alt="Foto do casamento de Jéssica." /><figcaption>O dia do nosso sim</figcaption></figure>
+          <figure><img src="Casamento.JPG" alt="Felipe e Jéssica abraçados em uma selfie." /><figcaption>Nosso amor no começo</figcaption></figure>
+          <figure><img src="Ela linda.jpg" alt="Foto romântica antiga do casal." /><figcaption>Memórias guardadas</figcaption></figure>
+          <figure><img src="Ela linda.jpg" alt="Jéssica sorrindo em frente a uma parede decorada." /><figcaption>Seu sorriso sempre foi casa</figcaption></figure>
         </div>
       </div>
     </section>
@@ -329,7 +446,7 @@
     <section class="section">
       <div class="container reveal">
         <h2 class="section-title">15 razões pelas quais eu amo você</h2>
-        <p class="section-lead">Mantive essa seção porque ela está forte e fecha muito bem a homenagem.</p>
+        <p class="section-lead">Porque 15 anos merecem ser celebrados lembrando quem você é e tudo o que representa para mim e para a nossa família.</p>
         <div class="reasons">
           <div class="reason"><b>1. Sua fé</b><span>Porque você sempre acreditou até quando a vida parecia apertada demais.</span></div>
           <div class="reason"><b>2. Sua coragem</b><span>Porque você enfrentou cada fase sem recuar, mesmo quando foi difícil.</span></div>
@@ -361,7 +478,7 @@
           <p>Obrigado por cada luta que você enfrentou comigo. Obrigado por cada fase em que escolheu ficar. Obrigado por ser meu amor, minha companheira, minha casa e a mãe da nossa filha.</p>
           <p>Você esteve comigo quando ainda não tínhamos certezas, quando tivemos que viver apertados, quando construímos o nosso lar quase do zero, quando sonhamos alto e quando tudo ainda era promessa.</p>
           <p>Muita gente ama quando tudo está pronto. Você me amou quando ainda estava em construção. E eu nunca vou esquecer isso.</p>
-          <p>Depois de tudo o que vivemos, eu tenho ainda mais certeza: <strong>eu escolheria você de novo</strong>. No congresso em Brasília. No altar. No cômodo apertado. Na casa em obra. Na gravidez. Na chegada da Alexandra. Em cada novo capítulo que ainda vamos viver.</p>
+          <p>Depois de tudo o que vivemos, eu tenho ainda mais certeza: <strong>eu escolheria você de novo</strong>. No congresso em Brasília. No altar. No cômodo apertado. Na casa em obra. Na chegada da Alexandra. Em cada novo capítulo que ainda vamos viver.</p>
           <p>Feliz 15 anos de casamento, meu amor. Eu te amo ontem, hoje e para sempre.</p>
           <div class="signature">Com todo o meu amor,<br>Felipe</div>
 
