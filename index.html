@@ -420,6 +420,59 @@
     .thumb img{width:100%; height:100%; object-fit:cover; display:block}
     .thumb.active{border-color:var(--gold)}
 
+
+    .music-player{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:9997;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .music-btn{
+      width:52px;
+      height:52px;
+      border:none;
+      border-radius:999px;
+      background:rgba(255,255,255,0.10);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      color:#fff;
+      font-size:22px;
+      cursor:pointer;
+      box-shadow:0 8px 24px rgba(0,0,0,0.25);
+      transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .music-btn:hover{
+      transform:translateY(-2px) scale(1.04);
+      background:rgba(255,255,255,0.16);
+      box-shadow:0 10px 28px rgba(0,0,0,0.32);
+    }
+    .music-btn.playing{
+      background:rgba(242,154,179,.22);
+      box-shadow:0 0 0 6px rgba(242,154,179,.08), 0 10px 28px rgba(0,0,0,.32);
+    }
+    .music-label{
+      color:rgba(255,255,255,.82);
+      font-size:13px;
+      letter-spacing:.3px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      opacity:0;
+      transform:translateX(8px);
+      pointer-events:none;
+      transition:all .25s ease;
+      white-space:nowrap;
+    }
+    .music-player:hover .music-label{
+      opacity:1;
+      transform:translateX(0);
+    }
+
     .reading-progress{
       position:fixed;
       top:0; left:0;
@@ -578,6 +631,18 @@
       .thumb{flex-basis:70px;height:70px}
       .timeline-nav{display:none}
       .hero-scroll{font-size:.88rem}
+.music-player{
+        right:14px;
+        bottom:14px;
+      }
+      .music-btn{
+        width:48px;
+        height:48px;
+        font-size:20px;
+      }
+      .music-label{
+        display:none;
+      }
     }
   </style>
 </head>
@@ -956,6 +1021,18 @@
   </footer>
 
 
+
+  <div class="music-player" id="musicPlayer">
+    <button id="musicToggle" class="music-btn" type="button" aria-label="Tocar música" title="Tocar nossa música">
+      ♫
+    </button>
+    <div class="music-label">Nossa música</div>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="audio/tema-principal.mp4" type="audio/mp4" />
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
   <div class="declaration-modal" id="declarationModal" aria-hidden="true">
     <div class="declaration-panel">
       <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
@@ -997,6 +1074,58 @@
   </div>
 
   <script>
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    let musicStarted = false;
+    let musicFading = null;
+
+    if(bgMusic){
+      bgMusic.volume = 0.18;
+    }
+
+    function fadeVolume(target, duration = 500){
+      if(!bgMusic) return;
+      if(musicFading) cancelAnimationFrame(musicFading);
+      const start = bgMusic.volume;
+      const startTime = performance.now();
+
+      function step(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        bgMusic.volume = start + (target - start) * progress;
+        if(progress < 1){
+          musicFading = requestAnimationFrame(step);
+        }
+      }
+
+      musicFading = requestAnimationFrame(step);
+    }
+
+    async function tocarMusica(){
+      if(!bgMusic) return;
+      try{
+        if(bgMusic.paused){
+          await bgMusic.play();
+          musicStarted = true;
+          musicToggle.classList.add('playing');
+          musicToggle.setAttribute('aria-label', 'Pausar música');
+          musicToggle.setAttribute('title', 'Pausar nossa música');
+          fadeVolume(0.22, 900);
+        }else{
+          bgMusic.pause();
+          musicToggle.classList.remove('playing');
+          musicToggle.setAttribute('aria-label', 'Tocar música');
+          musicToggle.setAttribute('title', 'Tocar nossa música');
+        }
+      }catch(err){
+        console.log('Não foi possível iniciar o áudio:', err);
+      }
+    }
+
+    if(musicToggle){
+      musicToggle.addEventListener('click', tocarMusica);
+    }
+
     const chapters = [
       { folder:'01-comeco', title:'Tudo começou com um olhar' },
       { folder:'02-casamento', title:'O altar foi só o começo' },
@@ -1264,6 +1393,18 @@
       setupModalTouch();
       window.addEventListener('scroll', updateProgress, {passive:true});
       window.addEventListener('resize', updateProgress);
+
+
+      document.addEventListener('click', async function prepararAudio(){
+        if(!musicStarted && bgMusic){
+          try{
+            await bgMusic.play();
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+          }catch(err){}
+        }
+        document.removeEventListener('click', prepararAudio);
+      }, { once:true });
 
       document.getElementById('declarationModal').addEventListener('click', (e)=>{
         if(e.target.id === 'declarationModal') fecharDeclaracao();
