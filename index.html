@@ -561,6 +561,114 @@
     }
     .declaration-panel strong{color:var(--text)}
 
+    .music-player{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1200;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .music-shell{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px 8px 8px;
+      border-radius:999px;
+      background:rgba(20,12,18,.58);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 16px 36px rgba(0,0,0,.28);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+    .music-btn{
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      color:#fff;
+      background:linear-gradient(135deg, rgba(255,122,162,.20), rgba(255,208,140,.15));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 8px 18px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .music-btn:hover{
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 12px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.10);
+    }
+    .music-btn:active{transform:scale(.98)}
+    .music-btn .play-icon,
+    .music-btn .eq{
+      display:grid;
+      place-items:center;
+    }
+    .music-btn .play-icon{
+      width:0;
+      height:0;
+      border-top:8px solid transparent;
+      border-bottom:8px solid transparent;
+      border-left:12px solid #fff;
+      margin-left:3px;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .music-btn .eq{
+      display:none;
+      grid-auto-flow:column;
+      gap:3px;
+      align-items:end;
+      height:16px;
+    }
+    .music-btn .eq span{
+      display:block;
+      width:3px;
+      height:6px;
+      border-radius:999px;
+      background:#fff;
+      opacity:.95;
+    }
+    .music-btn.playing{
+      background:linear-gradient(135deg, rgba(255,122,162,.28), rgba(255,208,140,.22));
+      box-shadow:0 0 0 6px rgba(255,122,162,.08), 0 12px 24px rgba(0,0,0,.28);
+    }
+    .music-btn.playing .play-icon{display:none}
+    .music-btn.playing .eq{display:grid}
+    .music-btn.playing .eq span:nth-child(1){animation:eqWave .75s infinite ease-in-out}
+    .music-btn.playing .eq span:nth-child(2){animation:eqWave .75s .15s infinite ease-in-out}
+    .music-btn.playing .eq span:nth-child(3){animation:eqWave .75s .3s infinite ease-in-out}
+    @keyframes eqWave{
+      0%,100%{height:6px;opacity:.7}
+      50%{height:16px;opacity:1}
+    }
+    .music-meta{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .music-kicker{
+      font-size:.68rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.52);
+    }
+    .music-title{
+      font-size:.88rem;
+      color:rgba(255,255,255,.9);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:150px;
+    }
+    .music-status{
+      font-size:.72rem;
+      color:rgba(255,255,255,.6);
+    }
+
+
     @media (max-width: 980px){
       .hero-grid,.final-letter,.chapter-body{grid-template-columns:1fr}
       .hero-media{min-height:360px}
@@ -579,134 +687,7 @@
       .timeline-nav{display:none}
       .hero-scroll{font-size:.88rem}
     }
-  
-/* === Player de música discreto === */
-.music-player{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:1200;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.music-shell{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 10px 8px 8px;
-  border-radius:999px;
-  background:rgba(19, 7, 22, 0.62);
-  border:1px solid rgba(255,255,255,0.10);
-  box-shadow:0 10px 30px rgba(0,0,0,0.26);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-.music-btn{
-  width:48px;
-  height:48px;
-  border:none;
-  border-radius:50%;
-  cursor:pointer;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  background:linear-gradient(135deg, rgba(255,122,162,0.28), rgba(255,194,209,0.14));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 6px 16px rgba(0,0,0,0.24);
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, opacity .25s ease;
-}
-.music-btn:hover{
-  transform:translateY(-1px) scale(1.03);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 22px rgba(0,0,0,0.28);
-}
-.music-btn:active{ transform:scale(.98); }
-.music-btn.playing{
-  background:linear-gradient(135deg, rgba(255,122,162,0.42), rgba(255,194,209,0.22));
-}
-.music-note{
-  font-size:18px;
-  line-height:1;
-  transform:translateY(-1px);
-  transition:opacity .2s ease, transform .25s ease;
-}
-.music-btn.playing .music-note{
-  opacity:.0;
-  transform:scale(.8);
-  position:absolute;
-}
-.music-eq{
-  width:18px;
-  height:18px;
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  gap:3px;
-}
-.music-btn.playing .music-eq{ display:flex; }
-.music-eq span{
-  width:3px;
-  border-radius:999px;
-  background:#fff;
-  opacity:.95;
-  transform-origin:bottom center;
-  animation: eqBounce 1s ease-in-out infinite;
-}
-.music-eq span:nth-child(1){ height:7px; animation-delay:.0s; }
-.music-eq span:nth-child(2){ height:13px; animation-delay:.15s; }
-.music-eq span:nth-child(3){ height:9px; animation-delay:.3s; }
-@keyframes eqBounce{
-  0%,100%{ transform:scaleY(.45); opacity:.68; }
-  50%{ transform:scaleY(1.08); opacity:1; }
-}
-.music-meta{
-  display:flex;
-  flex-direction:column;
-  min-width:0;
-}
-.music-label{
-  font-size:12px;
-  font-weight:700;
-  color:#fff;
-  line-height:1.1;
-  letter-spacing:.02em;
-}
-.music-status{
-  font-size:11px;
-  color:rgba(255,255,255,0.72);
-  line-height:1.1;
-  margin-top:2px;
-}
-.music-shell.minimized .music-meta{
-  width:0;
-  opacity:0;
-  overflow:hidden;
-  margin:0;
-}
-.music-min{
-  border:none;
-  background:transparent;
-  color:rgba(255,255,255,0.72);
-  width:24px;
-  height:24px;
-  border-radius:50%;
-  cursor:pointer;
-  display:grid;
-  place-items:center;
-  font-size:14px;
-  transition:background .2s ease, color .2s ease;
-}
-.music-min:hover{
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-}
-@media (max-width:768px){
-  .music-player{ right:12px; bottom:12px; }
-  .music-shell{ padding:7px; }
-  .music-shell .music-meta, .music-shell .music-min{ display:none; }
-  .music-btn{ width:46px; height:46px; }
-}
-
-</style>
+  </style>
 </head>
 <body>
   <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
@@ -1083,6 +1064,25 @@
   </footer>
 
 
+
+  <div class="music-player" id="musicPlayer">
+    <div class="music-shell">
+      <button id="musicToggle" class="music-btn" type="button" aria-label="Tocar música" title="Tocar nossa música">
+        <span class="play-icon" aria-hidden="true"></span>
+        <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <div class="music-meta" aria-hidden="true">
+        <div class="music-kicker">Nossa música</div>
+        <div class="music-title" id="musicTitle">fundo.mp3</div>
+        <div class="music-status" id="musicStatus">toque para ouvir</div>
+      </div>
+      <audio id="bgMusic" loop preload="auto" playsinline>
+        <source src="audio/fundo.mp3" type="audio/mpeg" />
+        <source src="audio/tema-principal.mp4" type="audio/mp4" />
+      </audio>
+    </div>
+  </div>
+
   <div class="declaration-modal" id="declarationModal" aria-hidden="true">
     <div class="declaration-panel">
       <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
@@ -1139,6 +1139,65 @@
 
     let touchStartX = 0;
     let touchEndX = 0;
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicStatus = document.getElementById('musicStatus');
+    const musicTitle = document.getElementById('musicTitle');
+    let musicFadeFrame = null;
+
+    if(bgMusic){
+      bgMusic.volume = 0.0;
+      const currentSource = bgMusic.querySelector('source[src]');
+      if(currentSource){
+        const src = currentSource.getAttribute('src') || '';
+        musicTitle.textContent = src.split('/').pop() || 'nossa música';
+      }
+    }
+
+    function fadeMusic(targetVolume = 0.18, duration = 1200){
+      if(!bgMusic) return;
+      if(musicFadeFrame) cancelAnimationFrame(musicFadeFrame);
+      const startVolume = bgMusic.volume;
+      const startTime = performance.now();
+
+      function step(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        bgMusic.volume = startVolume + (targetVolume - startVolume) * progress;
+        if(progress < 1){
+          musicFadeFrame = requestAnimationFrame(step);
+        }
+      }
+      musicFadeFrame = requestAnimationFrame(step);
+    }
+
+    async function toggleMusic(){
+      if(!bgMusic) return;
+      try{
+        if(bgMusic.paused){
+          await bgMusic.play();
+          musicToggle.classList.add('playing');
+          musicToggle.setAttribute('aria-label','Pausar música');
+          musicToggle.setAttribute('title','Pausar nossa música');
+          musicStatus.textContent = 'tocando agora';
+          fadeMusic(0.18, 1400);
+        }else{
+          bgMusic.pause();
+          musicToggle.classList.remove('playing');
+          musicToggle.setAttribute('aria-label','Tocar música');
+          musicToggle.setAttribute('title','Tocar nossa música');
+          musicStatus.textContent = 'pausada';
+        }
+      }catch(err){
+        console.log('Não foi possível iniciar a música:', err);
+        musicStatus.textContent = 'toque novamente';
+      }
+    }
+
+    if(musicToggle){
+      musicToggle.addEventListener('click', toggleMusic);
+    }
+
 
     function abrirDeclaracao(){
       const modal = document.getElementById('declarationModal');
@@ -1384,6 +1443,22 @@
       if(e.target.id === 'albumModal') fecharModal();
     });
 
+
+    if(bgMusic){
+      bgMusic.addEventListener('play', ()=>{
+        musicToggle.classList.add('playing');
+        musicStatus.textContent = 'tocando agora';
+      });
+      bgMusic.addEventListener('pause', ()=>{
+        musicToggle.classList.remove('playing');
+        if(bgMusic.currentTime > 0) musicStatus.textContent = 'pausada';
+      });
+      bgMusic.addEventListener('ended', ()=>{
+        musicToggle.classList.remove('playing');
+        musicStatus.textContent = 'encerrada';
+      });
+    }
+
     async function boot(){
       createHearts();
       updateProgress();
@@ -1409,69 +1484,6 @@
       if(portraitFiles.length) portrait.src = portraitFiles[0];
       else if(heroFiles.length) portrait.src = heroFiles[Math.min(1, heroFiles.length - 1)];
     }
-
-
-    const bgMusic = document.getElementById('bgMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    const musicStatus = document.getElementById('musicStatus');
-    const musicShell = document.getElementById('musicShell');
-    const musicMinimize = document.getElementById('musicMinimize');
-    let fadeTimer = null;
-
-    function setMusicState(isPlaying){
-      musicToggle.classList.toggle('playing', isPlaying);
-      musicToggle.setAttribute('aria-label', isPlaying ? 'Pausar nossa música' : 'Tocar nossa música');
-      musicToggle.setAttribute('title', isPlaying ? 'Pausar nossa música' : 'Tocar nossa música');
-      musicStatus.textContent = isPlaying ? 'Tocando agora' : 'Toque para ouvir';
-    }
-
-    function fadeVolume(target, duration = 900){
-      clearInterval(fadeTimer);
-      const start = bgMusic.volume;
-      const steps = Math.max(1, Math.floor(duration / 60));
-      const delta = (target - start) / steps;
-      let count = 0;
-      fadeTimer = setInterval(()=>{
-        count++;
-        const next = Math.min(1, Math.max(0, bgMusic.volume + delta));
-        bgMusic.volume = next;
-        if(count >= steps){
-          clearInterval(fadeTimer);
-          bgMusic.volume = target;
-        }
-      }, 60);
-    }
-
-    async function toggleMusic(){
-      try{
-        if(bgMusic.paused){
-          bgMusic.volume = 0.02;
-          await bgMusic.play();
-          setMusicState(true);
-          fadeVolume(0.22, 1200);
-        }else{
-          fadeVolume(0, 280);
-          setTimeout(()=>{
-            bgMusic.pause();
-            bgMusic.volume = 0.22;
-            setMusicState(false);
-          }, 280);
-        }
-      }catch(err){
-        console.error('Falha ao tocar a música:', err);
-        musicStatus.textContent = 'Não foi possível tocar';
-      }
-    }
-
-    musicToggle.addEventListener('click', toggleMusic);
-    musicMinimize.addEventListener('click', ()=>{
-      musicShell.classList.toggle('minimized');
-      musicMinimize.textContent = musicShell.classList.contains('minimized') ? '+' : '—';
-      musicMinimize.setAttribute('title', musicShell.classList.contains('minimized') ? 'Expandir player' : 'Recolher player');
-      musicMinimize.setAttribute('aria-label', musicShell.classList.contains('minimized') ? 'Expandir player' : 'Recolher player');
-    });
-
-    bgMusic.addEventListener('ended', ()=> setMusicState(false));
 
     boot();
   </script>
