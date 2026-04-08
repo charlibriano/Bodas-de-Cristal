@@ -561,118 +561,163 @@
     }
     .declaration-panel strong{color:var(--text)}
 
-    .music-player{
+
+    .intro-overlay{
+      position:fixed;
+      inset:0;
+      z-index:15000;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 30%),
+        linear-gradient(180deg,#120d12 0%, #19111a 35%, #120d12 100%);
+      transition:opacity .8s ease, visibility .8s ease;
+    }
+    .intro-overlay.is-hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    .intro-panel{
+      width:min(980px, 100%);
+      min-height:min(78vh, 760px);
+      border-radius:34px;
+      padding:34px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      backdrop-filter: blur(12px);
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:28px;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+    .intro-panel::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% -30% auto;
+      width:280px; height:280px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+    .intro-copy{position:relative; z-index:1}
+    .intro-copy p{
+      color:var(--muted);
+      font-size:1.16rem;
+      line-height:1.9;
+      margin:0 0 18px;
+    }
+    .intro-date{
+      display:inline-flex;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      margin-top:8px;
+    }
+    .intro-media{
+      position:relative;
+      min-height:520px;
+      border-radius:32px;
+      overflow:hidden;
+      background:#120d12;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .intro-media img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .intro-note{
+      position:absolute;
+      left:18px; right:18px; bottom:18px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:rgba(16,10,15,.64);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      backdrop-filter:blur(8px);
+    }
+    .intro-note strong{
+      color:var(--text);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.15rem;
+    }
+    .audio-dock{
       position:fixed;
       right:18px;
       bottom:18px;
-      z-index:1200;
+      z-index:14000;
       display:flex;
       align-items:center;
-      gap:10px;
-    }
-    .music-shell{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 10px 8px 8px;
-      border-radius:999px;
-      background:rgba(20,12,18,.58);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 16px 36px rgba(0,0,0,.28);
+      gap:12px;
+      padding:14px 16px;
+      border-radius:24px;
+      background:rgba(16,10,15,.7);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
       backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
     }
-    .music-btn{
-      width:46px;
-      height:46px;
+    .audio-dock button{
       border:none;
-      border-radius:999px;
-      display:grid;
-      place-items:center;
       cursor:pointer;
-      color:#fff;
-      background:linear-gradient(135deg, rgba(255,122,162,.20), rgba(255,208,140,.15));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 8px 18px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
-      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-    }
-    .music-btn:hover{
-      transform:translateY(-1px) scale(1.03);
-      box-shadow:0 12px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.10);
-    }
-    .music-btn:active{transform:scale(.98)}
-    .music-btn .play-icon,
-    .music-btn .eq{
-      display:grid;
-      place-items:center;
-    }
-    .music-btn .play-icon{
-      width:0;
-      height:0;
-      border-top:8px solid transparent;
-      border-bottom:8px solid transparent;
-      border-left:12px solid #fff;
-      margin-left:3px;
-      transition:opacity .2s ease, transform .2s ease;
-    }
-    .music-btn .eq{
-      display:none;
-      grid-auto-flow:column;
-      gap:3px;
-      align-items:end;
-      height:16px;
-    }
-    .music-btn .eq span{
-      display:block;
-      width:3px;
-      height:6px;
+      width:52px;height:52px;
       border-radius:999px;
-      background:#fff;
-      opacity:.95;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--gold),#ffdcb1);
+      color:#2a1319;
+      font-weight:800;
+      box-shadow:0 10px 28px rgba(0,0,0,.25);
     }
-    .music-btn.playing{
-      background:linear-gradient(135deg, rgba(255,122,162,.28), rgba(255,208,140,.22));
-      box-shadow:0 0 0 6px rgba(255,122,162,.08), 0 12px 24px rgba(0,0,0,.28);
-    }
-    .music-btn.playing .play-icon{display:none}
-    .music-btn.playing .eq{display:grid}
-    .music-btn.playing .eq span:nth-child(1){animation:eqWave .75s infinite ease-in-out}
-    .music-btn.playing .eq span:nth-child(2){animation:eqWave .75s .15s infinite ease-in-out}
-    .music-btn.playing .eq span:nth-child(3){animation:eqWave .75s .3s infinite ease-in-out}
-    @keyframes eqWave{
-      0%,100%{height:6px;opacity:.7}
-      50%{height:16px;opacity:1}
-    }
-    .music-meta{
-      min-width:0;
+    .audio-dock .eq{
       display:flex;
-      flex-direction:column;
+      gap:3px;
+      height:18px;
+      align-items:flex-end;
+    }
+    .audio-dock .eq span{
+      width:4px;
+      height:7px;
+      border-radius:999px;
+      background:#2a1319;
+      opacity:.85;
+    }
+    .audio-dock.playing .eq span:nth-child(1){animation:eqWave .8s infinite}
+    .audio-dock.playing .eq span:nth-child(2){animation:eqWave .8s .15s infinite}
+    .audio-dock.playing .eq span:nth-child(3){animation:eqWave .8s .3s infinite}
+    @keyframes eqWave{
+      0%,100%{height:7px}
+      50%{height:18px}
+    }
+    .audio-meta{
+      display:grid;
       gap:2px;
+      min-width:0;
     }
-    .music-kicker{
-      font-size:.68rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.52);
-    }
-    .music-title{
-      font-size:.88rem;
-      color:rgba(255,255,255,.9);
+    .audio-meta strong{
+      font-size:1rem;
+      color:var(--text);
       white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:150px;
     }
-    .music-status{
-      font-size:.72rem;
-      color:rgba(255,255,255,.6);
+    .audio-meta span{
+      color:var(--muted);
+      font-size:.93rem;
+      white-space:nowrap;
     }
-
 
     @media (max-width: 980px){
-      .hero-grid,.final-letter,.chapter-body{grid-template-columns:1fr}
+      .hero-grid,.final-letter,.chapter-body,.intro-panel{grid-template-columns:1fr}
       .hero-media{min-height:360px}
       .portrait-card{min-height:420px}
+      .intro-media{min-height:320px}
     }
     @media (max-width: 720px){
       .container{width:min(100% - 22px, 1120px)}
@@ -685,6 +730,13 @@
       .nav-btn{width:46px;height:46px;font-size:1.35rem}
       .thumb{flex-basis:70px;height:70px}
       .timeline-nav{display:none}
+      .audio-dock{right:12px; left:12px; bottom:12px; padding:12px 14px; justify-content:space-between}
+      .audio-dock button{width:46px;height:46px}
+      .audio-meta strong{font-size:.95rem}
+      .audio-meta span{font-size:.86rem}
+      .intro-panel{padding:22px}
+      .intro-copy p{font-size:1.04rem}
+      .intro-date{font-size:.95rem}
       .hero-scroll{font-size:.88rem}
     }
   </style>
@@ -692,6 +744,47 @@
 <body>
   <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
   <div class="floating-hearts" aria-hidden="true"></div>
+
+  <div class="intro-overlay" id="introOverlay">
+    <div class="intro-panel">
+      <div class="intro-copy">
+        <div class="badge">15 anos escolhendo você</div>
+        <h1>Jéssica &amp; Felipe</h1>
+        <p>
+          Entre todas as escolhas da minha vida, você continua sendo a mais bonita.
+          Eu preparei essa lembrança para que você entre nela com calma, como quem abre
+          um presente feito de história, fé e amor.
+        </p>
+        <div class="intro-date">29 de abril de 2011 — 29 de abril de 2026</div>
+        <div class="hero-actions" style="margin-top:26px">
+          <button class="btn btn-primary" type="button" id="startExperience">Começar nossa história</button>
+        </div>
+      </div>
+      <div class="intro-media">
+        <img id="introImage" src="" alt="Jéssica e Felipe">
+        <div class="hero-overlay"></div>
+        <div class="intro-note">
+          <strong>O altar foi só o começo</strong>
+          <span>O que começou com um olhar virou aliança, casa, família e permanência.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="audio-dock" id="audioDock" aria-label="Controle da trilha">
+    <button type="button" id="audioToggle" aria-label="Tocar ou pausar trilha">
+      <div class="eq" aria-hidden="true"><span></span><span></span><span></span></div>
+    </button>
+    <div class="audio-meta">
+      <strong>Trilha instrumental</strong>
+      <span id="audioStatus">Pronta para tocar</span>
+    </div>
+  </div>
+
+  <audio id="bgAudio" loop preload="auto">
+    <source src="audio/fundo.mp3" type="audio/mpeg">
+    <source src="audio/tema-principal.mp4" type="audio/mp4">
+  </audio>
 
   <nav class="timeline-nav" aria-label="Navegação rápida pelos capítulos" id="timelineNav"></nav>
 
@@ -710,7 +803,6 @@
           E depois de tudo o que vivemos, a certeza continua a mesma: <strong>eu escolheria você de novo.</strong>
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#capitulos">Começar nossa história</a>
           <button class="btn btn-secondary" type="button" onclick="abrirAlbumPorPasta('02-casamento','O altar foi só o começo')">Abrir álbum do casamento</button>
         </div>
         <div class="hero-scroll" aria-hidden="true">
@@ -1064,25 +1156,6 @@
   </footer>
 
 
-
-  <div class="music-player" id="musicPlayer">
-    <div class="music-shell">
-      <button id="musicToggle" class="music-btn" type="button" aria-label="Tocar música" title="Tocar nossa música">
-        <span class="play-icon" aria-hidden="true"></span>
-        <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
-      <div class="music-meta" aria-hidden="true">
-        <div class="music-kicker">Nossa música</div>
-        <div class="music-title" id="musicTitle">fundo.mp3</div>
-        <div class="music-status" id="musicStatus">toque para ouvir</div>
-      </div>
-      <audio id="bgMusic" loop preload="auto" playsinline>
-        <source src="audio/fundo.mp3" type="audio/mpeg" />
-        <source src="audio/tema-principal.mp4" type="audio/mp4" />
-      </audio>
-    </div>
-  </div>
-
   <div class="declaration-modal" id="declarationModal" aria-hidden="true">
     <div class="declaration-panel">
       <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
@@ -1139,65 +1212,6 @@
 
     let touchStartX = 0;
     let touchEndX = 0;
-
-    const bgMusic = document.getElementById('bgMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    const musicStatus = document.getElementById('musicStatus');
-    const musicTitle = document.getElementById('musicTitle');
-    let musicFadeFrame = null;
-
-    if(bgMusic){
-      bgMusic.volume = 0.0;
-      const currentSource = bgMusic.querySelector('source[src]');
-      if(currentSource){
-        const src = currentSource.getAttribute('src') || '';
-        musicTitle.textContent = src.split('/').pop() || 'nossa música';
-      }
-    }
-
-    function fadeMusic(targetVolume = 0.18, duration = 1200){
-      if(!bgMusic) return;
-      if(musicFadeFrame) cancelAnimationFrame(musicFadeFrame);
-      const startVolume = bgMusic.volume;
-      const startTime = performance.now();
-
-      function step(now){
-        const progress = Math.min((now - startTime) / duration, 1);
-        bgMusic.volume = startVolume + (targetVolume - startVolume) * progress;
-        if(progress < 1){
-          musicFadeFrame = requestAnimationFrame(step);
-        }
-      }
-      musicFadeFrame = requestAnimationFrame(step);
-    }
-
-    async function toggleMusic(){
-      if(!bgMusic) return;
-      try{
-        if(bgMusic.paused){
-          await bgMusic.play();
-          musicToggle.classList.add('playing');
-          musicToggle.setAttribute('aria-label','Pausar música');
-          musicToggle.setAttribute('title','Pausar nossa música');
-          musicStatus.textContent = 'tocando agora';
-          fadeMusic(0.18, 1400);
-        }else{
-          bgMusic.pause();
-          musicToggle.classList.remove('playing');
-          musicToggle.setAttribute('aria-label','Tocar música');
-          musicToggle.setAttribute('title','Tocar nossa música');
-          musicStatus.textContent = 'pausada';
-        }
-      }catch(err){
-        console.log('Não foi possível iniciar a música:', err);
-        musicStatus.textContent = 'toque novamente';
-      }
-    }
-
-    if(musicToggle){
-      musicToggle.addEventListener('click', toggleMusic);
-    }
-
 
     function abrirDeclaracao(){
       const modal = document.getElementById('declarationModal');
@@ -1443,22 +1457,6 @@
       if(e.target.id === 'albumModal') fecharModal();
     });
 
-
-    if(bgMusic){
-      bgMusic.addEventListener('play', ()=>{
-        musicToggle.classList.add('playing');
-        musicStatus.textContent = 'tocando agora';
-      });
-      bgMusic.addEventListener('pause', ()=>{
-        musicToggle.classList.remove('playing');
-        if(bgMusic.currentTime > 0) musicStatus.textContent = 'pausada';
-      });
-      bgMusic.addEventListener('ended', ()=>{
-        musicToggle.classList.remove('playing');
-        musicStatus.textContent = 'encerrada';
-      });
-    }
-
     async function boot(){
       createHearts();
       updateProgress();
@@ -1477,13 +1475,62 @@
 
       const heroFiles = await discoverAlbum('02-casamento');
       const hero = document.getElementById('heroImage');
-      if(heroFiles.length) hero.src = heroFiles[0];
+      const intro = document.getElementById('introImage');
+      if(heroFiles.length){
+        hero.src = heroFiles[0];
+        if(intro) intro.src = heroFiles[Math.min(1, heroFiles.length - 1)];
+      }
 
       const portraitFiles = await discoverAlbum('09-jessica');
       const portrait = document.getElementById('jessicaPortrait');
       if(portraitFiles.length) portrait.src = portraitFiles[0];
       else if(heroFiles.length) portrait.src = heroFiles[Math.min(1, heroFiles.length - 1)];
     }
+
+
+    const bgAudio = document.getElementById('bgAudio');
+    const audioDock = document.getElementById('audioDock');
+    const audioToggle = document.getElementById('audioToggle');
+    const audioStatus = document.getElementById('audioStatus');
+    const introOverlay = document.getElementById('introOverlay');
+    const startExperience = document.getElementById('startExperience');
+
+    bgAudio.volume = 0.18;
+
+    async function iniciarAudio(){
+      try{
+        await bgAudio.play();
+        audioDock.classList.add('playing');
+        audioStatus.textContent = 'Tocando agora';
+      }catch(err){
+        audioDock.classList.remove('playing');
+        audioStatus.textContent = 'Toque para ouvir';
+      }
+    }
+
+    function pausarAudio(){
+      bgAudio.pause();
+      audioDock.classList.remove('playing');
+      audioStatus.textContent = 'Pausada';
+    }
+
+    async function alternarAudio(){
+      if(bgAudio.paused) await iniciarAudio();
+      else pausarAudio();
+    }
+
+    audioToggle.addEventListener('click', alternarAudio);
+
+    startExperience.addEventListener('click', async ()=>{
+      introOverlay.classList.add('is-hidden');
+      document.body.style.overflow = '';
+      await iniciarAudio();
+      setTimeout(()=>{
+        document.getElementById('capitulos').scrollIntoView({behavior:'smooth', block:'start'});
+      }, 320);
+    });
+
+    document.body.style.overflow = 'hidden';
 
     boot();
   </script>
