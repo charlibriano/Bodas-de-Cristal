@@ -562,162 +562,96 @@
     .declaration-panel strong{color:var(--text)}
 
 
-    .intro-overlay{
-      position:fixed;
-      inset:0;
-      z-index:15000;
-      display:grid;
-      place-items:center;
-      padding:24px;
-      background:
-        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 30%),
-        linear-gradient(180deg,#120d12 0%, #19111a 35%, #120d12 100%);
-      transition:opacity .8s ease, visibility .8s ease;
-    }
-    .intro-overlay.is-hidden{
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-    }
-    .intro-panel{
-      width:min(980px, 100%);
-      min-height:min(78vh, 760px);
-      border-radius:34px;
-      padding:34px;
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--shadow);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      backdrop-filter: blur(12px);
-      display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:28px;
-      align-items:center;
-      overflow:hidden;
-      position:relative;
-    }
-    .intro-panel::before{
-      content:"";
-      position:absolute;
-      inset:auto -10% -30% auto;
-      width:280px; height:280px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 70%);
-      filter:blur(12px);
-      pointer-events:none;
-    }
-    .intro-copy{position:relative; z-index:1}
-    .intro-copy p{
-      color:var(--muted);
-      font-size:1.16rem;
-      line-height:1.9;
-      margin:0 0 18px;
-    }
-    .intro-date{
-      display:inline-flex;
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-      color:var(--muted);
-      margin-top:8px;
-    }
-    .intro-media{
-      position:relative;
-      min-height:520px;
-      border-radius:32px;
-      overflow:hidden;
-      background:#120d12;
-      border:1px solid rgba(255,255,255,.12);
-    }
-    .intro-media img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .intro-note{
-      position:absolute;
-      left:18px; right:18px; bottom:18px;
-      padding:18px 20px;
-      border-radius:22px;
-      background:rgba(16,10,15,.64);
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--muted);
-      backdrop-filter:blur(8px);
-    }
-    .intro-note strong{
-      color:var(--text);
-      display:block;
-      margin-bottom:6px;
-      font-size:1.15rem;
-    }
-    .audio-dock{
+    .disc-player{
       position:fixed;
       right:18px;
       bottom:18px;
-      z-index:14000;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:14px 16px;
-      border-radius:24px;
-      background:rgba(16,10,15,.7);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
-    }
-    .audio-dock button{
+      width:68px;
+      height:68px;
+      z-index:30;
       border:none;
+      border-radius:50%;
       cursor:pointer;
-      width:52px;height:52px;
-      border-radius:999px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--gold),#ffdcb1);
-      color:#2a1319;
-      font-weight:800;
-      box-shadow:0 10px 28px rgba(0,0,0,.25);
+      padding:0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.26) 0 8%, rgba(255,255,255,.06) 9% 12%, transparent 13%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 38%),
+        conic-gradient(from 210deg, #28161f, #3b222e, #160f15, #4b2b36, #22131c, #28161f);
+      box-shadow:
+        0 18px 35px rgba(0,0,0,.35),
+        inset 0 2px 2px rgba(255,255,255,.18),
+        inset 0 -10px 18px rgba(0,0,0,.28);
+      transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      opacity:.92;
     }
-    .audio-dock .eq{
-      display:flex;
-      gap:3px;
-      height:18px;
-      align-items:flex-end;
+    .disc-player:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:
+        0 22px 42px rgba(0,0,0,.42),
+        inset 0 2px 2px rgba(255,255,255,.2),
+        inset 0 -10px 18px rgba(0,0,0,.32);
     }
-    .audio-dock .eq span{
-      width:4px;
-      height:7px;
-      border-radius:999px;
-      background:#2a1319;
-      opacity:.85;
+    .disc-player::before{
+      content:"";
+      position:absolute;
+      inset:7px;
+      border-radius:50%;
+      background:
+        repeating-radial-gradient(circle at center,
+          rgba(255,255,255,.06) 0 2px,
+          rgba(0,0,0,.10) 2px 4px);
+      opacity:.7;
+      pointer-events:none;
     }
-    .audio-dock.playing .eq span:nth-child(1){animation:eqWave .8s infinite}
-    .audio-dock.playing .eq span:nth-child(2){animation:eqWave .8s .15s infinite}
-    .audio-dock.playing .eq span:nth-child(3){animation:eqWave .8s .3s infinite}
-    @keyframes eqWave{
-      0%,100%{height:7px}
-      50%{height:18px}
+    .disc-player::after{
+      content:"";
+      position:absolute;
+      inset:26px;
+      border-radius:50%;
+      background:linear-gradient(180deg, var(--gold), #f0c66b);
+      box-shadow:0 0 0 4px rgba(20,13,18,.42);
+      pointer-events:none;
     }
-    .audio-meta{
-      display:grid;
-      gap:2px;
-      min-width:0;
+    .disc-player.playing{
+      animation:spinDisc 4s linear infinite;
+      opacity:1;
     }
-    .audio-meta strong{
-      font-size:1rem;
-      color:var(--text);
-      white-space:nowrap;
+    .disc-player.paused{
+      animation:none;
     }
-    .audio-meta span{
-      color:var(--muted);
-      font-size:.93rem;
-      white-space:nowrap;
+    .disc-pulse{
+      position:fixed;
+      right:14px;
+      bottom:14px;
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      border:1px solid rgba(245,213,140,.16);
+      pointer-events:none;
+      z-index:29;
+      opacity:0;
+      transform:scale(.9);
+      transition:.25s ease;
+    }
+    .disc-player.playing + .disc-pulse{
+      opacity:1;
+      transform:scale(1);
+      animation:pulseRing 2.3s ease infinite;
+    }
+    @keyframes spinDisc{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    @keyframes pulseRing{
+      0%{transform:scale(1); opacity:.28}
+      70%{transform:scale(1.15); opacity:.08}
+      100%{transform:scale(1.2); opacity:0}
     }
 
     @media (max-width: 980px){
-      .hero-grid,.final-letter,.chapter-body,.intro-panel{grid-template-columns:1fr}
+      .hero-grid,.final-letter,.chapter-body{grid-template-columns:1fr}
       .hero-media{min-height:360px}
       .portrait-card{min-height:420px}
-      .intro-media{min-height:320px}
     }
     @media (max-width: 720px){
       .container{width:min(100% - 22px, 1120px)}
@@ -730,14 +664,11 @@
       .nav-btn{width:46px;height:46px;font-size:1.35rem}
       .thumb{flex-basis:70px;height:70px}
       .timeline-nav{display:none}
-      .audio-dock{right:12px; left:12px; bottom:12px; padding:12px 14px; justify-content:space-between}
-      .audio-dock button{width:46px;height:46px}
-      .audio-meta strong{font-size:.95rem}
-      .audio-meta span{font-size:.86rem}
-      .intro-panel{padding:22px}
-      .intro-copy p{font-size:1.04rem}
-      .intro-date{font-size:.95rem}
       .hero-scroll{font-size:.88rem}
+      .disc-player{right:12px; bottom:12px; width:58px; height:58px}
+      .disc-player::after{inset:22px}
+      .disc-player::before{inset:6px}
+      .disc-pulse{right:8px; bottom:8px; width:66px; height:66px}
     }
   </style>
 </head>
@@ -745,48 +676,16 @@
   <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
   <div class="floating-hearts" aria-hidden="true"></div>
 
-  <div class="intro-overlay" id="introOverlay">
-    <div class="intro-panel">
-      <div class="intro-copy">
-        <div class="badge">15 anos escolhendo você</div>
-        <h1>Jéssica &amp; Felipe</h1>
-        <p>
-          Entre todas as escolhas da minha vida, você continua sendo a mais bonita.
-          Eu preparei essa lembrança para que você entre nela com calma, como quem abre
-          um presente feito de história, fé e amor.
-        </p>
-        <div class="intro-date">29 de abril de 2011 — 29 de abril de 2026</div>
-        <div class="hero-actions" style="margin-top:26px">
-          <button class="btn btn-primary" type="button" id="startExperience">Começar nossa história</button>
-        </div>
-      </div>
-      <div class="intro-media">
-        <img id="introImage" src="" alt="Jéssica e Felipe">
-        <div class="hero-overlay"></div>
-        <div class="intro-note">
-          <strong>O altar foi só o começo</strong>
-          <span>O que começou com um olhar virou aliança, casa, família e permanência.</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <nav class="timeline-nav" aria-label="Navegação rápida pelos capítulos" id="timelineNav"></nav>
 
-  <div class="audio-dock" id="audioDock" aria-label="Controle da trilha">
-    <button type="button" id="audioToggle" aria-label="Tocar ou pausar trilha">
-      <div class="eq" aria-hidden="true"><span></span><span></span><span></span></div>
-    </button>
-    <div class="audio-meta">
-      <strong>Trilha instrumental</strong>
-      <span id="audioStatus">Pronta para tocar</span>
-    </div>
-  </div>
+  <button class="disc-player paused" id="discPlayer" aria-label="Tocar ou pausar trilha instrumental" title="Tocar ou pausar trilha instrumental"></button>
+  <div class="disc-pulse" aria-hidden="true"></div>
 
-  <audio id="bgAudio" loop preload="auto">
-    <source src="audio/fundo.mp3" type="audio/mpeg">
-    <source src="audio/tema-principal.mp4" type="audio/mp4">
+  <audio id="bgMusic" loop preload="auto">
+    <source src="audio/fundo.mp3" type="audio/mpeg" />
+    <source src="audio/tema-principal.mp4" type="audio/mp4" />
   </audio>
 
-  <nav class="timeline-nav" aria-label="Navegação rápida pelos capítulos" id="timelineNav"></nav>
 
   <header class="hero">
     <div class="container hero-grid">
@@ -803,6 +702,7 @@
           E depois de tudo o que vivemos, a certeza continua a mesma: <strong>eu escolheria você de novo.</strong>
         </p>
         <div class="hero-actions">
+          <a class="btn btn-primary" href="#capitulos">Começar nossa história</a>
           <button class="btn btn-secondary" type="button" onclick="abrirAlbumPorPasta('02-casamento','O altar foi só o começo')">Abrir álbum do casamento</button>
         </div>
         <div class="hero-scroll" aria-hidden="true">
@@ -826,10 +726,6 @@
     <section id="capitulos">
       <div class="container">
         <h2 class="section-title">Nossa história em capítulos</h2>
-        <p class="section-subtitle">
-          Agora as fotos podem acompanhar cada fase da história do jeito certo:
-          um momento por vez, com seu próprio álbum, sem repetição e com mais emoção.
-        </p>
 
         <div class="timeline">
           <article class="chapter" data-folder="01-comeco">
@@ -1457,6 +1353,65 @@
       if(e.target.id === 'albumModal') fecharModal();
     });
 
+
+    const bgMusic = document.getElementById('bgMusic');
+    const discPlayer = document.getElementById('discPlayer');
+    let musicReady = false;
+
+    function marcarPlayerTocando(isPlaying){
+      discPlayer.classList.toggle('playing', isPlaying);
+      discPlayer.classList.toggle('paused', !isPlaying);
+      discPlayer.setAttribute('aria-label', isPlaying ? 'Pausar trilha instrumental' : 'Tocar trilha instrumental');
+      discPlayer.setAttribute('title', isPlaying ? 'Pausar trilha instrumental' : 'Tocar trilha instrumental');
+    }
+
+    async function fadeVolume(target = .18, duration = 900){
+      const steps = 18;
+      const start = bgMusic.volume;
+      for(let i=1;i<=steps;i++){
+        bgMusic.volume = start + ((target - start) * (i / steps));
+        await new Promise(r=>setTimeout(r, duration / steps));
+      }
+    }
+
+    async function startMusic(){
+      try{
+        if(!musicReady){
+          bgMusic.volume = 0.01;
+          await bgMusic.play();
+          musicReady = true;
+          await fadeVolume(.18, 1200);
+        }else{
+          await bgMusic.play();
+        }
+        marcarPlayerTocando(true);
+      }catch(err){
+        marcarPlayerTocando(false);
+      }
+    }
+
+    function pauseMusic(){
+      bgMusic.pause();
+      marcarPlayerTocando(false);
+    }
+
+    discPlayer.addEventListener('click', async ()=>{
+      if(bgMusic.paused) await startMusic();
+      else pauseMusic();
+    });
+
+    const bootMusicOnFirstInteraction = async ()=>{
+      if(!musicReady){
+        await startMusic();
+      }
+      window.removeEventListener('pointerdown', bootMusicOnFirstInteraction);
+      window.removeEventListener('keydown', bootMusicOnFirstInteraction);
+    };
+
+    window.addEventListener('pointerdown', bootMusicOnFirstInteraction, {once:true});
+    window.addEventListener('keydown', bootMusicOnFirstInteraction, {once:true});
+
+
     async function boot(){
       createHearts();
       updateProgress();
@@ -1475,62 +1430,13 @@
 
       const heroFiles = await discoverAlbum('02-casamento');
       const hero = document.getElementById('heroImage');
-      const intro = document.getElementById('introImage');
-      if(heroFiles.length){
-        hero.src = heroFiles[0];
-        if(intro) intro.src = heroFiles[Math.min(1, heroFiles.length - 1)];
-      }
+      if(heroFiles.length) hero.src = heroFiles[0];
 
       const portraitFiles = await discoverAlbum('09-jessica');
       const portrait = document.getElementById('jessicaPortrait');
       if(portraitFiles.length) portrait.src = portraitFiles[0];
       else if(heroFiles.length) portrait.src = heroFiles[Math.min(1, heroFiles.length - 1)];
     }
-
-
-    const bgAudio = document.getElementById('bgAudio');
-    const audioDock = document.getElementById('audioDock');
-    const audioToggle = document.getElementById('audioToggle');
-    const audioStatus = document.getElementById('audioStatus');
-    const introOverlay = document.getElementById('introOverlay');
-    const startExperience = document.getElementById('startExperience');
-
-    bgAudio.volume = 0.18;
-
-    async function iniciarAudio(){
-      try{
-        await bgAudio.play();
-        audioDock.classList.add('playing');
-        audioStatus.textContent = 'Tocando agora';
-      }catch(err){
-        audioDock.classList.remove('playing');
-        audioStatus.textContent = 'Toque para ouvir';
-      }
-    }
-
-    function pausarAudio(){
-      bgAudio.pause();
-      audioDock.classList.remove('playing');
-      audioStatus.textContent = 'Pausada';
-    }
-
-    async function alternarAudio(){
-      if(bgAudio.paused) await iniciarAudio();
-      else pausarAudio();
-    }
-
-    audioToggle.addEventListener('click', alternarAudio);
-
-    startExperience.addEventListener('click', async ()=>{
-      introOverlay.classList.add('is-hidden');
-      document.body.style.overflow = '';
-      await iniciarAudio();
-      setTimeout(()=>{
-        document.getElementById('capitulos').scrollIntoView({behavior:'smooth', block:'start'});
-      }, 320);
-    });
-
-    document.body.style.overflow = 'hidden';
 
     boot();
   </script>
