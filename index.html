@@ -651,51 +651,82 @@
       margin-bottom:6px;
       font-size:1.15rem;
     }
-    .audio-dock{
+    .disc-player{
       position:fixed;
       right:18px;
       bottom:18px;
       z-index:14000;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:14px 16px;
-      border-radius:24px;
-      background:rgba(16,10,15,.7);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
-    }
-    .audio-dock button{
+      width:72px;
+      height:72px;
       border:none;
+      border-radius:50%;
       cursor:pointer;
-      width:52px;height:52px;
-      border-radius:999px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--gold),#ffdcb1);
-      color:#2a1319;
-      font-weight:800;
-      box-shadow:0 10px 28px rgba(0,0,0,.25);
+      padding:0;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,.22) 0 7px, rgba(255,255,255,.06) 7px 11px, transparent 11px),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 38%),
+        conic-gradient(from 220deg, #23151c, #4a2a34, #170e14, #5a3340, #1f1218, #23151c);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,.35),
+        inset 0 2px 2px rgba(255,255,255,.14),
+        inset 0 -12px 20px rgba(0,0,0,.28);
+      transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      opacity:.95;
+      overflow:hidden;
     }
-    .audio-dock .eq{
-      display:flex;
-      gap:3px;
-      height:18px;
-      align-items:flex-end;
+    .disc-player::before{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:50%;
+      background:repeating-radial-gradient(circle at center, rgba(255,255,255,.05) 0 2px, rgba(0,0,0,.08) 2px 4px);
+      opacity:.8;
+      pointer-events:none;
     }
-    .audio-dock .eq span{
-      width:4px;
-      height:7px;
-      border-radius:999px;
-      background:#2a1319;
-      opacity:.85;
+    .disc-player::after{
+      content:"";
+      position:absolute;
+      inset:27px;
+      border-radius:50%;
+      background:linear-gradient(180deg, var(--gold), #f2cf7d);
+      box-shadow:0 0 0 4px rgba(21,13,18,.38);
+      pointer-events:none;
     }
-    .audio-dock.playing .eq span:nth-child(1){animation:eqWave .8s infinite}
-    .audio-dock.playing .eq span:nth-child(2){animation:eqWave .8s .15s infinite}
-    .audio-dock.playing .eq span:nth-child(3){animation:eqWave .8s .3s infinite}
-    @keyframes eqWave{
-      0%,100%{height:7px}
-      50%{height:18px}
+    .disc-player:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.42),
+        inset 0 2px 2px rgba(255,255,255,.18),
+        inset 0 -12px 20px rgba(0,0,0,.3);
+    }
+    .disc-player.playing{
+      animation:discSpin 4.6s linear infinite;
+    }
+    .disc-pulse{
+      position:fixed;
+      right:13px;
+      bottom:13px;
+      width:82px;
+      height:82px;
+      border-radius:50%;
+      border:1px solid rgba(245,213,140,.14);
+      pointer-events:none;
+      z-index:13999;
+      opacity:0;
+      transform:scale(.92);
+    }
+    .disc-player.playing + .disc-pulse{
+      opacity:1;
+      animation:discPulse 2.2s ease infinite;
+    }
+    @keyframes discSpin{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    @keyframes discPulse{
+      0%{transform:scale(.96); opacity:.26}
+      75%{transform:scale(1.14); opacity:.05}
+      100%{transform:scale(1.18); opacity:0}
     }
     .audio-meta{
       display:grid;
@@ -734,8 +765,10 @@
       .disc-player::before{inset:7px}
       .disc-player::after{inset:22px}
       .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
-      .audio-meta strong{font-size:.95rem}
-      .audio-meta span{font-size:.86rem}
+      .disc-player{right:12px; bottom:12px; width:60px; height:60px}
+      .disc-player::before{inset:7px}
+      .disc-player::after{inset:22px}
+      .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
       .intro-panel{padding:22px}
       .intro-copy p{font-size:1.04rem}
       .intro-date{font-size:.95rem}
