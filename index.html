@@ -1031,7 +1031,39 @@
       .cinematic-bridge-card{padding:28px 18px}
       .cinematic-bridge h3{font-size:clamp(1.8rem, 9vw, 3rem)}
     }
-  </style>
+  
+/* ===== CINEMATIC SPOTLIGHT ===== */
+.chapter{
+  opacity:.35;
+  filter:blur(1px);
+  transform:scale(.96);
+  transition:all .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.chapter.active{
+  opacity:1;
+  filter:none;
+  transform:scale(1);
+  z-index:2;
+}
+
+.chapter.active .chapter-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+}
+
+body{
+  transition:background 1s ease;
+}
+
+/* dynamic background moods */
+body.stage-1{background: radial-gradient(circle,#2a1a1a,#120808);}
+body.stage-2{background: radial-gradient(circle,#3a2a1a,#120808);}
+body.stage-3{background: radial-gradient(circle,#1a1a2a,#120808);}
+body.stage-4{background: radial-gradient(circle,#2a1f1a,#120808);}
+body.stage-5{background: radial-gradient(circle,#1a2a1f,#120808);}
+body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
+
+</style>
 </head>
 <body>
   <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
@@ -1891,6 +1923,28 @@
     document.body.style.overflow = 'hidden';
 
     boot();
-  </script>
+  
+// ===== CINEMATIC STAGE CONTROL =====
+const chapterStages = [...document.querySelectorAll('.chapter')];
+
+chapterStages.forEach((chapterEl, index) => {
+  chapterEl.dataset.chapter = String(index + 1);
+});
+
+const observerStage = new IntersectionObserver((entries)=>{
+  const visible = entries
+    .filter(entry => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+  if(!visible) return;
+
+  const id = visible.target.dataset.chapter || '1';
+  document.body.className = document.body.className.replace(/stage-\d/g,'').trim();
+  document.body.classList.add('stage-' + id);
+},{threshold:[0.35, 0.55, 0.75], rootMargin:'-18% 0px -18% 0px'});
+
+chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
+
+</script>
 </body>
 </html>
