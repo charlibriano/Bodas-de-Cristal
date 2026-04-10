@@ -522,19 +522,53 @@
       inset:0;
       z-index:9998;
       display:none;
-      background:rgba(10,6,9,.88);
-      backdrop-filter:blur(10px);
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.12), transparent 24%),
+        linear-gradient(180deg, rgba(7,4,7,.82), rgba(7,4,7,.92));
+      backdrop-filter:blur(16px);
       padding:22px;
     }
     .declaration-modal.open{display:grid; place-items:center}
     .declaration-panel{
-      width:min(820px, 100%);
-      border-radius:30px;
-      padding:30px;
-      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      width:min(980px, 100%);
+      max-height:min(90vh, 920px);
+      overflow:auto;
+      border-radius:36px;
+      padding:34px;
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.12), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(242,154,179,.12), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
       border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--shadow);
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 0 0 1px rgba(245,213,140,.04);
       position:relative;
+      scrollbar-width:thin;
+      isolation:isolate;
+      overflow-x:hidden;
+    }
+    .declaration-panel::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.05);
+      pointer-events:none;
+    }
+    .declaration-panel::after{
+      content:"";
+      position:absolute;
+      top:-90px;
+      right:-40px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(245,213,140,.16), transparent 65%);
+      filter:blur(10px);
+      pointer-events:none;
     }
     .declaration-close{
       position:absolute;
@@ -546,18 +580,129 @@
       color:#fff;
       cursor:pointer;
       font-size:1.3rem;
+      transition:.25s ease;
+      z-index:3;
+    }
+    .declaration-close:hover{
+      background:rgba(255,255,255,.11);
+      transform:translateY(-1px);
+    }
+    .declaration-layout{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);
+      gap:28px;
+      align-items:start;
+    }
+    .declaration-aside{
+      position:sticky;
+      top:0;
+      padding:8px 0 10px;
+    }
+    .declaration-panel .badge{
+      margin-bottom:18px;
+      background:rgba(255,255,255,.05);
+    }
+    .declaration-kicker{
+      color:var(--gold);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.74rem;
+      margin:0 0 12px;
+      opacity:.9;
     }
     .declaration-panel h3{
-      margin:0 0 12px;
-      font-size:clamp(1.8rem, 4vw, 3rem);
-      line-height:1.08;
-      letter-spacing:-.04em;
+      margin:0 0 18px;
+      max-width:9ch;
+      font-size:clamp(2.6rem, 6vw, 5.4rem);
+      line-height:.92;
+      letter-spacing:-.06em;
+      text-wrap:balance;
+    }
+    .declaration-divider{
+      width:138px;
+      height:2px;
+      margin:0 0 22px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.98), rgba(242,154,179,.85), rgba(245,213,140,0));
+      box-shadow:0 0 20px rgba(245,213,140,.24);
+      border-radius:999px;
+    }
+    .declaration-verse{
+      margin:18px 0 10px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(245,213,140,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(245,213,140,.25);
+      text-align:center;
+    }
+    .declaration-verse p{
+      margin:0;
+      font-style:italic;
+      color:#f5d58c;
+      font-size:1rem;
+      line-height:1.7;
+    }
+    .declaration-verse span{
+      display:block;
+      margin-top:6px;
+      font-size:.85rem;
+      opacity:.72;
+      color:var(--muted);
+    }
+    .declaration-quote{
+      margin:22px 0 0;
+      padding:18px 18px 18px 22px;
+      border-left:2px solid rgba(245,213,140,.55);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:0 22px 22px 0;
+      color:var(--rose-2);
+      font-size:1.02rem;
+      line-height:1.7;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .declaration-copy{
+      padding-top:46px;
     }
     .declaration-panel p{
       color:var(--muted);
-      line-height:1.95;
-      font-size:1.08rem;
-      margin:0 0 14px;
+      line-height:1.9;
+      font-size:clamp(1.02rem, 1.45vw, 1.14rem);
+      margin:0 0 16px;
+      max-width:44ch;
+    }
+    .declaration-panel .declaration-impact{
+      color:var(--text);
+      font-size:clamp(1.14rem, 2vw, 1.38rem);
+      font-weight:700;
+      line-height:1.72;
+      margin-top:12px;
+      padding:18px 20px;
+      border-radius:24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 18px 38px rgba(0,0,0,.16);
+    }
+    .declaration-panel .declaration-impact + .declaration-impact{
+      margin-top:16px;
+    }
+    .declaration-signature{
+      margin-top:22px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+    .declaration-signature::before{
+      content:"";
+      width:56px;
+      height:1px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.9));
+      display:block;
     }
     .declaration-panel strong{color:var(--text)}
 
@@ -773,6 +918,16 @@
       .intro-copy p{font-size:1.04rem}
       .intro-date{font-size:.95rem}
       .hero-scroll{font-size:.88rem}
+      .declaration-panel{padding:24px 18px 18px; border-radius:24px}
+      .declaration-layout{grid-template-columns:1fr; gap:18px}
+      .declaration-aside{position:relative; top:auto; padding-top:8px}
+      .declaration-copy{padding-top:0}
+      .declaration-panel h3{max-width:none; font-size:clamp(2.1rem, 10vw, 3.6rem)}
+      .declaration-panel p{max-width:none; line-height:1.78}
+      .declaration-panel .declaration-impact{padding:15px 14px 16px; border-radius:18px}
+      .declaration-divider{width:96px; margin-bottom:18px}
+      .declaration-quote{margin-top:16px; padding:14px 14px 14px 18px}
+      .declaration-signature{margin-top:18px}
     }
   </style>
 </head>
@@ -1182,20 +1337,52 @@
   <div class="declaration-modal" id="declarationModal" aria-hidden="true">
     <div class="declaration-panel">
       <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
-      <div class="badge">Última declaração</div>
-      <h3>Se eu pudesse viver tudo de novo, eu ainda escolheria você</h3>
-      <p>
-        Eu escolheria você no olhar de 2008, no altar de 2011, no improviso, no aluguel, no aperto,
-        na poeira da obra, nas orações silenciosas, na espera pela nossa filha, na casa ainda sem terminar
-        e na vida que continuamos construindo todos os dias.
-      </p>
-      <p>
-        Porque o mais bonito da nossa história não foi ter começado perfeito.
-        Foi ter permanecido verdadeiro.
-      </p>
-      <p>
-        <strong>Obrigado por ficar. Obrigado por construir. Obrigado por ser a minha escolha mais bonita.</strong>
-      </p>
+      <div class="declaration-layout">
+        <aside class="declaration-aside">
+          <div class="badge">Última declaração</div>
+          <div class="declaration-kicker">o que permanece</div>
+          <h3>Se eu pudesse viver tudo de novo, eu ainda escolheria você</h3>
+          <div class="declaration-divider" aria-hidden="true"></div>
+          <div class="declaration-verse">
+            <p>“Portanto, o que Deus uniu, ninguém separe.”</p>
+            <span>Marcos 10:09</span>
+          </div>
+          <div class="declaration-quote">
+            Nem o tempo, nem a luta, nem a espera diminuíram aquilo que eu sinto por você.
+            Só tornaram tudo mais verdadeiro.
+          </div>
+        </aside>
+
+        <div class="declaration-copy">
+          <p>
+            Eu escolheria você no olhar de 2008.
+            Escolheria você no altar de 2011.
+          </p>
+          <p>
+            Escolheria você no improviso, no aluguel, na incerteza
+            e nos dias em que a coragem precisou ser maior do que o medo.
+          </p>
+          <p>
+            Escolheria você na poeira da obra, nas orações silenciosas,
+            na espera pela nossa filha e na vida que continuamos construindo
+            capítulo por capítulo.
+          </p>
+          <p>
+            Porque o mais bonito da nossa história nunca foi ter começado perfeita.
+          </p>
+          <p class="declaration-impact">
+            O mais bonito foi você ter permanecido.<br/>
+            Foi nós dois termos ficado.<br/>
+            Foi o amor ter virado casa, família e aliança.
+          </p>
+          <p class="declaration-impact">
+            Obrigado por ficar.<br/>
+            Obrigado por construir.<br/>
+            Obrigado por ser a escolha mais bonita da minha vida.
+          </p>
+          <div class="declaration-signature">Felipe, para Jéssica — 15 anos escolhendo você</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1518,19 +1705,25 @@
 
     bgAudio.volume = 0.18;
 
+    function atualizarPlayer(playing){
+      audioToggle.classList.toggle('playing', playing);
+      audioToggle.setAttribute('aria-label', playing ? 'Pausar trilha instrumental' : 'Tocar ou pausar trilha instrumental');
+      audioToggle.setAttribute('title', playing ? 'Pausar trilha instrumental' : 'Tocar trilha instrumental');
+    }
+
     async function iniciarAudio(){
       try{
         await bgAudio.play();
-        audioDock.classList.add('playing');
-              }catch(err){
-        audioDock.classList.remove('playing');
-              }
+        atualizarPlayer(true);
+      }catch(err){
+        atualizarPlayer(false);
+      }
     }
 
     function pausarAudio(){
       bgAudio.pause();
-      audioDock.classList.remove('playing');
-          }
+      atualizarPlayer(false);
+    }
 
     async function alternarAudio(){
       if(bgAudio.paused) await iniciarAudio();
