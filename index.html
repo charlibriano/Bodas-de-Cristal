@@ -549,6 +549,13 @@
       scrollbar-width:thin;
       isolation:isolate;
       overflow-x:hidden;
+      transform:translateY(22px) scale(.985);
+      opacity:0;
+      transition:transform .65s cubic-bezier(.2,.8,.2,1), opacity .65s ease;
+    }
+    .declaration-modal.open .declaration-panel{
+      transform:none;
+      opacity:1;
     }
     .declaration-panel::before{
       content:"";
@@ -705,6 +712,71 @@
       display:block;
     }
     .declaration-panel strong{color:var(--text)}
+
+    .cinematic-bridge{
+      position:fixed;
+      inset:0;
+      z-index:9997;
+      display:none;
+      place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at center, rgba(245,213,140,.08), transparent 24%),
+        linear-gradient(180deg, rgba(8,5,8,.70), rgba(8,5,8,.92));
+      backdrop-filter:blur(10px);
+      opacity:0;
+      transition:opacity .55s ease;
+    }
+    .cinematic-bridge.open{
+      display:grid;
+      opacity:1;
+    }
+    .cinematic-bridge-card{
+      width:min(760px, 100%);
+      text-align:center;
+      padding:36px 26px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:0 24px 70px rgba(0,0,0,.35);
+      transform:translateY(10px) scale(.985);
+      opacity:0;
+      transition:transform .65s cubic-bezier(.2,.8,.2,1), opacity .65s ease;
+    }
+    .cinematic-bridge.open .cinematic-bridge-card{
+      transform:none;
+      opacity:1;
+    }
+    .cinematic-bridge .mini{
+      color:var(--gold);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:.76rem;
+      margin-bottom:12px;
+    }
+    .cinematic-bridge h3{
+      margin:0 0 12px;
+      font-size:clamp(2rem, 5vw, 4rem);
+      line-height:.96;
+      letter-spacing:-.05em;
+      text-wrap:balance;
+    }
+    .cinematic-bridge p{
+      margin:0;
+      color:var(--muted);
+      font-size:clamp(1rem, 1.7vw, 1.18rem);
+      line-height:1.9;
+      max-width:30ch;
+      margin-inline:auto;
+    }
+    .cinematic-bridge .bridge-line{
+      width:112px;
+      height:2px;
+      margin:18px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.96), rgba(242,154,179,.82), rgba(245,213,140,0));
+      box-shadow:0 0 18px rgba(245,213,140,.18);
+    }
 
 
     .intro-overlay{
@@ -928,6 +1000,8 @@
       .declaration-divider{width:96px; margin-bottom:18px}
       .declaration-quote{margin-top:16px; padding:14px 14px 14px 18px}
       .declaration-signature{margin-top:18px}
+      .cinematic-bridge-card{padding:28px 18px}
+      .cinematic-bridge h3{font-size:clamp(1.8rem, 9vw, 3rem)}
     }
   </style>
 </head>
@@ -1386,6 +1460,15 @@
     </div>
   </div>
 
+  <div class="cinematic-bridge" id="cinematicBridge" aria-hidden="true">
+    <div class="cinematic-bridge-card">
+      <div class="mini">antes da última declaração</div>
+      <h3>Depois de tudo o que vivemos…</h3>
+      <p>algumas palavras não encerram uma história. Elas revelam o que permaneceu nela.</p>
+      <div class="bridge-line" aria-hidden="true"></div>
+    </div>
+  </div>
+
   <div class="modal" id="albumModal" aria-hidden="true">
     <div class="modal-wrap">
       <div class="modal-top">
@@ -1423,17 +1506,53 @@
     let touchStartX = 0;
     let touchEndX = 0;
 
-    function abrirDeclaracao(){
-      const modal = document.getElementById('declarationModal');
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
+    let audioBaseVolume = 0.18;
+    let declarationOpening = false;
+
+    async function fadeAudioTo(target, duration = 700){
+      const safeTarget = Math.max(0, Math.min(1, target));
+      const steps = 18;
+      const start = bgAudio.volume;
+      for(let i = 1; i <= steps; i++){
+        bgAudio.volume = start + ((safeTarget - start) * (i / steps));
+        await new Promise(resolve => setTimeout(resolve, duration / steps));
+      }
     }
 
-    function fecharDeclaracao(){
+    async function abrirDeclaracao(){
+      if(declarationOpening) return;
+      declarationOpening = true;
+
+      const bridge = document.getElementById('cinematicBridge');
+      const modal = document.getElementById('declarationModal');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(0.07, 650);
+      }
+
+      bridge.classList.add('open');
+      bridge.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      await new Promise(resolve => setTimeout(resolve, 1700));
+
+      bridge.classList.remove('open');
+      bridge.setAttribute('aria-hidden','true');
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      declarationOpening = false;
+    }
+
+    async function fecharDeclaracao(){
       const modal = document.getElementById('declarationModal');
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden','true');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(audioBaseVolume, 700);
+      }
+
       if(!document.getElementById('albumModal').classList.contains('open')){
         document.body.style.overflow = '';
       }
@@ -1703,7 +1822,7 @@
     const introOverlay = document.getElementById('introOverlay');
     const startExperience = document.getElementById('startExperience');
 
-    bgAudio.volume = 0.18;
+    bgAudio.volume = audioBaseVolume;
 
     function atualizarPlayer(playing){
       audioToggle.classList.toggle('playing', playing);
