@@ -1257,6 +1257,587 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
     }
 
+
+    /* ===== V24 PREMIUM POLISH ===== */
+    .hero{
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -140px -120px;
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,154,179,.14), transparent 68%);
+      filter:blur(18px);
+      pointer-events:none;
+      z-index:0;
+      animation:floatGlow 9s ease-in-out infinite alternate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(245,213,140,.12), transparent 70%);
+      filter:blur(18px);
+      pointer-events:none;
+      z-index:0;
+      animation:floatGlow 11s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatGlow{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(18px,-16px,0) scale(1.06)}
+    }
+
+    .hero-card,
+    .hero-media{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-card{
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.10), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+    }
+    .hero-card h1{
+      text-wrap:balance;
+      text-shadow:0 14px 28px rgba(0,0,0,.16);
+    }
+    .hero-card p strong{
+      color:#fffaf0;
+    }
+
+    .hero-media img{
+      animation:heroKenBurns 13s ease-in-out infinite alternate;
+      transform-origin:center center;
+    }
+    @keyframes heroKenBurns{
+      from{transform:scale(1)}
+      to{transform:scale(1.06)}
+    }
+
+    .hero-caption{
+      background:linear-gradient(180deg, rgba(16,10,15,.62), rgba(16,10,15,.78));
+      box-shadow:0 10px 30px rgba(0,0,0,.22);
+    }
+
+    .badge{
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .btn{
+      position:relative;
+      overflow:hidden;
+    }
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent);
+      transform:translateX(-120%);
+      transition:transform .65s ease;
+      pointer-events:none;
+    }
+    .btn:hover::after{
+      transform:translateX(120%);
+    }
+
+    /* chapter stage identities */
+    .chapter.stage-tone-1.active::before{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(242,154,179,.12), transparent 28%),
+        radial-gradient(circle at 80% 72%, rgba(255,213,223,.08), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-2.active::before{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(245,213,140,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(242,154,179,.08), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-3.active::before{
+      background:
+        radial-gradient(circle at 16% 20%, rgba(186,174,230,.12), transparent 28%),
+        radial-gradient(circle at 80% 72%, rgba(242,154,179,.08), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-4.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(191,137,96,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.09), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-5.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(189,152,115,.16), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.09), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-6.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(245,213,140,.12), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(242,154,179,.12), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-7.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(242,154,179,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.13), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-8.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(255,213,223,.12), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.14), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+
+    .chapter.active .chapter-anchor{
+      color:#fff0f5;
+      text-shadow:0 8px 22px rgba(0,0,0,.12);
+    }
+
+    /* album premium */
+    .modal{
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.10), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 22%),
+        rgba(10,6,9,.94);
+    }
+    .modal-top{
+      align-items:flex-end;
+    }
+    .modal-title{
+      font-size:1.35rem;
+      letter-spacing:-.02em;
+      text-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+    .counter{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .thumb{
+      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+    .thumb:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+    }
+    .thumb.active{
+      box-shadow:0 0 0 4px rgba(245,213,140,.10);
+    }
+    .stage{
+      position:relative;
+    }
+    .stage::before{
+      content:"";
+      position:absolute;
+      inset:auto 14% 8% 14%;
+      height:18%;
+      background:radial-gradient(circle, rgba(245,213,140,.10), transparent 70%);
+      filter:blur(24px);
+      pointer-events:none;
+    }
+
+    /* final card polish */
+    .letter-card{
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.10), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+    }
+    .portrait-card img{
+      animation:portraitFloat 12s ease-in-out infinite alternate;
+      transform-origin:center center;
+    }
+    @keyframes portraitFloat{
+      from{transform:scale(1)}
+      to{transform:scale(1.05)}
+    }
+
+    /* mobile premium polish */
+    @media (max-width: 720px){
+      .hero{
+        padding-top:24px;
+      }
+      .hero-card{
+        padding:24px;
+      }
+      .hero-card h1{
+        font-size:clamp(2.35rem, 11vw, 3.5rem);
+      }
+      .hero-card p{
+        font-size:1.02rem;
+        line-height:1.78;
+      }
+      .hero-media{
+        min-height:320px;
+      }
+      .hero-caption{
+        left:14px; right:14px; bottom:14px;
+        padding:14px 16px;
+      }
+      .chapter-card h3{
+        font-size:clamp(1.7rem, 8vw, 2.35rem);
+      }
+      .chapter-card p{
+        font-size:1rem;
+        line-height:1.78;
+      }
+      .album-meta{
+        gap:8px;
+        font-size:.92rem;
+      }
+      .btn{
+        padding:13px 18px;
+      }
+      .modal-wrap{
+        width:min(100% - 18px, 1220px);
+        padding:12px 0;
+      }
+      .thumb{
+        flex-basis:64px;
+        height:64px;
+      }
+    }
+
+
+    .relationship-counter{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .relationship-counter .counter-label{
+      color:var(--muted);
+      font-size:.95rem;
+      letter-spacing:.04em;
+    }
+    .relationship-counter .counter-main{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .relationship-counter .counter-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 8px 22px rgba(0,0,0,.12);
+    }
+    .relationship-counter .counter-pill strong{
+      color:var(--gold);
+      font-size:1.04rem;
+    }
+    .relationship-counter .counter-foot{
+      color:var(--rose-2);
+      font-size:.96rem;
+      line-height:1.65;
+    }
+
+
+    .cinematic-pause{
+      position:relative;
+      padding:18px 0 8px;
+      margin:-6px 0 6px 64px;
+    }
+    .cinematic-pause::before{
+      content:"";
+      position:absolute;
+      left:0; right:0; top:0; bottom:0;
+      border-radius:32px;
+      background:
+        radial-gradient(circle at center, rgba(245,213,140,.10), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.05);
+      box-shadow:0 18px 50px rgba(0,0,0,.14);
+      opacity:.9;
+    }
+    .cinematic-pause-inner{
+      position:relative;
+      z-index:1;
+      max-width:760px;
+      margin:0 auto;
+      text-align:center;
+      padding:26px 24px;
+    }
+    .cinematic-pause .pause-mini{
+      color:var(--gold);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.74rem;
+      margin-bottom:12px;
+      opacity:.9;
+    }
+    .cinematic-pause h4{
+      margin:0 0 10px;
+      font-size:clamp(1.55rem, 3vw, 2.5rem);
+      line-height:1.04;
+      letter-spacing:-.05em;
+      color:#fff7fb;
+      text-wrap:balance;
+      text-shadow:0 10px 24px rgba(0,0,0,.14);
+    }
+    .cinematic-pause p{
+      margin:0 auto;
+      max-width:34ch;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:clamp(1rem, 1.4vw, 1.08rem);
+    }
+    .cinematic-pause .pause-line{
+      width:110px;
+      height:2px;
+      margin:16px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.95), rgba(242,154,179,.8), rgba(245,213,140,0));
+      box-shadow:0 0 18px rgba(245,213,140,.18);
+    }
+
+    @media (max-width: 720px){
+      .cinematic-pause{
+        margin-left:44px;
+        padding:10px 0 2px;
+      }
+      .cinematic-pause-inner{
+        padding:20px 16px;
+      }
+      .cinematic-pause h4{
+        font-size:clamp(1.35rem, 7vw, 2rem);
+      }
+      .cinematic-pause p{
+        max-width:none;
+        line-height:1.75;
+      }
+    }
+
+
+    .timeline-year{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      margin:0 0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--gold);
+      font-size:.86rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .timeline-year .year-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--rose),var(--gold));
+      box-shadow:0 0 0 6px rgba(242,154,179,.10);
+      flex:0 0 auto;
+    }
+    .chapter.active .timeline-year{
+      background:rgba(255,255,255,.08);
+      border-color:rgba(245,213,140,.18);
+      box-shadow:0 10px 26px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    @media (max-width: 720px){
+      .timeline-year{
+        font-size:.8rem;
+        padding:7px 11px;
+        margin-bottom:10px;
+      }
+    }
+
+
+    /* ===== V29 AJUSTES FINOS EMOCIONAIS ===== */
+    .hero-card p,
+    .chapter-card p,
+    .letter-card p,
+    .declaration-copy p{
+      text-wrap:pretty;
+    }
+
+    .chapter-card p strong,
+    .letter-card p strong,
+    .declaration-copy p strong{
+      color:#fffaf4;
+      text-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+
+    .chapter-anchor{
+      position:relative;
+      padding-left:18px;
+    }
+    .chapter-anchor::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.7em;
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--rose),var(--gold));
+      box-shadow:0 0 0 6px rgba(242,154,179,.10);
+      transform:translateY(-50%);
+    }
+
+    .chapter.active .chapter-card,
+    .chapter.active .album-card{
+      box-shadow:
+        0 24px 80px rgba(0,0,0,.44),
+        0 0 0 1px rgba(242,154,179,.07) inset,
+        0 0 28px rgba(245,213,140,.06);
+    }
+
+    .chapter-card p + p,
+    .letter-card p + p,
+    .declaration-copy p + p{
+      margin-top:2px;
+    }
+
+    .quote-card{
+      position:relative;
+      overflow:hidden;
+    }
+    .quote-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top, rgba(245,213,140,.08), transparent 32%);
+      pointer-events:none;
+    }
+
+    .quote{
+      position:relative;
+      z-index:1;
+      text-wrap:balance;
+    }
+
+    .hero-scroll{
+      opacity:1;
+    }
+
+    .timeline-year{
+      letter-spacing:.05em;
+    }
+
+    .relationship-counter{
+      position:relative;
+      overflow:hidden;
+    }
+    .relationship-counter::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(100deg, transparent, rgba(255,255,255,.08), transparent);
+      transform:translateX(-120%);
+      animation:counterGlow 8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes counterGlow{
+      0%, 70%, 100%{transform:translateX(-120%)}
+      82%{transform:translateX(120%)}
+    }
+
+    .declaration-impact{
+      text-wrap:balance;
+    }
+
+    .portrait-note,
+    .intro-note,
+    .hero-caption{
+      text-wrap:pretty;
+    }
+
+    .btn-primary{
+      box-shadow:0 14px 30px rgba(245,213,140,.16);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.11);
+    }
+
+    .modal-title,
+    .section-title,
+    .letter-card h2,
+    .declaration-panel h3{
+      text-wrap:balance;
+    }
+
+    .final-letter{
+      align-items:center;
+    }
+
+    .declaration-signature{
+      opacity:.92;
+    }
+
+    .cinematic-pause p,
+    .cinematic-bridge p{
+      text-wrap:balance;
+    }
+
+    .thumbs::-webkit-scrollbar,
+    .declaration-panel::-webkit-scrollbar{
+      height:8px;
+      width:8px;
+    }
+    .thumbs::-webkit-scrollbar-thumb,
+    .declaration-panel::-webkit-scrollbar-thumb{
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+    }
+
+    @media (max-width: 720px){
+      .hero-card p,
+      .chapter-card p,
+      .letter-card p,
+      .declaration-copy p{
+        text-wrap:auto;
+      }
+      .chapter-anchor{
+        padding-left:16px;
+      }
+      .chapter-anchor::before{
+        width:7px;
+        height:7px;
+      }
+      .relationship-counter .counter-main{
+        gap:8px;
+      }
+      .relationship-counter .counter-pill{
+        padding:9px 12px;
+      }
+      .portrait-note,
+      .intro-note,
+      .hero-caption{
+        text-wrap:auto;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1314,12 +1895,23 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
           Desde então, vieram luta, aluguel, incerteza, obra, oração, improviso, conquista, gravidez, família e amor.
           E depois de tudo o que vivemos, a certeza continua a mesma: <strong>eu escolheria você de novo.</strong>
         </p>
+
+        <div class="relationship-counter" id="relationshipCounter">
+          <div class="counter-label">Desde 29 de abril de 2011, já são:</div>
+          <div class="counter-main">
+            <div class="counter-pill"><strong id="counterYears">0</strong> anos</div>
+            <div class="counter-pill"><strong id="counterMonths">0</strong> meses</div>
+            <div class="counter-pill"><strong id="counterDays">0</strong> dias</div>
+          </div>
+          <div class="counter-foot" id="counterFoot">cada etapa dessa história foi construída um dia de cada vez.</div>
+        </div>
+
         <div class="hero-actions">
           <button class="btn btn-secondary" type="button" onclick="abrirAlbumPorPasta('02-casamento','O altar foi só o começo')">Abrir álbum do casamento</button>
         </div>
         <div class="hero-scroll" aria-hidden="true">
           <span class="dot"></span>
-          <span>Role e viva cada capítulo dessa história</span>
+          <span>Role com calma e viva cada capítulo dessa história</span>
         </div>
       </div>
 
@@ -1339,11 +1931,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       <div class="container">
         <h2 class="section-title">Nossa história em capítulos</h2>
         <div class="timeline">
-          <article class="chapter" data-folder="01-comeco">
+          <article class="chapter stage-tone-1" data-folder="01-comeco">
             <div class="chapter-icon">💗</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 1 • Nosso começo</div>
+                <div class="timeline-year"><span class="year-dot"></span>2008–2009 • Onde tudo começou</div>
                 <h3>Tudo começou com um olhar</h3>
                 <p>
                   Em <strong>2008</strong>, em um congresso em Brasília, no meio de tantas pessoas,
@@ -1370,11 +1963,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="02-casamento">
+          <article class="chapter stage-tone-2" data-folder="02-casamento">
             <div class="chapter-icon">💍</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 2 • O nosso sim</div>
+                <div class="timeline-year"><span class="year-dot"></span>2011 • O nosso sim</div>
                 <h3>O altar foi só o começo</h3>
                 <p>
                   No dia <strong>29 de abril de 2011</strong>, diante de Deus, da família e da esperança no coração,
@@ -1402,11 +1996,22 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="03-primeiras-lutas">
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">uma nova fase</div>
+              <h4>Depois do altar, a vida começou de verdade</h4>
+              <p>Foi ali que o amor deixou de ser promessa e passou a ser escolha diária, mesmo quando nada estava pronto.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-3" data-folder="03-primeiras-lutas">
             <div class="chapter-icon">🕊️</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 3 • As primeiras lutas</div>
+                <div class="timeline-year"><span class="year-dot"></span>2011–2016 • Os primeiros anos</div>
                 <h3>Começamos sem certezas, mas juntos</h3>
                 <p>
                   Logo no início do nosso casamento já enfrentamos uma grande dificuldade:
@@ -1435,11 +2040,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="04-grande-desafio">
+          <article class="chapter stage-tone-4" data-folder="04-grande-desafio">
             <div class="chapter-icon">🏠</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 4 • O grande desafio</div>
+                <div class="timeline-year"><span class="year-dot"></span>2016 • O grande desafio</div>
                 <h3>Quando a vida apertou, o nosso amor não recuou</h3>
                 <p>
                   Depois de cinco anos, a dona pediu a casa e nós não tínhamos para onde ir.
@@ -1467,11 +2073,22 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="05-construcao">
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">quando tudo apertou</div>
+              <h4>Foi na luta que a nossa história ganhou profundidade</h4>
+              <p>Nem toda fase bonita nasce pronta. Algumas precisam ser sustentadas primeiro pela coragem.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-5" data-folder="05-construcao">
             <div class="chapter-icon">🧱</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 5 • Construindo nosso lar</div>
+                <div class="timeline-year"><span class="year-dot"></span>2016–2018 • Construindo nosso lar</div>
                 <h3>O que hoje é casa, um dia foi luta diária</h3>
                 <p>
                   Quando conseguimos nos mudar, a casa ainda não estava pronta.
@@ -1504,11 +2121,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="06-gravidez">
+          <article class="chapter stage-tone-6" data-folder="06-gravidez">
             <div class="chapter-icon">🤰</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 6 • Um amor que cresceu</div>
+                <div class="timeline-year"><span class="year-dot"></span>2021 • A espera mais bonita</div>
                 <h3>Antes de ser abraço, já era promessa</h3>
                 <p>
                   Depois que estávamos no nosso espaço, entendemos que era hora de viver uma nova fase.
@@ -1536,11 +2154,22 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="07-familia">
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">quando o amor amadurece</div>
+              <h4>O que era casal começou a ganhar nome de família</h4>
+              <p>A casa ficou mais cheia de sentido, e a nossa história começou a carregar um novo tipo de alegria.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-7" data-folder="07-familia">
             <div class="chapter-icon">👨‍👩‍👧</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 7 • De casal para família</div>
+                <div class="timeline-year"><span class="year-dot"></span>2021 em diante • Nossa família</div>
                 <h3>Alexandra chegou e deu um novo nome ao nosso amor</h3>
                 <p>
                   Depois de 10 anos de casados, chegou a nossa Alexandra.
@@ -1566,11 +2195,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             </div>
           </article>
 
-          <article class="chapter" data-folder="08-hoje">
+          <article class="chapter stage-tone-8" data-folder="08-hoje">
             <div class="chapter-icon">✨</div>
             <div class="chapter-body">
               <div class="chapter-card">
                 <div class="mini">Capítulo 8 • Hoje</div>
+                <div class="timeline-year"><span class="year-dot"></span>Hoje • A nossa história continua</div>
                 <h3>Depois de tudo, eu ainda escolheria você</h3>
                 <p>
                   Vieram novas conquistas, veio o primeiro carro, vieram os problemas que hoje rendem até risada,
@@ -1659,7 +2289,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   </main>
 
   <footer class="container">
-    Feito com amor para celebrar 15 anos de aliança, permanência e família.
+    Feito com amor para celebrar 15 anos de aliança, permanência, família e tudo o que ainda vamos viver.
   </footer>
 
 
@@ -1719,7 +2349,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     <div class="cinematic-bridge-card">
       <div class="mini">antes da última declaração</div>
       <h3>Depois de tudo o que vivemos…</h3>
-      <p>algumas palavras não encerram uma história.<br>elas revelam o que resistiu, o que permaneceu e o que ainda escolhe amar.</p>
+      <p>algumas palavras não encerram uma história.<br>elas apenas revelam o que resistiu, o que permaneceu e o que ainda escolhe amar.</p>
       <div class="bridge-line" aria-hidden="true"></div>
     </div>
   </div>
@@ -2076,8 +2706,47 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
+
+    function calcularTempoJuntos(inicioStr){
+      const [dia, mes, ano] = inicioStr.split('/').map(Number);
+      const inicio = new Date(ano, mes - 1, dia);
+      const hoje = new Date();
+
+      let anos = hoje.getFullYear() - inicio.getFullYear();
+      let meses = hoje.getMonth() - inicio.getMonth();
+      let dias = hoje.getDate() - inicio.getDate();
+
+      if(dias < 0){
+        const ultimoDiaMesAnterior = new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
+        dias += ultimoDiaMesAnterior;
+        meses--;
+      }
+
+      if(meses < 0){
+        meses += 12;
+        anos--;
+      }
+
+      return { anos, meses, dias };
+    }
+
+    function renderContadorRelacionamento(){
+      const tempo = calcularTempoJuntos('29/04/2011');
+      const yearsEl = document.getElementById('counterYears');
+      const monthsEl = document.getElementById('counterMonths');
+      const daysEl = document.getElementById('counterDays');
+      const footEl = document.getElementById('counterFoot');
+
+      if(yearsEl) yearsEl.textContent = tempo.anos;
+      if(monthsEl) monthsEl.textContent = tempo.meses;
+      if(daysEl) daysEl.textContent = tempo.dias;
+      if(footEl) footEl.textContent = 'e ainda continua sendo a história mais bonita da minha vida.';
+    }
+
+
     async function boot(){
       createHearts();
+      renderContadorRelacionamento();
       injectChapterAnchors();
       updateProgress();
       setupTimelineObserver();
@@ -2186,6 +2855,83 @@ const observerStage = new IntersectionObserver((entries)=>{
 
 chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
 
+
+// ===== REVIVER HISTORIA =====
+document.getElementById('reviverHistoria').addEventListener('click', () => {
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  let totalHeight = document.body.scrollHeight - window.innerHeight;
+  let duration = 25000;
+  let start = null;
+
+  function autoScroll(timestamp){
+    if(!start) start = timestamp;
+    let progress = timestamp - start;
+    let percent = Math.min(progress / duration, 1);
+    window.scrollTo(0, totalHeight * percent);
+
+    if(percent < 1){
+      requestAnimationFrame(autoScroll);
+    }
+  }
+
+  requestAnimationFrame(autoScroll);
+});
+
+// ===== FINAL CINEMATICO =====
+function mostrarFinal(){
+  const final = document.getElementById('finalCinematico');
+  final.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if(typeof bgAudio !== 'undefined'){
+    bgAudio.volume = 0.05;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10){
+    setTimeout(mostrarFinal, 1200);
+  }
+});
+
 </script>
+
+<button id="reviverHistoria" style="
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+z-index:9999;
+padding:12px 20px;
+border-radius:999px;
+background:linear-gradient(135deg,#f29ab3,#f5d58c);
+color:#000;
+font-weight:bold;
+border:none;
+cursor:pointer;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+">
+Reviver nossa história
+</button>
+
+<div id="finalCinematico" style="
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.85);
+z-index:10000;
+color:white;
+text-align:center;
+padding:20px;
+">
+  <div style="max-width:600px;font-size:clamp(1.5rem,5vw,2.5rem);line-height:1.4;">
+    15 anos escolhendo você...<br><br>
+    e eu escolheria tudo de novo.
+  </div>
+</div>
+
 </body>
 </html>
