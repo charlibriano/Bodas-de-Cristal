@@ -1840,20 +1840,26 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
 
     .story-illustration{
-      border-radius:30px;
-      padding:24px;
+      border-radius:32px;
+      padding:28px;
       min-height:100%;
       display:flex;
       flex-direction:column;
       justify-content:center;
-      gap:18px;
+      gap:20px;
       background:
-        radial-gradient(circle at top left, rgba(245,213,140,.10), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:var(--shadow);
+        radial-gradient(circle at 20% 10%, rgba(245,213,140,.18), transparent 30%),
+        radial-gradient(circle at 80% 90%, rgba(242,154,179,.12), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.06);
       position:relative;
       overflow:hidden;
+      transition:transform .6s ease, box-shadow .6s ease, opacity .6s ease, filter .6s ease;
+      opacity:.9;
+      filter:saturate(.92);
     }
     .story-illustration::before{
       content:"";
@@ -1862,33 +1868,61 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       width:180px;
       height:180px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(242,154,179,.16), transparent 70%);
+      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 70%);
       filter:blur(12px);
       pointer-events:none;
     }
+    .story-illustration::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,255,255,.08), transparent);
+      transform:translateX(-120%);
+      animation:storyShine 6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes storyShine{
+      0%,70%,100%{transform:translateX(-120%)}
+      85%{transform:translateX(120%)}
+    }
     .story-illustration .story-icon{
-      width:68px;
-      height:68px;
-      border-radius:22px;
+      width:72px;
+      height:72px;
+      border-radius:24px;
       display:grid;
       place-items:center;
-      font-size:1.8rem;
-      background:linear-gradient(135deg, rgba(242,154,179,.22), rgba(245,213,140,.22));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 12px 28px rgba(0,0,0,.14);
+      font-size:2rem;
+      background:linear-gradient(135deg, rgba(242,154,179,.25), rgba(245,213,140,.25));
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+      position:relative;
+      z-index:1;
+      animation:pulseIcon 3s ease-in-out infinite;
+    }
+    @keyframes pulseIcon{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.08)}
     }
     .story-illustration h4{
       margin:0;
-      font-size:clamp(1.45rem, 3vw, 2.1rem);
-      line-height:1.08;
+      font-size:clamp(1.6rem, 3vw, 2.3rem);
+      font-weight:800;
+      line-height:1.06;
       letter-spacing:-.04em;
       text-wrap:balance;
+      color:#fff7fb;
+      text-shadow:0 10px 30px rgba(0,0,0,.22);
+      position:relative;
+      z-index:1;
     }
     .story-illustration p{
       margin:0;
       color:var(--muted);
-      line-height:1.85;
-      font-size:1rem;
+      line-height:1.9;
+      font-size:1.05rem;
+      position:relative;
+      z-index:1;
+      text-wrap:pretty;
     }
     .story-illustration .story-line{
       width:116px;
@@ -1896,27 +1930,23 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       border-radius:999px;
       background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.95), rgba(242,154,179,.8), rgba(245,213,140,0));
       box-shadow:0 0 18px rgba(245,213,140,.18);
+      position:relative;
+      z-index:1;
     }
     .story-illustration .story-note{
       color:var(--rose-2);
-      font-size:.95rem;
-      line-height:1.7;
+      font-size:.98rem;
+      line-height:1.75;
     }
-
-    .preview-grid.rotating .preview{
-      position:relative;
+    .chapter.active .story-illustration{
+      transform:scale(1.02);
+      box-shadow:
+        0 35px 100px rgba(0,0,0,.60),
+        0 0 40px rgba(245,213,140,.15),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      opacity:1;
+      filter:none;
     }
-    .preview-grid.rotating .preview::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.06));
-      pointer-events:none;
-    }
-    .preview-grid.rotating .preview img{
-      transition:opacity .7s ease, transform .9s ease;
-    }
-
     @media (max-width: 720px){
       .story-illustration{
         padding:20px;
@@ -1930,6 +1960,9 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
       .story-illustration h4{
         font-size:clamp(1.35rem, 7vw, 1.9rem);
+      }
+      .story-illustration p{
+        text-wrap:auto;
       }
     }
 
@@ -2122,16 +2155,21 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
                   cumplicidade e esperança.
                 </p>
               </div>
-              <div class="album-card">
-                <div class="preview-grid" data-preview="03-primeiras-lutas"></div>
-                <div class="album-meta">
-                  <span data-count="03-primeiras-lutas">Carregando fotos…</span>
-                  <span>Os primeiros passos da nossa vida</span>
-                </div>
-                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('03-primeiras-lutas','Começamos sem certezas, mas juntos')">
-                  Ver esse capítulo
-                </button>
+              
+              <div class="story-illustration">
+                <div class="story-icon">🕊️</div>
+                <h4>Os primeiros anos foram feitos de amor, improviso e permanência</h4>
+                <div class="story-line" aria-hidden="true"></div>
+                <p>
+                  Nem toda fase importante da vida fica registrada em foto.
+                  Algumas memórias ficam guardadas no coração, no que foi vivido em silêncio
+                  e naquilo que só quem esteve junto consegue lembrar.
+                </p>
+                <p class="story-note">
+                  Aqui, a imagem mais forte não está em um álbum — está no que vocês enfrentaram lado a lado.
+                </p>
               </div>
+
             </div>
           </article>
 
@@ -2155,16 +2193,20 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
                   <strong>nós dois.</strong>
                 </p>
               </div>
-              <div class="album-card">
-                <div class="preview-grid" data-preview="04-grande-desafio"></div>
-                <div class="album-meta">
-                  <span data-count="04-grande-desafio">Carregando fotos…</span>
-                  <span>O tempo da luta e da coragem</span>
-                </div>
-                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('04-grande-desafio','Quando a vida apertou, o nosso amor não recuou')">
-                  Ver esse capítulo
-                </button>
+              
+              <div class="story-illustration">
+                <div class="story-icon">🏠</div>
+                <h4>Foi quando tudo apertou que a coragem de vocês mais apareceu</h4>
+                <div class="story-line" aria-hidden="true"></div>
+                <p>
+                  Esse capítulo representa o tempo em que a vida pediu coragem,
+                  e vocês responderam com presença, fé e decisão de continuar.
+                </p>
+                <p class="story-note">
+                  Nem sempre existe álbum para a fase mais difícil — mas existe marca, existe memória e existe história.
+                </p>
               </div>
+
             </div>
           </article>
 
@@ -2839,54 +2881,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
-
-    const rotatingPreviewTimers = new Map();
-
-    async function iniciarPreviewsRotativos(){
-      const folders = chapters
-        .map(ch => ch.folder)
-        .filter(folder => !['03-primeiras-lutas','04-grande-desafio','09-jessica'].includes(folder));
-
-      for(const folder of folders){
-        const files = await discoverAlbum(folder);
-        const previewBox = document.querySelector(`[data-preview="${folder}"]`);
-        if(!previewBox || files.length <= 4) continue;
-
-        previewBox.classList.add('rotating');
-
-        let currentSet = files.slice(0,4);
-        let currentStart = 0;
-
-        const renderSet = (setFiles) => {
-          const images = [...previewBox.querySelectorAll('img')];
-          images.forEach((img, idx) => {
-            const nextSrc = setFiles[idx] || setFiles[setFiles.length - 1];
-            if(!nextSrc || img.src.includes(nextSrc)) return;
-            img.style.opacity = '0';
-            img.style.transform = 'scale(1.04)';
-            setTimeout(() => {
-              img.src = nextSrc;
-              img.style.opacity = '1';
-              img.style.transform = 'scale(1)';
-            }, 260);
-          });
-        };
-
-        const timer = setInterval(() => {
-          currentStart = Math.floor(Math.random() * files.length);
-          const nextSet = [];
-          for(let i = 0; i < 4; i++){
-            nextSet.push(files[(currentStart + i) % files.length]);
-          }
-          currentSet = nextSet;
-          renderSet(currentSet);
-        }, 5000);
-
-        rotatingPreviewTimers.set(folder, timer);
-      }
-    }
-
-
     async function boot(){
       createHearts();
       renderContadorRelacionamento();
@@ -2904,7 +2898,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       for(const chapter of chapters){
         renderPreviews(chapter.folder);
       }
-      await iniciarPreviewsRotativos();
 
       const heroFiles = await discoverAlbum('02-casamento');
       const hero = document.getElementById('heroImage');
