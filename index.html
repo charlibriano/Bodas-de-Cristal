@@ -2910,263 +2910,299 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
-    /* ===== V40 CORRIGIDA: APENAS PRIMEIRA TELA ===== */
-    .intro-overlay .intro-panel.intro-v40-fixed{
+    /* ===== V40.1 HERO COM IMAGEM COBRINDO A PRIMEIRA TELA INTEIRA ===== */
+    .intro-overlay .intro-panel{
       width:min(1100px, calc(100% - 18px));
-      min-height:min(88vh, 900px);
-      padding:24px;
+      min-height:min(92vh, 920px);
+      padding:26px;
       display:grid;
-      grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);
+      grid-template-columns:1fr;
       grid-template-rows:auto auto;
-      gap:18px 22px;
-      align-items:stretch;
-      border-radius:30px;
-      background:
-        radial-gradient(circle at 18% 10%, rgba(245,213,140,.08), transparent 22%),
-        radial-gradient(circle at 84% 14%, rgba(242,154,179,.09), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:
-        0 24px 70px rgba(0,0,0,.30),
-        inset 0 1px 0 rgba(255,255,255,.05);
+      gap:18px;
+      align-items:end;
+      border-radius:34px;
       overflow:hidden;
       position:relative;
-    }
-    .intro-overlay .intro-v40-fixed .intro-copy{
-      max-width:560px;
-      padding:4px 2px 0;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-    .intro-overlay .intro-v40-fixed .badge{
-      max-width:max-content;
-      margin-bottom:16px;
-      padding:11px 16px;
-    }
-    .intro-overlay .intro-v40-fixed h1{
-      margin:0 0 16px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(2.9rem, 6vw, 5.2rem);
-      line-height:.9;
-      letter-spacing:-.06em;
-      text-shadow:0 14px 30px rgba(0,0,0,.16);
-      text-wrap:balance;
-    }
-    .intro-overlay .intro-v40-fixed .intro-copy p{
-      max-width:17em;
-      margin:0 0 12px;
-      font-size:1.06rem;
-      line-height:1.72;
-      color:var(--muted);
-      text-wrap:pretty;
-    }
-    .intro-overlay .intro-v40-fixed .intro-date{
-      max-width:max-content;
-      margin-top:4px;
-      padding:11px 16px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
-      font-size:.94rem;
-    }
-    .intro-overlay .intro-v40-fixed .intro-actions{
-      margin-top:16px !important;
-      margin-bottom:0;
-    }
-    .intro-overlay .intro-v40-fixed .btn-primary{
-      min-width:300px;
-      padding:17px 22px;
-      font-size:1.02rem;
-      box-shadow:
-        0 0 32px rgba(245,213,140,.20),
-        0 12px 28px rgba(0,0,0,.24);
-    }
-    .intro-overlay .intro-v40-fixed .intro-media-roses{
-      min-height:520px;
-      border-radius:28px;
-      overflow:hidden;
-      position:relative;
-      border:1px solid rgba(255,255,255,.10);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.48)),
-        radial-gradient(circle at 74% 16%, rgba(255,145,145,.22), transparent 16%),
+        linear-gradient(90deg, rgba(8,5,8,.82) 0%, rgba(8,5,8,.70) 34%, rgba(8,5,8,.44) 64%, rgba(8,5,8,.20) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38)),
         url('./fotos/assets/rosas-v40.png') center/cover no-repeat;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 26px 70px rgba(0,0,0,.32),
+        inset 0 1px 0 rgba(255,255,255,.05);
     }
-    .intro-overlay .intro-v40-fixed .intro-media-roses::before{
+
+    .intro-overlay .intro-panel::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 76% 22%, rgba(255,180,180,.12), transparent 18%),
-        radial-gradient(circle at 84% 76%, rgba(120,0,18,.20), transparent 22%),
-        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.42));
+        radial-gradient(circle at 18% 10%, rgba(245,213,140,.08), transparent 24%),
+        radial-gradient(circle at 78% 18%, rgba(255,130,130,.12), transparent 18%),
+        radial-gradient(circle at 88% 82%, rgba(120,0,20,.24), transparent 22%);
       pointer-events:none;
     }
-    .intro-overlay .intro-v40-fixed .intro-welcome-fixed{
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:18px;
-      z-index:2;
-      max-width:620px;
-      padding:20px 22px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(14,9,13,.76), rgba(14,9,13,.52));
+
+    .intro-overlay .intro-copy,
+    .intro-overlay .intro-story-strip{
+      position:relative;
+      z-index:1;
+    }
+
+    .intro-overlay .intro-copy{
+      max-width:520px;
+      padding:6px 4px 0;
+    }
+
+    .intro-overlay .intro-copy .badge{
+      max-width:max-content;
+      margin-bottom:18px;
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(12,7,11,.34);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(6px);
+    }
+
+    .intro-overlay .intro-copy h1{
+      margin:0 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(3.1rem, 6.6vw, 5.8rem);
+      line-height:.9;
+      letter-spacing:-.06em;
+      color:#fff7fb;
+      text-shadow:0 14px 30px rgba(0,0,0,.18);
+      text-wrap:balance;
+    }
+
+    .intro-overlay .intro-copy > p{
+      max-width:16.5em;
+      margin:0 0 12px;
+      font-size:1.12rem;
+      line-height:1.74;
+      color:#f2e9ef;
+      text-wrap:pretty;
+    }
+
+    .intro-overlay .intro-date{
+      max-width:max-content;
+      margin-top:6px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(12,7,11,.34);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter:blur(6px);
+      font-size:.95rem;
+    }
+
+    .intro-overlay .intro-actions{
+      margin-top:18px !important;
+      margin-bottom:0;
+    }
+
+    .intro-overlay .intro-copy .btn-primary{
+      min-width:320px;
+      padding:18px 24px;
+      font-size:1.04rem;
+      box-shadow:
+        0 0 32px rgba(245,213,140,.20),
+        0 12px 28px rgba(0,0,0,.24);
+    }
+
+    .intro-overlay .intro-welcome-full{
+      margin-top:26px;
+      width:min(760px, calc(100% - 12px));
+      padding:22px 24px;
+      border-radius:28px;
+      background:
+        linear-gradient(180deg, rgba(14,9,13,.74), rgba(14,9,13,.48));
       border:1px solid rgba(255,255,255,.12);
       box-shadow:
-        0 16px 36px rgba(0,0,0,.18),
+        0 18px 40px rgba(0,0,0,.20),
         inset 0 1px 0 rgba(255,255,255,.04);
       backdrop-filter:blur(8px);
     }
-    .intro-overlay .intro-v40-fixed .intro-welcome-kicker{
+
+    .intro-overlay .intro-welcome-kicker{
       color:var(--gold);
       letter-spacing:.18em;
       text-transform:uppercase;
-      font-size:.72rem;
+      font-size:.76rem;
       margin-bottom:8px;
       opacity:.96;
     }
-    .intro-overlay .intro-v40-fixed .intro-welcome-fixed h2{
+
+    .intro-overlay .intro-welcome-full h2{
       margin:0 0 10px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(2rem, 4.2vw, 3.8rem);
-      line-height:.94;
+      font-size:clamp(2.4rem, 5vw, 4.4rem);
+      line-height:.92;
       letter-spacing:-.06em;
-      text-shadow:0 10px 24px rgba(0,0,0,.14);
+      color:#fff7fb;
+      text-shadow:0 12px 26px rgba(0,0,0,.14);
       text-wrap:balance;
     }
-    .intro-overlay .intro-v40-fixed .intro-welcome-fixed p{
+
+    .intro-overlay .intro-welcome-full p{
       margin:0;
-      max-width:34ch;
-      font-size:1rem;
-      line-height:1.62;
+      max-width:38ch;
+      font-size:1.05rem;
+      line-height:1.7;
       color:var(--rose-2);
       text-wrap:pretty;
     }
-    .intro-overlay .intro-v40-fixed .intro-story-strip-fixed{
-      grid-column:1 / -1;
+
+    .intro-overlay .intro-story-strip-full{
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:14px;
-      margin-top:2px;
+      gap:16px;
+      margin-top:0;
     }
-    .intro-overlay .intro-v40-fixed .intro-story-item{
+
+    .intro-overlay .intro-story-item{
       display:grid;
-      gap:6px;
+      gap:8px;
       justify-items:center;
-      padding:16px 12px;
-      border-radius:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding:18px 14px;
+      border-radius:24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.10);
       box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter:blur(4px);
     }
-    .intro-overlay .intro-v40-fixed .intro-story-item strong{
+
+    .intro-overlay .intro-story-item strong{
       font-family: Georgia, "Times New Roman", serif;
-      font-size:1.9rem;
+      font-size:2.05rem;
       line-height:1;
       color:var(--gold);
       letter-spacing:-.04em;
     }
-    .intro-overlay .intro-v40-fixed .intro-story-item span{
-      font-size:.82rem;
-      color:var(--muted);
+
+    .intro-overlay .intro-story-item span{
+      font-size:.88rem;
+      color:#e8dfe4;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
+
+    /* Hide old media block if present for any reason */
+    .intro-overlay .intro-media{
+      display:none !important;
+    }
+
     @media (max-width: 980px){
-      .intro-overlay .intro-panel.intro-v40-fixed{
+      .intro-overlay .intro-panel{
         width:min(100%, calc(100% - 10px));
         min-height:auto;
-        grid-template-columns:1fr;
+        padding:20px;
+        gap:14px;
+        background-position:70% center;
       }
-      .intro-overlay .intro-v40-fixed .intro-copy{
+
+      .intro-overlay .intro-copy{
         max-width:none;
       }
-      .intro-overlay .intro-v40-fixed .intro-copy p{
-        max-width:none;
+
+      .intro-overlay .intro-copy > p{
+        max-width:18em;
       }
-      .intro-overlay .intro-v40-fixed .btn-primary{
+
+      .intro-overlay .intro-copy .btn-primary{
         min-width:0;
         width:100%;
       }
-      .intro-overlay .intro-v40-fixed .intro-media-roses{
-        min-height:360px;
-      }
-      .intro-overlay .intro-v40-fixed .intro-welcome-fixed{
-        max-width:none;
+
+      .intro-overlay .intro-welcome-full{
+        width:100%;
       }
     }
+
     @media (max-width: 720px){
-      .intro-overlay .intro-panel.intro-v40-fixed{
+      .intro-overlay .intro-panel{
         width:min(100%, calc(100% - 4px));
+        min-height:auto;
         padding:16px;
         gap:12px;
         border-radius:24px;
+        background-position:72% center;
       }
-      .intro-overlay .intro-v40-fixed .badge{
+
+      .intro-overlay .intro-copy .badge{
         margin-bottom:12px;
         padding:10px 14px;
       }
-      .intro-overlay .intro-v40-fixed h1{
-        font-size:clamp(2.5rem, 11vw, 4rem);
+
+      .intro-overlay .intro-copy h1{
+        font-size:clamp(2.7rem, 12vw, 4.3rem);
         margin-bottom:12px;
       }
-      .intro-overlay .intro-v40-fixed .intro-copy p{
-        font-size:.95rem;
-        line-height:1.6;
+
+      .intro-overlay .intro-copy > p{
+        max-width:none;
+        font-size:.96rem;
+        line-height:1.62;
         margin-bottom:10px;
       }
-      .intro-overlay .intro-v40-fixed .intro-date{
+
+      .intro-overlay .intro-date{
         width:100%;
         max-width:none;
         font-size:.82rem;
         line-height:1.34;
         padding:10px 12px;
       }
-      .intro-overlay .intro-v40-fixed .intro-actions{
+
+      .intro-overlay .intro-actions{
         margin-top:12px !important;
       }
-      .intro-overlay .intro-v40-fixed .btn-primary{
+
+      .intro-overlay .intro-copy .btn-primary{
+        min-width:0;
+        width:100%;
         padding:16px 18px;
       }
-      .intro-overlay .intro-v40-fixed .intro-media-roses{
-        min-height:300px;
-        border-radius:22px;
+
+      .intro-overlay .intro-welcome-full{
+        margin-top:18px;
+        width:100%;
+        padding:16px 16px 14px;
+        border-radius:20px;
       }
-      .intro-overlay .intro-v40-fixed .intro-welcome-fixed{
-        left:12px;
-        right:12px;
-        bottom:12px;
-        padding:14px 14px 13px;
-        border-radius:18px;
-      }
-      .intro-overlay .intro-v40-fixed .intro-welcome-kicker{
+
+      .intro-overlay .intro-welcome-kicker{
         font-size:.64rem;
         margin-bottom:6px;
       }
-      .intro-overlay .intro-v40-fixed .intro-welcome-fixed h2{
-        font-size:clamp(1.65rem, 7.8vw, 2.45rem);
+
+      .intro-overlay .intro-welcome-full h2{
+        font-size:clamp(1.95rem, 8vw, 2.9rem);
         margin-bottom:8px;
       }
-      .intro-overlay .intro-v40-fixed .intro-welcome-fixed p{
-        font-size:.84rem;
-        line-height:1.5;
+
+      .intro-overlay .intro-welcome-full p{
+        font-size:.86rem;
+        line-height:1.52;
       }
-      .intro-overlay .intro-v40-fixed .intro-story-strip-fixed{
+
+      .intro-overlay .intro-story-strip-full{
         gap:8px;
       }
-      .intro-overlay .intro-v40-fixed .intro-story-item{
+
+      .intro-overlay .intro-story-item{
         padding:12px 8px;
         border-radius:16px;
       }
-      .intro-overlay .intro-v40-fixed .intro-story-item strong{
-        font-size:1.28rem;
+
+      .intro-overlay .intro-story-item strong{
+        font-size:1.35rem;
       }
-      .intro-overlay .intro-v40-fixed .intro-story-item span{
-        font-size:.64rem;
+
+      .intro-overlay .intro-story-item span{
+        font-size:.66rem;
       }
     }
 
@@ -3178,7 +3214,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   <div class="mood-layer stage-1" id="moodLayer" aria-hidden="true"></div>
 
   <div class="intro-overlay" id="introOverlay">
-    <div class="intro-panel intro-v40-fixed">
+    <div class="intro-panel">
       <div class="intro-copy">
         <div class="badge">15 anos escolhendo você</div>
         <h1>Felipe &amp; Jéssica</h1>
@@ -3188,28 +3224,18 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
           um presente feito de história, fé e amor.
         </p>
         <div class="intro-date">29 de abril de 2011 — 29 de abril de 2026</div>
-        <div class="hero-actions intro-actions" style="margin-top:26px">
+        <div class="hero-actions" style="margin-top:26px">
           <button class="btn btn-primary" type="button" id="startExperience">Começar nossa história</button>
         </div>
       </div>
+      
 
-      <div class="intro-media intro-media-roses">
-        <img id="introImage" src="" alt="Felipe e Jéssica" style="display:none;">
-        <div class="hero-overlay" style="display:none;"></div>
-
-        <div class="intro-welcome intro-welcome-fixed">
-          <div class="intro-welcome-kicker">bem-vinda</div>
-          <h2>À nossa bodas de cristal</h2>
-          <p>15 anos de casamento celebrando uma história construída com amor, fé, permanência e família.</p>
-        </div>
-      </div>
-
-      <div class="intro-story-strip intro-story-strip-fixed" aria-hidden="true">
+      <div class="intro-story-strip" aria-hidden="true">
         <div class="intro-story-item"><strong>8</strong><span>capítulos</span></div>
         <div class="intro-story-item"><strong>15</strong><span>anos</span></div>
         <div class="intro-story-item"><strong>1</strong><span>história</span></div>
       </div>
-    </div>
+</div>
   </div>
 
   <button type="button" class="disc-player" id="audioToggle" aria-label="Tocar ou pausar trilha instrumental" title="Tocar ou pausar trilha instrumental"></button>
