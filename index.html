@@ -2910,22 +2910,22 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
-    /* ===== V40.1 HERO COM IMAGEM COBRINDO A PRIMEIRA TELA INTEIRA ===== */
-    .intro-overlay .intro-panel{
-      width:min(1100px, calc(100% - 18px));
-      min-height:min(92vh, 920px);
-      padding:26px;
+    /* ===== V40.2 HERO COM IMAGEM COBRINDO TUDO E BOX SOBREPOSTA ===== */
+    .intro-overlay .intro-panel.intro-hero-full{
+      width:min(1120px, calc(100% - 18px));
+      min-height:min(92vh, 930px);
+      padding:28px;
       display:grid;
       grid-template-columns:1fr;
-      grid-template-rows:auto auto;
+      grid-template-rows:auto 1fr auto;
       gap:18px;
-      align-items:end;
+      align-items:start;
       border-radius:34px;
       overflow:hidden;
       position:relative;
       background:
-        linear-gradient(90deg, rgba(8,5,8,.82) 0%, rgba(8,5,8,.70) 34%, rgba(8,5,8,.44) 64%, rgba(8,5,8,.20) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.38)),
+        linear-gradient(90deg, rgba(8,5,8,.86) 0%, rgba(8,5,8,.72) 34%, rgba(8,5,8,.45) 64%, rgba(8,5,8,.22) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.34)),
         url('./fotos/assets/rosas-v40.png') center/cover no-repeat;
       border:1px solid rgba(255,255,255,.12);
       box-shadow:
@@ -2933,29 +2933,30 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         inset 0 1px 0 rgba(255,255,255,.05);
     }
 
-    .intro-overlay .intro-panel::before{
+    .intro-overlay .intro-panel.intro-hero-full::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 18% 10%, rgba(245,213,140,.08), transparent 24%),
-        radial-gradient(circle at 78% 18%, rgba(255,130,130,.12), transparent 18%),
-        radial-gradient(circle at 88% 82%, rgba(120,0,20,.24), transparent 22%);
+        radial-gradient(circle at 18% 10%, rgba(245,213,140,.08), transparent 22%),
+        radial-gradient(circle at 80% 18%, rgba(255,130,130,.12), transparent 16%),
+        radial-gradient(circle at 88% 84%, rgba(120,0,20,.24), transparent 20%);
       pointer-events:none;
     }
 
-    .intro-overlay .intro-copy,
-    .intro-overlay .intro-story-strip{
+    .intro-overlay .intro-copy-full,
+    .intro-overlay .intro-welcome-card-full,
+    .intro-overlay .intro-story-strip-full{
       position:relative;
       z-index:1;
     }
 
-    .intro-overlay .intro-copy{
+    .intro-overlay .intro-copy-full{
       max-width:520px;
-      padding:6px 4px 0;
+      padding:4px 2px 0;
     }
 
-    .intro-overlay .intro-copy .badge{
+    .intro-overlay .intro-copy-full .badge{
       max-width:max-content;
       margin-bottom:18px;
       padding:11px 16px;
@@ -2965,10 +2966,10 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       backdrop-filter:blur(6px);
     }
 
-    .intro-overlay .intro-copy h1{
+    .intro-overlay .intro-copy-full h1{
       margin:0 0 18px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(3.1rem, 6.6vw, 5.8rem);
+      font-size:clamp(3.1rem, 6.6vw, 5.9rem);
       line-height:.9;
       letter-spacing:-.06em;
       color:#fff7fb;
@@ -2976,8 +2977,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       text-wrap:balance;
     }
 
-    .intro-overlay .intro-copy > p{
-      max-width:16.5em;
+    .intro-overlay .intro-copy-full > p{
+      max-width:16.4em;
       margin:0 0 12px;
       font-size:1.12rem;
       line-height:1.74;
@@ -2985,7 +2986,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       text-wrap:pretty;
     }
 
-    .intro-overlay .intro-date{
+    .intro-overlay .intro-copy-full .intro-date{
       max-width:max-content;
       margin-top:6px;
       padding:12px 18px;
@@ -2997,12 +2998,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       font-size:.95rem;
     }
 
-    .intro-overlay .intro-actions{
+    .intro-overlay .intro-copy-full .intro-actions{
       margin-top:18px !important;
       margin-bottom:0;
     }
 
-    .intro-overlay .intro-copy .btn-primary{
+    .intro-overlay .intro-copy-full .btn-primary{
       min-width:320px;
       padding:18px 24px;
       font-size:1.04rem;
@@ -3011,10 +3012,12 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         0 12px 28px rgba(0,0,0,.24);
     }
 
-    .intro-overlay .intro-welcome-full{
-      margin-top:26px;
-      width:min(760px, calc(100% - 12px));
-      padding:22px 24px;
+    .intro-overlay .intro-welcome-card-full{
+      align-self:end;
+      width:min(820px, calc(100% - 24px));
+      margin-left:clamp(28px, 4vw, 54px);
+      margin-top:auto;
+      padding:24px 28px;
       border-radius:28px;
       background:
         linear-gradient(180deg, rgba(14,9,13,.74), rgba(14,9,13,.48));
@@ -3025,7 +3028,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       backdrop-filter:blur(8px);
     }
 
-    .intro-overlay .intro-welcome-kicker{
+    .intro-overlay .intro-welcome-card-full .intro-welcome-kicker{
       color:var(--gold);
       letter-spacing:.18em;
       text-transform:uppercase;
@@ -3034,7 +3037,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       opacity:.96;
     }
 
-    .intro-overlay .intro-welcome-full h2{
+    .intro-overlay .intro-welcome-card-full h2{
       margin:0 0 10px;
       font-family: Georgia, "Times New Roman", serif;
       font-size:clamp(2.4rem, 5vw, 4.4rem);
@@ -3045,10 +3048,10 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       text-wrap:balance;
     }
 
-    .intro-overlay .intro-welcome-full p{
+    .intro-overlay .intro-welcome-card-full p{
       margin:0;
-      max-width:38ch;
-      font-size:1.05rem;
+      max-width:40ch;
+      font-size:1.06rem;
       line-height:1.7;
       color:var(--rose-2);
       text-wrap:pretty;
@@ -3058,10 +3061,10 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
       gap:16px;
-      margin-top:0;
+      margin-top:4px;
     }
 
-    .intro-overlay .intro-story-item{
+    .intro-overlay .intro-story-strip-full .intro-story-item{
       display:grid;
       gap:8px;
       justify-items:center;
@@ -3074,7 +3077,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       backdrop-filter:blur(4px);
     }
 
-    .intro-overlay .intro-story-item strong{
+    .intro-overlay .intro-story-strip-full .intro-story-item strong{
       font-family: Georgia, "Times New Roman", serif;
       font-size:2.05rem;
       line-height:1;
@@ -3082,47 +3085,49 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       letter-spacing:-.04em;
     }
 
-    .intro-overlay .intro-story-item span{
+    .intro-overlay .intro-story-strip-full .intro-story-item span{
       font-size:.88rem;
       color:#e8dfe4;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
 
-    /* Hide old media block if present for any reason */
-    .intro-overlay .intro-media{
+    /* Esconde qualquer box antiga da abertura, se restar no HTML */
+    .intro-overlay .intro-media,
+    .intro-overlay .intro-welcome:not(.intro-welcome-card-full){
       display:none !important;
     }
 
     @media (max-width: 980px){
-      .intro-overlay .intro-panel{
+      .intro-overlay .intro-panel.intro-hero-full{
         width:min(100%, calc(100% - 10px));
         min-height:auto;
         padding:20px;
         gap:14px;
-        background-position:70% center;
+        background-position:68% center;
       }
 
-      .intro-overlay .intro-copy{
+      .intro-overlay .intro-copy-full{
         max-width:none;
       }
 
-      .intro-overlay .intro-copy > p{
+      .intro-overlay .intro-copy-full > p{
         max-width:18em;
       }
 
-      .intro-overlay .intro-copy .btn-primary{
+      .intro-overlay .intro-copy-full .btn-primary{
         min-width:0;
         width:100%;
       }
 
-      .intro-overlay .intro-welcome-full{
+      .intro-overlay .intro-welcome-card-full{
         width:100%;
+        margin-left:0;
       }
     }
 
     @media (max-width: 720px){
-      .intro-overlay .intro-panel{
+      .intro-overlay .intro-panel.intro-hero-full{
         width:min(100%, calc(100% - 4px));
         min-height:auto;
         padding:16px;
@@ -3131,24 +3136,24 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         background-position:72% center;
       }
 
-      .intro-overlay .intro-copy .badge{
+      .intro-overlay .intro-copy-full .badge{
         margin-bottom:12px;
         padding:10px 14px;
       }
 
-      .intro-overlay .intro-copy h1{
+      .intro-overlay .intro-copy-full h1{
         font-size:clamp(2.7rem, 12vw, 4.3rem);
         margin-bottom:12px;
       }
 
-      .intro-overlay .intro-copy > p{
+      .intro-overlay .intro-copy-full > p{
         max-width:none;
         font-size:.96rem;
         line-height:1.62;
         margin-bottom:10px;
       }
 
-      .intro-overlay .intro-date{
+      .intro-overlay .intro-copy-full .intro-date{
         width:100%;
         max-width:none;
         font-size:.82rem;
@@ -3156,34 +3161,34 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         padding:10px 12px;
       }
 
-      .intro-overlay .intro-actions{
+      .intro-overlay .intro-copy-full .intro-actions{
         margin-top:12px !important;
       }
 
-      .intro-overlay .intro-copy .btn-primary{
+      .intro-overlay .intro-copy-full .btn-primary{
         min-width:0;
         width:100%;
         padding:16px 18px;
       }
 
-      .intro-overlay .intro-welcome-full{
-        margin-top:18px;
+      .intro-overlay .intro-welcome-card-full{
         width:100%;
+        margin-left:0;
         padding:16px 16px 14px;
         border-radius:20px;
       }
 
-      .intro-overlay .intro-welcome-kicker{
+      .intro-overlay .intro-welcome-card-full .intro-welcome-kicker{
         font-size:.64rem;
         margin-bottom:6px;
       }
 
-      .intro-overlay .intro-welcome-full h2{
+      .intro-overlay .intro-welcome-card-full h2{
         font-size:clamp(1.95rem, 8vw, 2.9rem);
         margin-bottom:8px;
       }
 
-      .intro-overlay .intro-welcome-full p{
+      .intro-overlay .intro-welcome-card-full p{
         font-size:.86rem;
         line-height:1.52;
       }
@@ -3192,16 +3197,16 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         gap:8px;
       }
 
-      .intro-overlay .intro-story-item{
+      .intro-overlay .intro-story-strip-full .intro-story-item{
         padding:12px 8px;
         border-radius:16px;
       }
 
-      .intro-overlay .intro-story-item strong{
+      .intro-overlay .intro-story-strip-full .intro-story-item strong{
         font-size:1.35rem;
       }
 
-      .intro-overlay .intro-story-item span{
+      .intro-overlay .intro-story-strip-full .intro-story-item span{
         font-size:.66rem;
       }
     }
@@ -3214,8 +3219,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   <div class="mood-layer stage-1" id="moodLayer" aria-hidden="true"></div>
 
   <div class="intro-overlay" id="introOverlay">
-    <div class="intro-panel">
-      <div class="intro-copy">
+    <div class="intro-panel intro-hero-full">
+      <div class="intro-copy intro-copy-full">
         <div class="badge">15 anos escolhendo você</div>
         <h1>Felipe &amp; Jéssica</h1>
         <p>
@@ -3224,18 +3229,23 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
           um presente feito de história, fé e amor.
         </p>
         <div class="intro-date">29 de abril de 2011 — 29 de abril de 2026</div>
-        <div class="hero-actions" style="margin-top:26px">
+        <div class="hero-actions intro-actions" style="margin-top:26px">
           <button class="btn btn-primary" type="button" id="startExperience">Começar nossa história</button>
         </div>
       </div>
-      
 
-      <div class="intro-story-strip" aria-hidden="true">
+      <div class="intro-welcome-card-full">
+        <div class="intro-welcome-kicker">bem-vinda</div>
+        <h2>À nossa bodas de cristal</h2>
+        <p>15 anos de casamento celebrando uma história construída com amor, fé, permanência e família.</p>
+      </div>
+
+      <div class="intro-story-strip intro-story-strip-full" aria-hidden="true">
         <div class="intro-story-item"><strong>8</strong><span>capítulos</span></div>
         <div class="intro-story-item"><strong>15</strong><span>anos</span></div>
         <div class="intro-story-item"><strong>1</strong><span>história</span></div>
       </div>
-</div>
+    </div>
   </div>
 
   <button type="button" class="disc-player" id="audioToggle" aria-label="Tocar ou pausar trilha instrumental" title="Tocar ou pausar trilha instrumental"></button>
