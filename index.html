@@ -3470,6 +3470,69 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
     }
 
+
+    /* ===== V40.5 ACABAMENTO: BOX MAIS TRANSPARENTE + DOURADO MAIS CLARO ===== */
+    :root{
+      --gold:#f6dda0;
+      --gold-strong:#ffe9b8;
+      --gold-soft:#fff1cc;
+    }
+
+    .intro-overlay .intro-welcome-card-full{
+      background:rgba(14,9,13,.12) !important;
+      border:1px solid rgba(255,255,255,.08) !important;
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.04) !important;
+      backdrop-filter:blur(3px) !important;
+    }
+
+    .intro-overlay .intro-copy-full .badge,
+    .intro-overlay .intro-copy-full .intro-date{
+      background:rgba(12,7,11,.14) !important;
+      border:1px solid rgba(255,255,255,.10) !important;
+      color:#f7efe9 !important;
+    }
+
+    .intro-overlay .intro-copy-full .btn-primary{
+      background:linear-gradient(180deg, var(--gold-soft), var(--gold)) !important;
+      color:#24170d !important;
+      box-shadow:
+        0 0 36px rgba(255,233,184,.24),
+        0 12px 28px rgba(0,0,0,.16) !important;
+    }
+
+    .intro-overlay .intro-copy-full .btn-primary:hover{
+      filter:brightness(1.04);
+    }
+
+    .intro-overlay .intro-welcome-card-full .intro-welcome-kicker,
+    .intro-overlay .intro-story-strip-full .intro-story-item strong{
+      color:var(--gold-strong) !important;
+    }
+
+    .intro-overlay .intro-story-strip-full .intro-story-item{
+      background:rgba(14,9,13,.10) !important;
+      border:1px solid rgba(255,255,255,.08) !important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03) !important;
+      backdrop-filter:blur(3px) !important;
+    }
+
+    .intro-overlay .intro-story-strip-full .intro-story-item span{
+      color:#f3ebe5 !important;
+    }
+
+    @media (max-width: 720px){
+      .intro-overlay .intro-welcome-card-full{
+        background:rgba(14,9,13,.10) !important;
+        backdrop-filter:blur(2px) !important;
+      }
+
+      .intro-overlay .intro-story-strip-full .intro-story-item{
+        background:rgba(14,9,13,.08) !important;
+      }
+    }
+
 </style>
 </head>
 <body>
