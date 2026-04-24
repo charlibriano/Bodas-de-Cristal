@@ -1967,8 +1967,25 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
-    /* ===== HISTORIA.HTML LIMPO: SEM INTRO SOBREPOSTA ===== */
+    /* ===== CORREÇÃO HISTÓRIA V2 ===== */
     .intro-overlay{display:none !important;}
+    .chapter{
+      opacity:1 !important;
+      filter:none !important;
+      transform:none !important;
+    }
+    .chapter-card .mini,
+    .chapter-card h3,
+    .chapter-card p,
+    .chapter-card .hero-actions,
+    .chapter-card .btn,
+    .chapter-anchor,
+    .album-card .preview-grid,
+    .album-card .album-meta,
+    .album-card .album-button{
+      opacity:1 !important;
+      transform:none !important;
+    }
     body{overflow-x:hidden;}
 
 </style>
@@ -2449,8 +2466,53 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
     let touchStartX = 0;
     let touchEndX = 0;
-    let audioBaseVolume = 0.18;
 
+    let audioBaseVolume = 0.18;
+    let declarationOpening = false;
+
+    async function fadeAudioTo(target, duration = 700){
+      const safeTarget = Math.max(0, Math.min(1, target));
+      const steps = 18;
+      const start = bgAudio.volume;
+      for(let i = 1; i <= steps; i++){
+        bgAudio.volume = start + ((safeTarget - start) * (i / steps));
+        await new Promise(resolve => setTimeout(resolve, duration / steps));
+      }
+    }
+
+    async function abrirDeclaracao(){
+      if(declarationOpening) return;
+      declarationOpening = true;
+
+      const bridge = document.getElementById('cinematicBridge');
+      const modal = document.getElementById('declarationModal');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(0.06, 900);
+      }
+
+      bridge.classList.add('open');
+      bridge.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      await new Promise(resolve => setTimeout(resolve, 2800));
+
+      bridge.classList.remove('open');
+      bridge.setAttribute('aria-hidden','true');
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      declarationOpening = false;
+    }
+
+    async function fecharDeclaracao(){
+      const modal = document.getElementById('declarationModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(audioBaseVolume, 950);
+      }
 
       if(!document.getElementById('albumModal').classList.contains('open')){
         document.body.style.overflow = '';
@@ -2617,7 +2679,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('albumModal').classList.add('open');
       document.getElementById('albumModal').setAttribute('aria-hidden','false');
-      
+      document.body.style.overflow = 'hidden';
       renderModal();
     }
 
@@ -2855,8 +2917,6 @@ chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
 
 
 </script>
-
-</div>
 
 </body>
 </html>
