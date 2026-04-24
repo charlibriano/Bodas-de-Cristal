@@ -1,0 +1,3042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa História | Felipe & Jéssica</title>
+  <meta name="description" content="Uma homenagem de Felipe para Jéssica pelos 15 anos de casamento." />
+  <style>
+    :root{
+      --bg:#120d12;
+      --bg-soft:#1b131a;
+      --card:rgba(255,255,255,.08);
+      --card-strong:rgba(255,255,255,.11);
+      --line:rgba(255,255,255,.14);
+      --text:#f8eef5;
+      --muted:#d7c9d1;
+      --rose:#f29ab3;
+      --rose-2:#ffd5df;
+      --gold:#f5d58c;
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+      --radius:26px;
+      --radius-sm:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 30%),
+        linear-gradient(180deg,#120d12 0%, #19111a 35%, #120d12 100%);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image:radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px);
+      background-size:26px 26px;
+      opacity:.07;
+      pointer-events:none;
+    }
+    .floating-hearts{position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0}
+    .heart{position:absolute; bottom:-40px; opacity:.16; animation:rise linear infinite}
+    @keyframes rise{
+      from{transform:translateY(0) scale(.8); opacity:0}
+      10%{opacity:.16}
+      to{transform:translateY(-115vh) scale(1.2); opacity:0}
+    }
+    .container{width:min(1140px, calc(100% - 32px)); margin:0 auto; position:relative; z-index:1}
+    .hero{
+      min-height:100svh;
+      display:grid;
+      align-items:center;
+      padding:32px 0 56px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+    .hero-card,.chapter-card,.quote-card,.album-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .hero-card{
+      border-radius:32px;
+      padding:34px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      color:var(--rose-2);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.8rem;
+      margin-bottom:20px;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2.5rem, 7vw, 5.8rem);
+      line-height:.96;
+      letter-spacing:-.04em;
+    }
+    .hero-card p{
+      color:var(--muted);
+      font-size:1.18rem;
+      line-height:1.8;
+      margin:0 0 16px;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:24px}
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:14px 22px;
+      font-size:1rem;
+      font-weight:700;
+      transition:.25s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .btn-primary{
+      color:#2a1319;
+      background:linear-gradient(135deg,var(--gold),#ffdcb1);
+    }
+    .btn-secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.24)}
+    .hero-media{
+      position:relative;
+      min-height:520px;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:#120d12;
+    }
+    .hero-media img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.45));
+    }
+    .hero-caption{
+      position:absolute; left:20px; right:20px; bottom:20px;
+      padding:18px 20px;
+      border-radius:20px;
+      background:rgba(16,10,15,.62);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(8px);
+    }
+    .hero-caption strong{display:block; font-size:1.1rem; margin-bottom:6px}
+    .hero-caption span{color:var(--muted)}
+    section{padding:36px 0}
+    .section-title{
+      text-align:center;
+      margin:0 0 12px;
+      font-size:clamp(2.1rem, 5vw, 4.4rem);
+      line-height:1.02;
+      letter-spacing:-.04em;
+    }
+    .section-subtitle{
+      text-align:center;
+      color:var(--muted);
+      max-width:880px;
+      margin:0 auto 34px;
+      font-size:1.15rem;
+      line-height:1.8;
+    }
+    .timeline{
+      position:relative;
+      display:grid;
+      gap:34px;
+      margin-top:12px;
+      scroll-snap-type:y proximity;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:22px; top:0; bottom:0;
+      width:2px; background:linear-gradient(180deg, rgba(242,154,179,.6), rgba(255,255,255,.12));
+      opacity:.9;
+    }
+    .chapter{
+      display:grid;
+      grid-template-columns:64px 1fr;
+      gap:22px;
+      align-items:start;
+      position:relative;
+      scroll-snap-align:center;
+      min-height:min(86vh, 920px);
+      padding:18px 0;
+    }
+    .chapter::before{
+      content:"";
+      position:absolute;
+      left:52px;
+      right:0;
+      top:0;
+      bottom:0;
+      border-radius:36px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(242,154,179,.10), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(245,213,140,.08), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.04);
+      opacity:0;
+      transform:scale(.985);
+      transition:opacity .45s ease, transform .45s ease, box-shadow .45s ease;
+      pointer-events:none;
+    }
+    .chapter-icon{
+      position:sticky; top:20px;
+      width:46px; height:46px;
+      display:grid; place-items:center;
+      border-radius:999px;
+      background:linear-gradient(135deg, rgba(242,154,179,.28), rgba(245,213,140,.26));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      z-index:2;
+      margin-top:18px;
+    }
+    .chapter-body{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:22px;
+      align-items:center;
+    }
+    .chapter-card{
+      border-radius:30px;
+      padding:28px;
+    }
+    .chapter-card .mini{
+      color:var(--gold);
+      font-size:1.05rem;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .chapter-card h3{
+      margin:0 0 16px;
+      font-size:clamp(2rem, 4vw, 3.1rem);
+      line-height:1.08;
+      letter-spacing:-.04em;
+    }
+    .chapter-card p{
+      color:var(--muted);
+      font-size:1.1rem;
+      line-height:1.85;
+      margin:0 0 14px;
+    }
+    .chapter-card strong{color:var(--text)}
+    .album-card{
+      border-radius:30px;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      min-height:100%;
+    }
+    .preview-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+    }
+    .preview{
+      aspect-ratio:1/1;
+      overflow:hidden;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.04);
+      position:relative;
+    }
+    .preview img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:transform .35s ease;
+    }
+    .preview:hover img{transform:scale(1.04)}
+    .preview.empty::after{
+      content:"Carregando álbum…";
+      position:absolute; inset:0; display:grid; place-items:center;
+      color:var(--muted); font-size:.95rem;
+    }
+    .album-meta{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      color:var(--muted);
+      font-size:.98rem;
+      flex-wrap:wrap;
+    }
+    .album-button{
+      width:100%;
+      justify-content:center;
+    }
+    .quote-card{
+      border-radius:30px;
+      padding:34px;
+      margin-top:14px;
+      text-align:center;
+    }
+    .quote{
+      font-size:clamp(1.35rem, 3vw, 2.2rem);
+      line-height:1.55;
+      max-width:900px;
+      margin:0 auto 10px;
+    }
+    .quote small{
+      color:var(--muted);
+      font-size:1rem;
+      letter-spacing:.04em;
+    }
+    .final-letter{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .letter-card,.portrait-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      border-radius:30px;
+    }
+    .letter-card{padding:30px}
+    .letter-card h2{
+      margin:0 0 16px;
+      font-size:clamp(2rem, 5vw, 4rem);
+      line-height:1.02;
+      letter-spacing:-.04em;
+    }
+    .letter-card p{
+      color:var(--muted);
+      line-height:1.95;
+      font-size:1.08rem;
+      margin:0 0 14px;
+    }
+    .portrait-card{
+      overflow:hidden;
+      position:relative;
+      min-height:540px;
+    }
+    .portrait-card img{
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .portrait-note{
+      position:absolute; left:20px; right:20px; bottom:20px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(16,10,15,.68);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+    }
+    footer{
+      padding:36px 0 58px;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:none;
+      background:rgba(10,6,9,.92);
+      backdrop-filter:blur(8px);
+    }
+    .modal.open{display:block}
+    .modal-wrap{
+      width:min(1220px, calc(100% - 28px));
+      height:100%;
+      margin:0 auto;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:14px;
+      padding:18px 0;
+    }
+    .modal-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0;
+    }
+    .modal-title{
+      font-size:1.25rem;
+      font-weight:700;
+      color:var(--rose-2);
+    }
+    .modal-close{
+      width:44px; height:44px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.07);
+      color:#fff;
+      font-size:1.4rem;
+      cursor:pointer;
+    }
+    .modal-main{
+      display:grid;
+      grid-template-columns:80px 1fr 80px;
+      align-items:center;
+      gap:10px;
+      min-height:0;
+    }
+    .nav-btn{
+      width:58px; height:58px;
+      margin:0 auto;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.07);
+      color:#fff;
+      font-size:1.7rem;
+      cursor:pointer;
+    }
+    .stage{
+      min-height:0;
+      display:grid;
+      gap:14px;
+      align-items:center;
+      justify-items:center;
+    }
+    .stage img{
+      max-width:100%;
+      max-height:min(72vh, 760px);
+      border-radius:22px;
+      object-fit:contain;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      background:#0f0a0f;
+    }
+    .counter{color:var(--muted); font-size:1rem}
+    .thumbs{
+      display:flex;
+      gap:10px;
+      overflow:auto;
+      padding:6px 2px 4px;
+      scrollbar-width:thin;
+    }
+    .thumb{
+      flex:0 0 82px;
+      height:82px;
+      border-radius:16px;
+      overflow:hidden;
+      border:2px solid transparent;
+      cursor:pointer;
+      background:rgba(255,255,255,.05);
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+    .thumb.active{border-color:var(--gold)}
+
+    .reading-progress{
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:4px;
+      z-index:10000;
+      background:rgba(255,255,255,.04);
+      pointer-events:none;
+    }
+    .reading-progress span{
+      display:block;
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,var(--rose),var(--gold));
+      box-shadow:0 0 22px rgba(242,154,179,.5);
+      transition:width .12s linear;
+    }
+    .hero-scroll{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      opacity:.9;
+    }
+    .hero-scroll .dot{
+      width:8px;height:8px;border-radius:999px;
+      background:var(--rose);
+      box-shadow:0 0 0 0 rgba(242,154,179,.45);
+      animation:pulseDot 1.8s infinite;
+    }
+    @keyframes pulseDot{
+      0%{box-shadow:0 0 0 0 rgba(242,154,179,.45)}
+      70%{box-shadow:0 0 0 12px rgba(242,154,179,0)}
+      100%{box-shadow:0 0 0 0 rgba(242,154,179,0)}
+    }
+    .chapter{
+      opacity:.72;
+      transform:translateY(22px);
+      transition:opacity .45s ease, transform .45s ease;
+    }
+    .chapter.revealed{
+      opacity:1;
+      transform:none;
+    }
+    .chapter.active .chapter-icon{
+      transform:scale(1.06);
+      box-shadow:0 0 0 10px rgba(242,154,179,.08), var(--shadow);
+      border-color:rgba(255,255,255,.24);
+    }
+    .chapter.active .chapter-card,
+    .chapter.active .album-card{
+      border-color:rgba(242,154,179,.24);
+      box-shadow:0 22px 70px rgba(0,0,0,.40), 0 0 0 1px rgba(242,154,179,.06) inset;
+    }
+    .chapter-card,.album-card,.chapter-icon{
+      transition:box-shadow .35s ease, border-color .35s ease, transform .35s ease;
+    }
+    .timeline-nav{
+      position:fixed;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:1200;
+      display:grid;
+      gap:10px;
+    }
+    .timeline-nav button{
+      width:12px;height:12px;border-radius:999px;
+      border:none; cursor:pointer;
+      background:rgba(255,255,255,.22);
+      box-shadow:0 0 0 1px rgba(255,255,255,.08);
+      transition:transform .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .timeline-nav button.active{
+      background:linear-gradient(135deg,var(--rose),var(--gold));
+      transform:scale(1.34);
+      box-shadow:0 0 0 8px rgba(242,154,179,.14), 0 0 18px rgba(245,213,140,.16);
+    }
+    .timeline-nav button:hover{transform:scale(1.16)}
+    .modal-hint{
+      color:var(--muted);
+      font-size:.93rem;
+      text-align:center;
+      margin-top:-6px;
+    }
+    .thumbs-wrap{
+      display:grid;
+      gap:8px;
+    }
+    .stage img.is-changing{
+      opacity:.3;
+      transform:scale(.985);
+    }
+    .declaration-trigger{
+      margin-top:10px;
+    }
+    .declaration-modal{
+      position:fixed;
+      inset:0;
+      z-index:9998;
+      display:none;
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.12), transparent 24%),
+        linear-gradient(180deg, rgba(7,4,7,.82), rgba(7,4,7,.92));
+      backdrop-filter:blur(16px);
+      padding:22px;
+    }
+    .declaration-modal.open{display:grid; place-items:center}
+    .declaration-panel{
+      width:min(980px, 100%);
+      max-height:min(90vh, 920px);
+      overflow:auto;
+      border-radius:36px;
+      padding:34px;
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.12), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(242,154,179,.12), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 0 0 1px rgba(245,213,140,.04);
+      position:relative;
+      scrollbar-width:thin;
+      isolation:isolate;
+      overflow-x:hidden;
+      transform:translateY(22px) scale(.985);
+      opacity:0;
+      transition:transform .65s cubic-bezier(.2,.8,.2,1), opacity .65s ease;
+    }
+    .declaration-modal.open .declaration-panel{
+      transform:none;
+      opacity:1;
+    }
+    .declaration-panel::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.05);
+      pointer-events:none;
+    }
+    .declaration-panel::after{
+      content:"";
+      position:absolute;
+      top:-90px;
+      right:-40px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(245,213,140,.16), transparent 65%);
+      filter:blur(10px);
+      pointer-events:none;
+    }
+    .declaration-close{
+      position:absolute;
+      top:16px; right:16px;
+      width:42px; height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      cursor:pointer;
+      font-size:1.3rem;
+      transition:.25s ease;
+      z-index:3;
+    }
+    .declaration-close:hover{
+      background:rgba(255,255,255,.11);
+      transform:translateY(-1px);
+    }
+    .declaration-layout{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);
+      gap:28px;
+      align-items:start;
+    }
+    .declaration-aside{
+      position:sticky;
+      top:0;
+      padding:8px 0 10px;
+    }
+    .declaration-panel .badge{
+      margin-bottom:18px;
+      background:rgba(255,255,255,.05);
+    }
+    .declaration-kicker{
+      color:var(--gold);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.74rem;
+      margin:0 0 12px;
+      opacity:.9;
+    }
+    .declaration-panel h3{
+      margin:0 0 18px;
+      max-width:9ch;
+      font-size:clamp(2.6rem, 6vw, 5.4rem);
+      line-height:.92;
+      letter-spacing:-.06em;
+      text-wrap:balance;
+    }
+    .declaration-divider{
+      width:138px;
+      height:2px;
+      margin:0 0 22px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.98), rgba(242,154,179,.85), rgba(245,213,140,0));
+      box-shadow:0 0 20px rgba(245,213,140,.24);
+      border-radius:999px;
+    }
+    .declaration-verse{
+      margin:18px 0 10px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(245,213,140,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(245,213,140,.25);
+      text-align:center;
+    }
+    .declaration-verse p{
+      margin:0;
+      font-style:italic;
+      color:#f5d58c;
+      font-size:1rem;
+      line-height:1.7;
+    }
+    .declaration-verse span{
+      display:block;
+      margin-top:6px;
+      font-size:.85rem;
+      opacity:.72;
+      color:var(--muted);
+    }
+    .declaration-quote{
+      margin:22px 0 0;
+      padding:18px 18px 18px 22px;
+      border-left:2px solid rgba(245,213,140,.55);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:0 22px 22px 0;
+      color:var(--rose-2);
+      font-size:1.02rem;
+      line-height:1.7;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .declaration-copy{
+      padding-top:46px;
+    }
+    .declaration-panel p{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:clamp(1.02rem, 1.45vw, 1.14rem);
+      margin:0 0 16px;
+      max-width:44ch;
+    }
+    .declaration-panel .declaration-impact{
+      color:var(--text);
+      font-size:clamp(1.14rem, 2vw, 1.38rem);
+      font-weight:700;
+      line-height:1.72;
+      margin-top:12px;
+      padding:18px 20px;
+      border-radius:24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 18px 38px rgba(0,0,0,.16);
+    }
+    .declaration-panel .declaration-impact + .declaration-impact{
+      margin-top:16px;
+    }
+    .declaration-signature{
+      margin-top:22px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+    .declaration-signature::before{
+      content:"";
+      width:56px;
+      height:1px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.9));
+      display:block;
+    }
+    .declaration-panel strong{color:var(--text)}
+
+    .cinematic-bridge{
+      position:fixed;
+      inset:0;
+      z-index:9997;
+      display:none;
+      place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at center, rgba(245,213,140,.08), transparent 24%),
+        linear-gradient(180deg, rgba(8,5,8,.70), rgba(8,5,8,.92));
+      backdrop-filter:blur(10px);
+      opacity:0;
+      transition:opacity .55s ease;
+    }
+    .cinematic-bridge.open{
+      display:grid;
+      opacity:1;
+    }
+    .cinematic-bridge-card{
+      width:min(780px, 100%);
+      text-align:center;
+      padding:42px 28px;
+      border-radius:32px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at top, rgba(245,213,140,.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow:0 28px 80px rgba(0,0,0,.40);
+      transform:translateY(14px) scale(.982);
+      opacity:0;
+      transition:transform .75s cubic-bezier(.2,.8,.2,1), opacity .75s ease;
+    }
+    .cinematic-bridge.open .cinematic-bridge-card{
+      transform:none;
+      opacity:1;
+    }
+    .cinematic-bridge .mini{
+      color:var(--gold);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:.76rem;
+      margin-bottom:12px;
+    }
+    .cinematic-bridge h3{
+      margin:0 0 14px;
+      font-size:clamp(2.2rem, 5vw, 4.4rem);
+      line-height:.95;
+      letter-spacing:-.055em;
+      text-wrap:balance;
+    }
+    .cinematic-bridge p{
+      margin:0;
+      color:var(--muted);
+      font-size:clamp(1.05rem, 1.8vw, 1.22rem);
+      line-height:1.95;
+      max-width:32ch;
+      margin-inline:auto;
+    }
+    .cinematic-bridge .bridge-line{
+      width:112px;
+      height:2px;
+      margin:18px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.96), rgba(242,154,179,.82), rgba(245,213,140,0));
+      box-shadow:0 0 18px rgba(245,213,140,.18);
+    }
+
+
+    .intro-overlay{
+      position:fixed;
+      inset:0;
+      z-index:15000;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 30%),
+        linear-gradient(180deg,#120d12 0%, #19111a 35%, #120d12 100%);
+      transition:opacity .8s ease, visibility .8s ease;
+    }
+    .intro-overlay.is-hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    .intro-panel{
+      width:min(980px, 100%);
+      min-height:min(78vh, 760px);
+      border-radius:34px;
+      padding:34px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      backdrop-filter: blur(12px);
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:28px;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+    .intro-panel::before{
+      content:"";
+      position:absolute;
+      inset:auto -10% -30% auto;
+      width:280px; height:280px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+    .intro-copy{position:relative; z-index:1}
+    .intro-copy p{
+      color:var(--muted);
+      font-size:1.16rem;
+      line-height:1.9;
+      margin:0 0 18px;
+    }
+    .intro-date{
+      display:inline-flex;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      margin-top:8px;
+    }
+    .intro-media{
+      position:relative;
+      min-height:520px;
+      border-radius:32px;
+      overflow:hidden;
+      background:#120d12;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .intro-media img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .intro-note{
+      position:absolute;
+      left:18px; right:18px; bottom:18px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:rgba(16,10,15,.64);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      backdrop-filter:blur(8px);
+    }
+    .intro-note strong{
+      color:var(--text);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.15rem;
+    }
+    .disc-player{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:14000;
+      width:72px;
+      height:72px;
+      border:none;
+      border-radius:50%;
+      cursor:pointer;
+      padding:0;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,.22) 0 7px, rgba(255,255,255,.06) 7px 11px, transparent 11px),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 38%),
+        conic-gradient(from 220deg, #23151c, #4a2a34, #170e14, #5a3340, #1f1218, #23151c);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,.35),
+        inset 0 2px 2px rgba(255,255,255,.14),
+        inset 0 -12px 20px rgba(0,0,0,.28);
+      transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      opacity:.95;
+      overflow:hidden;
+    }
+    .disc-player::before{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:50%;
+      background:repeating-radial-gradient(circle at center, rgba(255,255,255,.05) 0 2px, rgba(0,0,0,.08) 2px 4px);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .disc-player::after{
+      content:"";
+      position:absolute;
+      inset:27px;
+      border-radius:50%;
+      background:linear-gradient(180deg, var(--gold), #f2cf7d);
+      box-shadow:0 0 0 4px rgba(21,13,18,.38);
+      pointer-events:none;
+    }
+    .disc-player:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.42),
+        inset 0 2px 2px rgba(255,255,255,.18),
+        inset 0 -12px 20px rgba(0,0,0,.3);
+    }
+    .disc-player.playing{
+      animation:discSpin 4.6s linear infinite;
+    }
+    .disc-pulse{
+      position:fixed;
+      right:13px;
+      bottom:13px;
+      width:82px;
+      height:82px;
+      border-radius:50%;
+      border:1px solid rgba(245,213,140,.14);
+      pointer-events:none;
+      z-index:13999;
+      opacity:0;
+      transform:scale(.92);
+    }
+    .disc-player.playing + .disc-pulse{
+      opacity:1;
+      animation:discPulse 2.2s ease infinite;
+    }
+    @keyframes discSpin{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    @keyframes discPulse{
+      0%{transform:scale(.96); opacity:.26}
+      75%{transform:scale(1.14); opacity:.05}
+      100%{transform:scale(1.18); opacity:0}
+    }
+    .audio-meta{
+      display:grid;
+      gap:2px;
+      min-width:0;
+    }
+    .audio-meta strong{
+      font-size:1rem;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .audio-meta span{
+      color:var(--muted);
+      font-size:.93rem;
+      white-space:nowrap;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,.final-letter,.chapter-body,.intro-panel{grid-template-columns:1fr}
+      .hero-media{min-height:360px}
+      .portrait-card{min-height:420px}
+      .intro-media{min-height:320px}
+    }
+    @media (max-width: 720px){
+      .container{width:min(100% - 22px, 1120px)}
+      .hero-card,.chapter-card,.album-card,.letter-card,.quote-card,.declaration-panel{padding:22px}
+      .timeline::before{left:18px}
+      .chapter{grid-template-columns:54px 1fr; gap:14px}
+      .chapter-icon{width:38px;height:38px;font-size:.95rem}
+      .chapter{min-height:auto; padding:6px 0}
+      .chapter::before{left:44px}
+      .preview-grid{grid-template-columns:repeat(2,1fr); gap:10px}
+      .modal-main{grid-template-columns:56px 1fr 56px}
+      .nav-btn{width:46px;height:46px;font-size:1.35rem}
+      .thumb{flex-basis:70px;height:70px}
+      .timeline-nav{display:none}
+      .disc-player{right:12px; bottom:12px; width:60px; height:60px}
+      .disc-player::before{inset:7px}
+      .disc-player::after{inset:22px}
+      .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
+      .disc-player{right:12px; bottom:12px; width:60px; height:60px}
+      .disc-player::before{inset:7px}
+      .disc-player::after{inset:22px}
+      .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
+      .intro-panel{padding:22px}
+      .intro-copy p{font-size:1.04rem}
+      .intro-date{font-size:.95rem}
+      .hero-scroll{font-size:.88rem}
+      .declaration-panel{padding:24px 18px 18px; border-radius:24px}
+      .declaration-layout{grid-template-columns:1fr; gap:18px}
+      .declaration-aside{position:relative; top:auto; padding-top:8px}
+      .declaration-copy{padding-top:0}
+      .declaration-panel h3{max-width:none; font-size:clamp(2.1rem, 10vw, 3.6rem)}
+      .declaration-panel p{max-width:none; line-height:1.78}
+      .declaration-panel .declaration-impact{padding:15px 14px 16px; border-radius:18px}
+      .declaration-divider{width:96px; margin-bottom:18px}
+      .declaration-quote{margin-top:16px; padding:14px 14px 14px 18px}
+      .declaration-signature{margin-top:18px}
+      .cinematic-bridge-card{padding:28px 18px}
+      .cinematic-bridge h3{font-size:clamp(1.8rem, 9vw, 3rem)}
+    }
+  
+/* ===== CINEMATIC SPOTLIGHT ===== */
+.chapter{
+  opacity:.35;
+  filter:blur(1px);
+  transform:scale(.96);
+  transition:all .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.chapter.active{
+  opacity:1;
+  filter:none;
+  transform:scale(1);
+  z-index:2;
+}
+
+.chapter.active .chapter-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+}
+
+body{
+  transition:background 1s ease;
+}
+
+/* dynamic background moods */
+body.stage-1{background: radial-gradient(circle,#2a1a1a,#120808);}
+body.stage-2{background: radial-gradient(circle,#3a2a1a,#120808);}
+body.stage-3{background: radial-gradient(circle,#1a1a2a,#120808);}
+body.stage-4{background: radial-gradient(circle,#2a1f1a,#120808);}
+body.stage-5{background: radial-gradient(circle,#1a2a1f,#120808);}
+body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
+
+
+    /* ===== IMERSÃO CINEMATOGRÁFICA POR ETAPA ===== */
+    .mood-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.95;
+      transition:opacity .8s ease, background 1.1s ease, transform 1.1s ease;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(242,154,179,.16), transparent 26%),
+        radial-gradient(circle at 82% 76%, rgba(245,213,140,.10), transparent 24%);
+    }
+    .mood-layer.stage-1{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(242,154,179,.18), transparent 26%),
+        radial-gradient(circle at 82% 76%, rgba(255,213,223,.07), transparent 22%);
+    }
+    .mood-layer.stage-2{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(245,213,140,.18), transparent 26%),
+        radial-gradient(circle at 82% 74%, rgba(242,154,179,.08), transparent 24%);
+    }
+    .mood-layer.stage-3{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(182,170,230,.16), transparent 26%),
+        radial-gradient(circle at 82% 76%, rgba(242,154,179,.08), transparent 24%);
+    }
+    .mood-layer.stage-4{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(245,213,140,.11), transparent 24%),
+        radial-gradient(circle at 80% 76%, rgba(166,121,90,.14), transparent 26%);
+    }
+    .mood-layer.stage-5{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(189,152,115,.16), transparent 26%),
+        radial-gradient(circle at 82% 76%, rgba(245,213,140,.08), transparent 24%);
+    }
+    .mood-layer.stage-6{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(245,213,140,.13), transparent 24%),
+        radial-gradient(circle at 82% 76%, rgba(242,154,179,.12), transparent 26%);
+    }
+    .mood-layer.stage-7{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(242,154,179,.16), transparent 24%),
+        radial-gradient(circle at 82% 76%, rgba(245,213,140,.14), transparent 26%);
+    }
+    .mood-layer.stage-8{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,213,223,.12), transparent 24%),
+        radial-gradient(circle at 82% 76%, rgba(245,213,140,.16), transparent 26%);
+    }
+
+    .timeline{
+      gap:40px;
+    }
+
+    .chapter{
+      opacity:.28;
+      filter:saturate(.72) blur(1px);
+      transform:scale(.965) translateY(14px);
+      transition:opacity .6s cubic-bezier(.2,.8,.2,1), filter .6s ease, transform .6s cubic-bezier(.2,.8,.2,1);
+    }
+    .chapter::before{
+      opacity:0;
+      transform:scale(.985);
+      transition:opacity .55s ease, transform .55s ease, box-shadow .55s ease, background .7s ease;
+    }
+    .chapter.active{
+      opacity:1;
+      filter:none;
+      transform:scale(1) translateY(0);
+      z-index:2;
+    }
+    .chapter.active::before{
+      opacity:1;
+      transform:scale(1);
+      box-shadow:0 24px 80px rgba(0,0,0,.22);
+    }
+
+    .chapter-card,
+    .album-card{
+      transition:transform .45s ease, box-shadow .45s ease, border-color .45s ease, background .45s ease, opacity .45s ease;
+    }
+
+    .chapter .chapter-card,
+    .chapter .album-card{
+      opacity:.78;
+    }
+
+    .chapter.active .chapter-card,
+    .chapter.active .album-card{
+      opacity:1;
+      transform:translateY(-6px);
+      border-color:rgba(242,154,179,.26);
+      box-shadow:0 28px 90px rgba(0,0,0,.42), 0 0 0 1px rgba(242,154,179,.08) inset;
+    }
+
+    .chapter-anchor{
+      display:block;
+      margin:0 0 14px;
+      color:var(--rose-2);
+      font-size:clamp(1rem, 1.6vw, 1.18rem);
+      line-height:1.55;
+      letter-spacing:.02em;
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1);
+      text-shadow:0 8px 20px rgba(0,0,0,.10);
+    }
+
+    .chapter-card .mini,
+    .chapter-card h3,
+    .chapter-card p,
+    .chapter-card .hero-actions,
+    .chapter-card .btn,
+    .album-card .preview-grid,
+    .album-card .album-meta,
+    .album-card .album-button{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .chapter-card h3{
+      text-shadow:0 10px 26px rgba(0,0,0,.10);
+    }
+
+    .chapter.active .chapter-card .mini{opacity:1; transform:none; transition-delay:.02s}
+    .chapter.active .chapter-card h3{opacity:1; transform:none; transition-delay:.10s}
+    .chapter.active .chapter-anchor{opacity:1; transform:none; transition-delay:.18s}
+    .chapter.active .chapter-card p:nth-of-type(1){opacity:1; transform:none; transition-delay:.26s}
+    .chapter.active .chapter-card p:nth-of-type(2){opacity:1; transform:none; transition-delay:.36s}
+    .chapter.active .chapter-card p:nth-of-type(3){opacity:1; transform:none; transition-delay:.46s}
+    .chapter.active .chapter-card p:nth-of-type(4){opacity:1; transform:none; transition-delay:.56s}
+    .chapter.active .album-card .preview-grid{opacity:1; transform:none; transition-delay:.22s}
+    .chapter.active .album-card .album-meta{opacity:1; transform:none; transition-delay:.34s}
+    .chapter.active .album-card .album-button{opacity:1; transform:none; transition-delay:.44s}
+
+    .chapter.active .chapter-card h3{
+      color:#fff9fc;
+      text-shadow:0 14px 28px rgba(0,0,0,.16);
+    }
+
+    .chapter.active .chapter-icon{
+      transform:scale(1.12);
+      box-shadow:0 0 0 12px rgba(242,154,179,.11), 0 0 38px rgba(245,213,140,.14), var(--shadow);
+      border-color:rgba(255,255,255,.30);
+    }
+
+    .preview{
+      overflow:hidden;
+    }
+    .preview img{
+      will-change:transform;
+      transform-origin:center center;
+    }
+    .chapter.active .preview img{
+      animation:kenBurns 11s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns{
+      from{transform:scale(1)}
+      to{transform:scale(1.08)}
+    }
+
+    .timeline-nav button.active{
+      transform:scale(1.36);
+      box-shadow:0 0 0 8px rgba(242,154,179,.14), 0 0 18px rgba(245,213,140,.18);
+    }
+
+    @media (max-width: 720px){
+      .mood-layer{opacity:.9}
+      .timeline{gap:22px}
+      .chapter{
+        opacity:.56;
+        filter:none;
+        transform:none;
+        min-height:auto;
+        padding:6px 0;
+      }
+      .chapter::before{
+        left:44px;
+        border-radius:24px;
+      }
+      .chapter.active .chapter-card,
+      .chapter.active .album-card{
+        transform:none;
+      }
+      .chapter-anchor{
+        font-size:1rem;
+      }
+    }
+
+
+    /* ===== V24 PREMIUM POLISH ===== */
+    .hero{
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -140px -120px;
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,154,179,.14), transparent 68%);
+      filter:blur(18px);
+      pointer-events:none;
+      z-index:0;
+      animation:floatGlow 9s ease-in-out infinite alternate;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(245,213,140,.12), transparent 70%);
+      filter:blur(18px);
+      pointer-events:none;
+      z-index:0;
+      animation:floatGlow 11s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatGlow{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(18px,-16px,0) scale(1.06)}
+    }
+
+    .hero-card,
+    .hero-media{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-card{
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.10), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+    }
+    .hero-card h1{
+      text-wrap:balance;
+      text-shadow:0 14px 28px rgba(0,0,0,.16);
+    }
+    .hero-card p strong{
+      color:#fffaf0;
+    }
+
+    .hero-media img{
+      animation:heroKenBurns 13s ease-in-out infinite alternate;
+      transform-origin:center center;
+    }
+    @keyframes heroKenBurns{
+      from{transform:scale(1)}
+      to{transform:scale(1.06)}
+    }
+
+    .hero-caption{
+      background:linear-gradient(180deg, rgba(16,10,15,.62), rgba(16,10,15,.78));
+      box-shadow:0 10px 30px rgba(0,0,0,.22);
+    }
+
+    .badge{
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .btn{
+      position:relative;
+      overflow:hidden;
+    }
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent);
+      transform:translateX(-120%);
+      transition:transform .65s ease;
+      pointer-events:none;
+    }
+    .btn:hover::after{
+      transform:translateX(120%);
+    }
+
+    /* chapter stage identities */
+    .chapter.stage-tone-1.active::before{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(242,154,179,.12), transparent 28%),
+        radial-gradient(circle at 80% 72%, rgba(255,213,223,.08), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-2.active::before{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(245,213,140,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(242,154,179,.08), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-3.active::before{
+      background:
+        radial-gradient(circle at 16% 20%, rgba(186,174,230,.12), transparent 28%),
+        radial-gradient(circle at 80% 72%, rgba(242,154,179,.08), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-4.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(191,137,96,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.09), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-5.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(189,152,115,.16), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.09), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-6.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(245,213,140,.12), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(242,154,179,.12), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-7.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(242,154,179,.14), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.13), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+    .chapter.stage-tone-8.active::before{
+      background:
+        radial-gradient(circle at 16% 22%, rgba(255,213,223,.12), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(245,213,140,.14), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+
+    .chapter.active .chapter-anchor{
+      color:#fff0f5;
+      text-shadow:0 8px 22px rgba(0,0,0,.12);
+    }
+
+    /* album premium */
+    .modal{
+      background:
+        radial-gradient(circle at top, rgba(242,154,179,.10), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(245,213,140,.10), transparent 22%),
+        rgba(10,6,9,.94);
+    }
+    .modal-top{
+      align-items:flex-end;
+    }
+    .modal-title{
+      font-size:1.35rem;
+      letter-spacing:-.02em;
+      text-shadow:0 8px 20px rgba(0,0,0,.18);
+    }
+    .counter{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .thumb{
+      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+    .thumb:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+    }
+    .thumb.active{
+      box-shadow:0 0 0 4px rgba(245,213,140,.10);
+    }
+    .stage{
+      position:relative;
+    }
+    .stage::before{
+      content:"";
+      position:absolute;
+      inset:auto 14% 8% 14%;
+      height:18%;
+      background:radial-gradient(circle, rgba(245,213,140,.10), transparent 70%);
+      filter:blur(24px);
+      pointer-events:none;
+    }
+
+    /* final card polish */
+    .letter-card{
+      background:
+        radial-gradient(circle at top left, rgba(245,213,140,.10), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+    }
+    .portrait-card img{
+      animation:portraitFloat 12s ease-in-out infinite alternate;
+      transform-origin:center center;
+    }
+    @keyframes portraitFloat{
+      from{transform:scale(1)}
+      to{transform:scale(1.05)}
+    }
+
+    /* mobile premium polish */
+    @media (max-width: 720px){
+      .hero{
+        padding-top:24px;
+      }
+      .hero-card{
+        padding:24px;
+      }
+      .hero-card h1{
+        font-size:clamp(2.35rem, 11vw, 3.5rem);
+      }
+      .hero-card p{
+        font-size:1.02rem;
+        line-height:1.78;
+      }
+      .hero-media{
+        min-height:320px;
+      }
+      .hero-caption{
+        left:14px; right:14px; bottom:14px;
+        padding:14px 16px;
+      }
+      .chapter-card h3{
+        font-size:clamp(1.7rem, 8vw, 2.35rem);
+      }
+      .chapter-card p{
+        font-size:1rem;
+        line-height:1.78;
+      }
+      .album-meta{
+        gap:8px;
+        font-size:.92rem;
+      }
+      .btn{
+        padding:13px 18px;
+      }
+      .modal-wrap{
+        width:min(100% - 18px, 1220px);
+        padding:12px 0;
+      }
+      .thumb{
+        flex-basis:64px;
+        height:64px;
+      }
+    }
+
+
+    .relationship-counter{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .relationship-counter .counter-label{
+      color:var(--muted);
+      font-size:.95rem;
+      letter-spacing:.04em;
+    }
+    .relationship-counter .counter-main{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .relationship-counter .counter-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 8px 22px rgba(0,0,0,.12);
+    }
+    .relationship-counter .counter-pill strong{
+      color:var(--gold);
+      font-size:1.04rem;
+    }
+    .relationship-counter .counter-foot{
+      color:var(--rose-2);
+      font-size:.96rem;
+      line-height:1.65;
+    }
+
+
+    .cinematic-pause{
+      position:relative;
+      padding:18px 0 8px;
+      margin:-6px 0 6px 64px;
+    }
+    .cinematic-pause::before{
+      content:"";
+      position:absolute;
+      left:0; right:0; top:0; bottom:0;
+      border-radius:32px;
+      background:
+        radial-gradient(circle at center, rgba(245,213,140,.10), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.05);
+      box-shadow:0 18px 50px rgba(0,0,0,.14);
+      opacity:.9;
+    }
+    .cinematic-pause-inner{
+      position:relative;
+      z-index:1;
+      max-width:760px;
+      margin:0 auto;
+      text-align:center;
+      padding:26px 24px;
+    }
+    .cinematic-pause .pause-mini{
+      color:var(--gold);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.74rem;
+      margin-bottom:12px;
+      opacity:.9;
+    }
+    .cinematic-pause h4{
+      margin:0 0 10px;
+      font-size:clamp(1.55rem, 3vw, 2.5rem);
+      line-height:1.04;
+      letter-spacing:-.05em;
+      color:#fff7fb;
+      text-wrap:balance;
+      text-shadow:0 10px 24px rgba(0,0,0,.14);
+    }
+    .cinematic-pause p{
+      margin:0 auto;
+      max-width:34ch;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:clamp(1rem, 1.4vw, 1.08rem);
+    }
+    .cinematic-pause .pause-line{
+      width:110px;
+      height:2px;
+      margin:16px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.95), rgba(242,154,179,.8), rgba(245,213,140,0));
+      box-shadow:0 0 18px rgba(245,213,140,.18);
+    }
+
+    @media (max-width: 720px){
+      .cinematic-pause{
+        margin-left:44px;
+        padding:10px 0 2px;
+      }
+      .cinematic-pause-inner{
+        padding:20px 16px;
+      }
+      .cinematic-pause h4{
+        font-size:clamp(1.35rem, 7vw, 2rem);
+      }
+      .cinematic-pause p{
+        max-width:none;
+        line-height:1.75;
+      }
+    }
+
+
+    .timeline-year{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      margin:0 0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--gold);
+      font-size:.86rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .timeline-year .year-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--rose),var(--gold));
+      box-shadow:0 0 0 6px rgba(242,154,179,.10);
+      flex:0 0 auto;
+    }
+    .chapter.active .timeline-year{
+      background:rgba(255,255,255,.08);
+      border-color:rgba(245,213,140,.18);
+      box-shadow:0 10px 26px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    @media (max-width: 720px){
+      .timeline-year{
+        font-size:.8rem;
+        padding:7px 11px;
+        margin-bottom:10px;
+      }
+    }
+
+
+    /* ===== V29 AJUSTES FINOS EMOCIONAIS ===== */
+    .hero-card p,
+    .chapter-card p,
+    .letter-card p,
+    .declaration-copy p{
+      text-wrap:pretty;
+    }
+
+    .chapter-card p strong,
+    .letter-card p strong,
+    .declaration-copy p strong{
+      color:#fffaf4;
+      text-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+
+    .chapter-anchor{
+      position:relative;
+      padding-left:18px;
+    }
+    .chapter-anchor::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.7em;
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--rose),var(--gold));
+      box-shadow:0 0 0 6px rgba(242,154,179,.10);
+      transform:translateY(-50%);
+    }
+
+    .chapter.active .chapter-card,
+    .chapter.active .album-card{
+      box-shadow:
+        0 24px 80px rgba(0,0,0,.44),
+        0 0 0 1px rgba(242,154,179,.07) inset,
+        0 0 28px rgba(245,213,140,.06);
+    }
+
+    .chapter-card p + p,
+    .letter-card p + p,
+    .declaration-copy p + p{
+      margin-top:2px;
+    }
+
+    .quote-card{
+      position:relative;
+      overflow:hidden;
+    }
+    .quote-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top, rgba(245,213,140,.08), transparent 32%);
+      pointer-events:none;
+    }
+
+    .quote{
+      position:relative;
+      z-index:1;
+      text-wrap:balance;
+    }
+
+    .hero-scroll{
+      opacity:1;
+    }
+
+    .timeline-year{
+      letter-spacing:.05em;
+    }
+
+    .relationship-counter{
+      position:relative;
+      overflow:hidden;
+    }
+    .relationship-counter::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(100deg, transparent, rgba(255,255,255,.08), transparent);
+      transform:translateX(-120%);
+      animation:counterGlow 8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes counterGlow{
+      0%, 70%, 100%{transform:translateX(-120%)}
+      82%{transform:translateX(120%)}
+    }
+
+    .declaration-impact{
+      text-wrap:balance;
+    }
+
+    .portrait-note,
+    .intro-note,
+    .hero-caption{
+      text-wrap:pretty;
+    }
+
+    .btn-primary{
+      box-shadow:0 14px 30px rgba(245,213,140,.16);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.11);
+    }
+
+    .modal-title,
+    .section-title,
+    .letter-card h2,
+    .declaration-panel h3{
+      text-wrap:balance;
+    }
+
+    .final-letter{
+      align-items:center;
+    }
+
+    .declaration-signature{
+      opacity:.92;
+    }
+
+    .cinematic-pause p,
+    .cinematic-bridge p{
+      text-wrap:balance;
+    }
+
+    .thumbs::-webkit-scrollbar,
+    .declaration-panel::-webkit-scrollbar{
+      height:8px;
+      width:8px;
+    }
+    .thumbs::-webkit-scrollbar-thumb,
+    .declaration-panel::-webkit-scrollbar-thumb{
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+    }
+
+    @media (max-width: 720px){
+      .hero-card p,
+      .chapter-card p,
+      .letter-card p,
+      .declaration-copy p{
+        text-wrap:auto;
+      }
+      .chapter-anchor{
+        padding-left:16px;
+      }
+      .chapter-anchor::before{
+        width:7px;
+        height:7px;
+      }
+      .relationship-counter .counter-main{
+        gap:8px;
+      }
+      .relationship-counter .counter-pill{
+        padding:9px 12px;
+      }
+      .portrait-note,
+      .intro-note,
+      .hero-caption{
+        text-wrap:auto;
+      }
+    }
+
+
+    .story-illustration{
+      border-radius:32px;
+      padding:28px;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:20px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(245,213,140,.18), transparent 30%),
+        radial-gradient(circle at 80% 90%, rgba(242,154,179,.12), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      position:relative;
+      overflow:hidden;
+      transition:transform .6s ease, box-shadow .6s ease, opacity .6s ease, filter .6s ease;
+      opacity:.9;
+      filter:saturate(.92);
+    }
+    .story-illustration::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -50px auto;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,154,179,.18), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+    .story-illustration::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,255,255,.08), transparent);
+      transform:translateX(-120%);
+      animation:storyShine 6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes storyShine{
+      0%,70%,100%{transform:translateX(-120%)}
+      85%{transform:translateX(120%)}
+    }
+    .story-illustration .story-icon{
+      width:72px;
+      height:72px;
+      border-radius:24px;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      background:linear-gradient(135deg, rgba(242,154,179,.25), rgba(245,213,140,.25));
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+      position:relative;
+      z-index:1;
+      animation:pulseIcon 3s ease-in-out infinite;
+    }
+    @keyframes pulseIcon{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.08)}
+    }
+    .story-illustration h4{
+      margin:0;
+      font-size:clamp(1.6rem, 3vw, 2.3rem);
+      font-weight:800;
+      line-height:1.06;
+      letter-spacing:-.04em;
+      text-wrap:balance;
+      color:#fff7fb;
+      text-shadow:0 10px 30px rgba(0,0,0,.22);
+      position:relative;
+      z-index:1;
+    }
+    .story-illustration p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:1.05rem;
+      position:relative;
+      z-index:1;
+      text-wrap:pretty;
+    }
+    .story-illustration .story-line{
+      width:116px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(245,213,140,0), rgba(245,213,140,.95), rgba(242,154,179,.8), rgba(245,213,140,0));
+      box-shadow:0 0 18px rgba(245,213,140,.18);
+      position:relative;
+      z-index:1;
+    }
+    .story-illustration .story-note{
+      color:var(--rose-2);
+      font-size:.98rem;
+      line-height:1.75;
+    }
+    .chapter.active .story-illustration{
+      transform:scale(1.02);
+      box-shadow:
+        0 35px 100px rgba(0,0,0,.60),
+        0 0 40px rgba(245,213,140,.15),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      opacity:1;
+      filter:none;
+    }
+    @media (max-width: 720px){
+      .story-illustration{
+        padding:20px;
+        border-radius:24px;
+      }
+      .story-illustration .story-icon{
+        width:58px;
+        height:58px;
+        font-size:1.55rem;
+        border-radius:18px;
+      }
+      .story-illustration h4{
+        font-size:clamp(1.35rem, 7vw, 1.9rem);
+      }
+      .story-illustration p{
+        text-wrap:auto;
+      }
+    }
+
+
+    /* ===== HISTORIA.HTML LIMPO: SEM INTRO SOBREPOSTA ===== */
+    .intro-overlay{display:none !important;}
+    body{overflow-x:hidden;}
+
+</style>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="floating-hearts" aria-hidden="true"></div>
+  <div class="mood-layer stage-1" id="moodLayer" aria-hidden="true"></div>
+
+  <button type="button" class="disc-player" id="audioToggle" aria-label="Tocar ou pausar trilha instrumental" title="Tocar ou pausar trilha instrumental"></button>
+  <div class="disc-pulse" aria-hidden="true"></div>
+
+  <audio id="bgAudio" loop preload="auto">
+    <source src="audio/fundo.mp3" type="audio/mpeg">
+    <source src="audio/tema-principal.mp4" type="audio/mp4">
+  </audio>
+
+  <nav class="timeline-nav" aria-label="Navegação rápida pelos capítulos" id="timelineNav"></nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="badge">15 anos escolhendo você</div>
+        <h1>Felipe &amp; Jéssica</h1>
+        <p>
+          Há 15 anos, no dia <strong>29 de abril de 2011</strong>, começamos oficialmente a nossa vida juntos.
+          Mas a verdade é que essa escolha começou muito antes disso — em um congresso, em Brasília,
+          em 2008, quando um olhar encontrou o outro e algo dentro de nós soube que aquela história seria diferente.
+        </p>
+        <p>
+          Desde então, vieram luta, aluguel, incerteza, obra, oração, improviso, conquista, gravidez, família e amor.
+          E depois de tudo o que vivemos, a certeza continua a mesma: <strong>eu escolheria você de novo.</strong>
+        </p>
+
+        <div class="relationship-counter" id="relationshipCounter">
+          <div class="counter-label">Desde 29 de abril de 2011, já são:</div>
+          <div class="counter-main">
+            <div class="counter-pill"><strong id="counterYears">0</strong> anos</div>
+            <div class="counter-pill"><strong id="counterMonths">0</strong> meses</div>
+            <div class="counter-pill"><strong id="counterDays">0</strong> dias</div>
+          </div>
+          <div class="counter-foot" id="counterFoot">cada etapa dessa história foi construída um dia de cada vez.</div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-secondary" type="button" onclick="abrirAlbumPorPasta('02-casamento','O altar foi só o começo')">Abrir álbum do casamento</button>
+        </div>
+        <div class="hero-scroll" aria-hidden="true">
+          <span class="dot"></span>
+          <span>Role com calma e viva cada capítulo dessa história</span>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img id="heroImage" src="" alt="Foto do casal" />
+        <div class="hero-overlay"></div>
+        <div class="hero-caption">
+          <strong>29 de abril de 2011 — 29 de abril de 2026</strong>
+          <span>Uma história construída com amor, coragem, fé e permanência.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="capitulos">
+      <div class="container">
+        <h2 class="section-title">Nossa história em capítulos</h2>
+        <div class="timeline">
+          <article class="chapter stage-tone-1" data-folder="01-comeco">
+            <div class="chapter-icon">💗</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 1 • Nosso começo</div>
+                <div class="timeline-year"><span class="year-dot"></span>2008–2009 • Onde tudo começou</div>
+                <h3>Tudo começou com um olhar</h3>
+                <p>
+                  Em <strong>2008</strong>, em um congresso em Brasília, no meio de tantas pessoas,
+                  os nossos olhos se encontraram. Foi daqueles encontros que a gente nunca esquece.
+                </p>
+                <p>
+                  O que parecia um instante virou destino. O que nasceu em um olhar virou amor, aliança, parceria e família.
+                </p>
+                <p>
+                  Hoje, olhando para trás, eu entendo que Deus já estava escrevendo a nossa história naquele momento.
+                  E desde então, entre todas as escolhas da minha vida, <strong>você continua sendo a mais bonita.</strong>
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="01-comeco"></div>
+                <div class="album-meta">
+                  <span data-count="01-comeco">Carregando fotos…</span>
+                  <span>Capítulo com álbum interno</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('01-comeco','Tudo começou com um olhar')">
+                  Ver momentos desse capítulo
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter stage-tone-2" data-folder="02-casamento">
+            <div class="chapter-icon">💍</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 2 • O nosso sim</div>
+                <div class="timeline-year"><span class="year-dot"></span>2011 • O nosso sim</div>
+                <h3>O altar foi só o começo</h3>
+                <p>
+                  No dia <strong>29 de abril de 2011</strong>, diante de Deus, da família e da esperança no coração,
+                  começamos oficialmente a nossa vida juntos.
+                </p>
+                <p>
+                  Não começamos com tudo pronto. Não começamos com conforto. Mas começamos com algo que foi mais forte
+                  do que qualquer dificuldade: <strong>a decisão de permanecer juntos.</strong>
+                </p>
+                <p>
+                  Desde aquele dia, eu descobri que casar com você foi dizer “sim” não apenas a um momento,
+                  mas a uma vida inteira ao seu lado.
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="02-casamento"></div>
+                <div class="album-meta">
+                  <span data-count="02-casamento">Carregando fotos…</span>
+                  <span>Nosso álbum do altar</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('02-casamento','O altar foi só o começo')">
+                  Ver álbum do casamento
+                </button>
+              </div>
+            </div>
+          </article>
+
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">uma nova fase</div>
+              <h4>Depois do altar, a vida começou de verdade</h4>
+              <p>Foi ali que o amor deixou de ser promessa e passou a ser escolha diária, mesmo quando nada estava pronto.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-3" data-folder="03-primeiras-lutas">
+            <div class="chapter-icon">🕊️</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 3 • As primeiras lutas</div>
+                <div class="timeline-year"><span class="year-dot"></span>2011–2016 • Os primeiros anos</div>
+                <h3>Começamos sem certezas, mas juntos</h3>
+                <p>
+                  Logo no início do nosso casamento já enfrentamos uma grande dificuldade:
+                  ainda não tínhamos um lugar certo para morar, porque a casa que alugamos não tinha sido desocupada.
+                </p>
+                <p>
+                  Até na lua de mel existia a incerteza. Mas quando voltamos, conseguimos entrar na casa.
+                  E ali aprendemos uma das maiores verdades da nossa história:
+                  <strong>quando estamos juntos, até o improviso vira começo.</strong>
+                </p>
+                <p>
+                  Moramos de aluguel por cinco anos. E mesmo sem luxo, fomos enchendo esse tempo de amor,
+                  cumplicidade e esperança.
+                </p>
+              </div>
+              
+              <div class="story-illustration">
+                <div class="story-icon">🕊️</div>
+                <h4>Os primeiros anos foram feitos de amor, improviso e permanência</h4>
+                <div class="story-line" aria-hidden="true"></div>
+                <p>
+                  Nem toda fase importante da vida fica registrada em foto.
+                  Algumas memórias ficam guardadas no coração, no que foi vivido em silêncio
+                  e naquilo que só quem esteve junto consegue lembrar.
+                </p>
+                <p class="story-note">
+                  Aqui, a imagem mais forte não está em um álbum — está no que vocês enfrentaram lado a lado.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="chapter stage-tone-4" data-folder="04-grande-desafio">
+            <div class="chapter-icon">🏠</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 4 • O grande desafio</div>
+                <div class="timeline-year"><span class="year-dot"></span>2016 • O grande desafio</div>
+                <h3>Quando a vida apertou, o nosso amor não recuou</h3>
+                <p>
+                  Depois de cinco anos, a dona pediu a casa e nós não tínhamos para onde ir.
+                  Foi um daqueles momentos em que a vida exige coragem.
+                </p>
+                <p>
+                  Minha mãe sugeriu construirmos a nossa casa no lote dela. E nós aceitamos o desafio.
+                </p>
+                <p>
+                  Para isso, tivemos que morar em um cômodo, dormir em cama de solteiro, sem espaço, sem privacidade,
+                  sem conforto. Mas mesmo ali, o que mais importava continuava firme:
+                  <strong>nós dois.</strong>
+                </p>
+              </div>
+              
+              <div class="story-illustration">
+                <div class="story-icon">🏠</div>
+                <h4>Foi quando tudo apertou que a coragem de vocês mais apareceu</h4>
+                <div class="story-line" aria-hidden="true"></div>
+                <p>
+                  Esse capítulo representa o tempo em que a vida pediu coragem,
+                  e vocês responderam com presença, fé e decisão de continuar.
+                </p>
+                <p class="story-note">
+                  Nem sempre existe álbum para a fase mais difícil — mas existe marca, existe memória e existe história.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">quando tudo apertou</div>
+              <h4>Foi na luta que a nossa história ganhou profundidade</h4>
+              <p>Nem toda fase bonita nasce pronta. Algumas precisam ser sustentadas primeiro pela coragem.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-5" data-folder="05-construcao">
+            <div class="chapter-icon">🧱</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 5 • Construindo nosso lar</div>
+                <div class="timeline-year"><span class="year-dot"></span>2016–2018 • Construindo nosso lar</div>
+                <h3>O que hoje é casa, um dia foi luta diária</h3>
+                <p>
+                  Quando conseguimos nos mudar, a casa ainda não estava pronta.
+                  Tínhamos apenas <strong>um quarto e um banheiro</strong>.
+                </p>
+                <p>
+                  Ficamos meses sem cozinha, sem móveis, improvisando como dava.
+                  Você lavava as louças na casa da minha mãe, carregando baldes com vasilhas sujas
+                  e voltando com elas limpas.
+                </p>
+                <p>
+                  Foram cenas simples, mas que dizem muito sobre quem você é, sobre quem nós somos
+                  e sobre o preço de cada conquista que temos hoje.
+                </p>
+                <p>
+                  Hoje temos nosso lar, com cada parede marcada por oração, esforço e amor.
+                  E ainda existe espaço para o futuro, porque sonhar com você sempre vale a pena.
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="05-construcao"></div>
+                <div class="album-meta">
+                  <span data-count="05-construcao">Carregando fotos…</span>
+                  <span>Nosso álbum da construção</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('05-construcao','O que hoje é casa, um dia foi luta diária')">
+                  Ver o álbum da obra
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter stage-tone-6" data-folder="06-gravidez">
+            <div class="chapter-icon">🤰</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 6 • Um amor que cresceu</div>
+                <div class="timeline-year"><span class="year-dot"></span>2021 • A espera mais bonita</div>
+                <h3>Antes de ser abraço, já era promessa</h3>
+                <p>
+                  Depois que estávamos no nosso espaço, entendemos que era hora de viver uma nova fase.
+                  Até então éramos um casal. Mas Deus nos conduziu para algo ainda maior.
+                </p>
+                <p>
+                  A gravidez trouxe expectativa, ternura, oração e um novo tipo de alegria.
+                  Era como se a nossa história estivesse se abrindo para um amor ainda mais completo.
+                </p>
+                <p>
+                  A partir dali, tudo começou a ganhar um novo nome:
+                  <strong>família.</strong>
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="06-gravidez"></div>
+                <div class="album-meta">
+                  <span data-count="06-gravidez">Carregando fotos…</span>
+                  <span>O capítulo da espera mais bonita</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('06-gravidez','Antes de ser abraço, já era promessa')">
+                  Ver esse capítulo
+                </button>
+              </div>
+            </div>
+          </article>
+
+
+          <div class="cinematic-pause">
+            <div class="cinematic-pause-inner">
+              <div class="pause-mini">quando o amor amadurece</div>
+              <h4>O que era casal começou a ganhar nome de família</h4>
+              <p>A casa ficou mais cheia de sentido, e a nossa história começou a carregar um novo tipo de alegria.</p>
+              <div class="pause-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <article class="chapter stage-tone-7" data-folder="07-familia">
+            <div class="chapter-icon">👨‍👩‍👧</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 7 • De casal para família</div>
+                <div class="timeline-year"><span class="year-dot"></span>2021 em diante • Nossa família</div>
+                <h3>Alexandra chegou e deu um novo nome ao nosso amor</h3>
+                <p>
+                  Depois de 10 anos de casados, chegou a nossa Alexandra.
+                  E com ela, a nossa história ganhou ainda mais sentido, mais cor, mais alegria e mais propósito.
+                </p>
+                <p>
+                  Ela não apenas aumentou a casa. Ela encheu a nossa vida.
+                </p>
+                <p>
+                  O amor que já era forte entre nós passou a ter um novo centro, um novo brilho e uma nova missão.
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="07-familia"></div>
+                <div class="album-meta">
+                  <span data-count="07-familia">Carregando fotos…</span>
+                  <span>Nosso álbum em família</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('07-familia','Alexandra chegou e deu um novo nome ao nosso amor')">
+                  Ver nossa família
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter stage-tone-8" data-folder="08-hoje">
+            <div class="chapter-icon">✨</div>
+            <div class="chapter-body">
+              <div class="chapter-card">
+                <div class="mini">Capítulo 8 • Hoje</div>
+                <div class="timeline-year"><span class="year-dot"></span>Hoje • A nossa história continua</div>
+                <h3>Depois de tudo, eu ainda escolheria você</h3>
+                <p>
+                  Vieram novas conquistas, veio o primeiro carro, vieram os problemas que hoje rendem até risada,
+                  veio um carro melhor, veio amadurecimento, vieram novos sonhos.
+                </p>
+                <p>
+                  Mas acima de tudo, veio a certeza de que a nossa história não é bonita porque foi fácil.
+                  Ela é bonita porque foi verdadeira.
+                </p>
+                <p>
+                  <strong>Eu escolheria você no congresso, no altar, no cômodo apertado, na obra, na espera,
+                  na chegada da Alexandra e em todos os dias da minha vida.</strong>
+                </p>
+              </div>
+              <div class="album-card">
+                <div class="preview-grid" data-preview="08-hoje"></div>
+                <div class="album-meta">
+                  <span data-count="08-hoje">Carregando fotos…</span>
+                  <span>Os nossos dias de hoje</span>
+                </div>
+                <button class="btn btn-secondary album-button" type="button" onclick="abrirAlbumPorPasta('08-hoje','Depois de tudo, eu ainda escolheria você')">
+                  Ver esse capítulo
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="quote-card">
+          <p class="quote">
+            “Nosso amor não nasceu em dias fáceis. Ele foi construído nas lutas.
+            E por isso permanece tão forte.”
+          </p>
+          <small>29 de abril de 2011 — 29 de abril de 2026</small>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container final-letter">
+        <div class="letter-card">
+          <div class="badge">Carta final</div>
+          <h2>Entre todas as escolhas da minha vida, você continua sendo a mais bonita</h2>
+          <p>
+            Jéssica, quando eu olho para os nossos 15 anos de casamento,
+            eu não vejo apenas o tempo passar. Eu vejo a mão de Deus em cada detalhe.
+          </p>
+          <p>
+            Vejo a mulher que esteve ao meu lado nos dias fáceis e, principalmente, nos dias difíceis.
+            Vejo você acreditando, suportando, ajudando, construindo, amando e permanecendo.
+          </p>
+          <p>
+            Nossa história não foi feita de facilidades. Foi feita de coragem, parceria, renúncia e fé.
+            E é exatamente por isso que ela é tão bonita.
+          </p>
+          <p>
+            Obrigado por cada luta que você enfrentou comigo. Obrigado por cada fase em que escolheu ficar.
+            Obrigado por ser meu amor, minha companheira, minha casa e a mãe da nossa filha.
+          </p>
+          <p>
+            Feliz 15 anos de casamento. <strong>Eu te amo ontem, hoje e para sempre.</strong>
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" onclick="abrirAlbumPorPasta('09-jessica','Jéssica — a mais bonita das minhas escolhas')">
+              Ver o álbum da Jéssica
+            </button>
+            <button class="btn btn-secondary declaration-trigger" type="button" onclick="abrirDeclaracao()">
+              Abrir minha última declaração
+            </button>
+          </div>
+        </div>
+
+        <div class="portrait-card">
+          <img id="jessicaPortrait" src="" alt="Jéssica" />
+          <div class="portrait-note">
+            Você foi comigo no improviso, na escassez, na luta e na construção.
+            Muita gente ama quando está tudo bonito. Você amou quando ainda era só promessa.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    Feito com amor para celebrar 15 anos de aliança, permanência, família e tudo o que ainda vamos viver.
+  </footer>
+
+
+  <div class="declaration-modal" id="declarationModal" aria-hidden="true">
+    <div class="declaration-panel">
+      <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
+      <div class="declaration-layout">
+        <aside class="declaration-aside">
+          <div class="badge">Última declaração</div>
+          <div class="declaration-kicker">o que permanece</div>
+          <h3>Se eu pudesse viver tudo de novo, eu ainda escolheria você</h3>
+          <div class="declaration-divider" aria-hidden="true"></div>
+          <div class="declaration-verse">
+            <p>“Portanto, o que Deus uniu, ninguém separe.”</p>
+            <span>Marcos 10:09</span>
+          </div>
+          <div class="declaration-quote">
+            Nem o tempo, nem a luta, nem a espera diminuíram aquilo que eu sinto por você.
+            Só tornaram tudo mais verdadeiro.
+          </div>
+        </aside>
+
+        <div class="declaration-copy">
+          <p>
+            Eu escolheria você no olhar de 2008.
+            Escolheria você no altar de 2011.
+          </p>
+          <p>
+            Escolheria você no improviso, no aluguel, na incerteza
+            e nos dias em que a coragem precisou ser maior do que o medo.
+          </p>
+          <p>
+            Escolheria você na poeira da obra, nas orações silenciosas,
+            na espera pela nossa filha e na vida que continuamos construindo
+            capítulo por capítulo.
+          </p>
+          <p>
+            Porque o mais bonito da nossa história nunca foi ter começado perfeita.
+          </p>
+          <p class="declaration-impact">
+            O mais bonito foi você ter permanecido.<br/>
+            Foi nós dois termos ficado.<br/>
+            Foi o amor ter virado casa, família e aliança.
+          </p>
+          <p class="declaration-impact">
+            Obrigado por ficar.<br/>
+            Obrigado por construir.<br/>
+            Obrigado por ser a escolha mais bonita da minha vida.
+          </p>
+          <div class="declaration-signature">Felipe, para Jéssica — 15 anos escolhendo você</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cinematic-bridge" id="cinematicBridge" aria-hidden="true">
+    <div class="cinematic-bridge-card">
+      <div class="mini">antes da última declaração</div>
+      <h3>Depois de tudo o que vivemos…</h3>
+      <p>algumas palavras não encerram uma história.<br>elas apenas revelam o que resistiu, o que permaneceu e o que ainda escolhe amar.</p>
+      <div class="bridge-line" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="albumModal" aria-hidden="true">
+    <div class="modal-wrap">
+      <div class="modal-top">
+        <div class="modal-title" id="modalTitle">Álbum</div>
+        <button class="modal-close" type="button" onclick="fecharModal()" aria-label="Fechar">×</button>
+      </div>
+
+      <div class="modal-main">
+        <button class="nav-btn" type="button" onclick="mudarSlide(-1)" aria-label="Anterior">❮</button>
+        <div class="stage">
+          <img id="modalImage" src="" alt="Foto do álbum" />
+          <div class="counter" id="modalCounter"></div>
+        </div>
+        <button class="nav-btn" type="button" onclick="mudarSlide(1)" aria-label="Próxima">❯</button>
+      </div>
+
+      <div class="thumbs-wrap"><div class="modal-hint">Use as setas do teclado, deslize no celular ou toque nas miniaturas.</div><div class="thumbs" id="modalThumbs"></div></div>
+    </div>
+  </div>
+
+  <script>
+    const chapters = [
+      { folder:'01-comeco', title:'Tudo começou com um olhar' },
+      { folder:'02-casamento', title:'O altar foi só o começo' },
+      { folder:'03-primeiras-lutas', title:'Começamos sem certezas, mas juntos' },
+      { folder:'04-grande-desafio', title:'Quando a vida apertou, o nosso amor não recuou' },
+      { folder:'05-construcao', title:'O que hoje é casa, um dia foi luta diária' },
+      { folder:'06-gravidez', title:'Antes de ser abraço, já era promessa' },
+      { folder:'07-familia', title:'Alexandra chegou e deu um novo nome ao nosso amor' },
+      { folder:'08-hoje', title:'Depois de tudo, eu ainda escolheria você' },
+      { folder:'09-jessica', title:'Jéssica — a mais bonita das minhas escolhas' }
+    ];
+
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    let audioBaseVolume = 0.18;
+    let declarationOpening = false;
+
+    async function fadeAudioTo(target, duration = 700){
+      const safeTarget = Math.max(0, Math.min(1, target));
+      const steps = 18;
+      const start = bgAudio.volume;
+      for(let i = 1; i <= steps; i++){
+        bgAudio.volume = start + ((safeTarget - start) * (i / steps));
+        await new Promise(resolve => setTimeout(resolve, duration / steps));
+      }
+    }
+
+    async function abrirDeclaracao(){
+      if(declarationOpening) return;
+      declarationOpening = true;
+
+      const bridge = document.getElementById('cinematicBridge');
+      const modal = document.getElementById('declarationModal');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(0.06, 900);
+      }
+
+      bridge.classList.add('open');
+      bridge.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      await new Promise(resolve => setTimeout(resolve, 2800));
+
+      bridge.classList.remove('open');
+      bridge.setAttribute('aria-hidden','true');
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      declarationOpening = false;
+    }
+
+    async function fecharDeclaracao(){
+      const modal = document.getElementById('declarationModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+
+      if(!bgAudio.paused){
+        await fadeAudioTo(audioBaseVolume, 950);
+      }
+
+      if(!document.getElementById('albumModal').classList.contains('open')){
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateProgress(){
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('progressBar').style.width = percent + '%';
+    }
+
+    function setupTimelineObserver(){
+      const chapterEls = [...document.querySelectorAll('.chapter')];
+      const nav = document.getElementById('timelineNav');
+      nav.innerHTML = '';
+
+      chapterEls.forEach((chapter, index)=>{
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', `Ir para ${chapter.querySelector('h3').textContent}`);
+        btn.onclick = ()=> chapter.scrollIntoView({behavior:'smooth', block:'center'});
+        nav.appendChild(btn);
+      });
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('revealed');
+          }
+        });
+
+        const visible = entries
+          .filter(entry=>entry.isIntersecting)
+          .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+
+        if(visible){
+          chapterEls.forEach((chapter, idx)=>{
+            const active = chapter === visible.target;
+            chapter.classList.toggle('active', active);
+            nav.children[idx]?.classList.toggle('active', active);
+          });
+        }
+      }, { threshold:[0.2,0.38,0.62], rootMargin:'-18% 0px -18% 0px' });
+
+      chapterEls.forEach(chapter=> observer.observe(chapter));
+    }
+
+    function setupModalTouch(){
+      const stageImage = document.getElementById('modalImage');
+      stageImage.addEventListener('touchstart', (e)=>{
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive:true});
+
+      stageImage.addEventListener('touchend', (e)=>{
+        touchEndX = e.changedTouches[0].screenX;
+        const delta = touchEndX - touchStartX;
+        if(Math.abs(delta) < 35) return;
+        if(delta < 0) mudarSlide(1);
+        else mudarSlide(-1);
+      }, {passive:true});
+    }
+
+    const loadedAlbums = {};
+    let currentAlbum = [];
+    let currentIndex = 0;
+    let currentTitle = '';
+
+    function createHearts(){
+      const box = document.querySelector('.floating-hearts');
+      const icons = ['❤','♥','♡'];
+      for(let i=0;i<26;i++){
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.textContent = icons[Math.floor(Math.random()*icons.length)];
+        heart.style.left = Math.random()*100 + 'vw';
+        heart.style.animationDuration = (10 + Math.random()*16) + 's';
+        heart.style.animationDelay = (Math.random()*12) + 's';
+        heart.style.fontSize = (12 + Math.random()*18) + 'px';
+        box.appendChild(heart);
+      }
+    }
+
+    function tryLoad(src){
+      return new Promise((resolve,reject)=>{
+        const img = new Image();
+        img.onload = ()=>resolve(src);
+        img.onerror = ()=>reject(src);
+        img.src = src;
+      });
+    }
+
+    async function discoverAlbum(folder){
+      if(loadedAlbums[folder]) return loadedAlbums[folder];
+
+      const files = [];
+      const extensions = ['jpg','jpeg','png','JPG','JPEG','PNG','webp','WEBP'];
+      let misses = 0;
+
+      for(let i=1;i<=30;i++){
+        const num = String(i).padStart(2,'0');
+        let found = false;
+
+        for(const ext of extensions){
+          const src = `fotos/${folder}/${num}.${ext}`;
+          try{
+            await tryLoad(src);
+            files.push(src);
+            found = true;
+            break;
+          }catch(e){}
+        }
+
+        if(!found){
+          misses++;
+          if(i > 6 && misses >= 4) break;
+        }else{
+          misses = 0;
+        }
+      }
+
+      loadedAlbums[folder] = files;
+      return files;
+    }
+
+    async function renderPreviews(folder){
+      const files = await discoverAlbum(folder);
+      const previewBox = document.querySelector(`[data-preview="${folder}"]`);
+      const countBox = document.querySelector(`[data-count="${folder}"]`);
+      if(!previewBox || !countBox) return;
+
+      previewBox.innerHTML = '';
+      if(!files.length){
+        const empty = document.createElement('div');
+        empty.className = 'preview empty';
+        previewBox.appendChild(empty);
+        countBox.textContent = 'Nenhuma foto encontrada ainda.';
+        return;
+      }
+
+      files.slice(0,4).forEach((src, idx)=>{
+        const frame = document.createElement('div');
+        frame.className = 'preview';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Foto ${idx+1} do álbum ${folder}`;
+        frame.appendChild(img);
+        frame.onclick = ()=>abrirAlbum(folder);
+        previewBox.appendChild(frame);
+      });
+
+      countBox.textContent = files.length === 1 ? '1 foto neste capítulo' : `${files.length} fotos neste capítulo`;
+    }
+
+    async function abrirAlbum(folder){
+      const meta = chapters.find(c=>c.folder===folder);
+      const title = meta ? meta.title : 'Álbum';
+      const files = await discoverAlbum(folder);
+      if(!files.length) return;
+      currentAlbum = files;
+      currentIndex = 0;
+      currentTitle = title;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('albumModal').classList.add('open');
+      document.getElementById('albumModal').setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      renderModal();
+    }
+
+    function abrirAlbumPorPasta(folder,title){
+      const meta = chapters.find(c=>c.folder===folder);
+      if(meta && !title) title = meta.title;
+      abrirAlbum(folder);
+    }
+
+    function fecharModal(){
+      document.getElementById('albumModal').classList.remove('open');
+      document.getElementById('albumModal').setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    function mudarSlide(step){
+      if(!currentAlbum.length) return;
+      currentIndex = (currentIndex + step + currentAlbum.length) % currentAlbum.length;
+      renderModal();
+    }
+
+    function irParaSlide(index){
+      currentIndex = index;
+      renderModal();
+    }
+
+    function renderModal(){
+      const img = document.getElementById('modalImage');
+      const counter = document.getElementById('modalCounter');
+      const thumbs = document.getElementById('modalThumbs');
+      img.classList.add('is-changing');
+      requestAnimationFrame(()=>{
+        img.src = currentAlbum[currentIndex];
+        counter.textContent = `${currentIndex + 1} de ${currentAlbum.length}`;
+        setTimeout(()=>img.classList.remove('is-changing'), 120);
+      });
+      thumbs.innerHTML = '';
+
+      currentAlbum.forEach((src, idx)=>{
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'thumb' + (idx === currentIndex ? ' active' : '');
+        btn.onclick = ()=>irParaSlide(idx);
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Miniatura ${idx+1}`;
+        btn.appendChild(image);
+        thumbs.appendChild(btn);
+      });
+    }
+
+    document.addEventListener('keydown', (e)=>{
+      const albumOpen = document.getElementById('albumModal').classList.contains('open');
+      const declarationOpen = document.getElementById('declarationModal').classList.contains('open');
+      if(e.key === 'Escape'){
+        if(albumOpen) fecharModal();
+        else if(declarationOpen) fecharDeclaracao();
+      }
+      if(!albumOpen) return;
+      if(e.key === 'ArrowRight') mudarSlide(1);
+      if(e.key === 'ArrowLeft') mudarSlide(-1);
+    });
+
+    document.getElementById('albumModal').addEventListener('click', (e)=>{
+      if(e.target.id === 'albumModal') fecharModal();
+    });
+
+
+    const chapterAnchors = {
+      '01-comeco':'Um olhar em Brasília já carregava uma história inteira dentro dele.',
+      '02-casamento':'O altar não foi o ápice — foi a porta de entrada da nossa vida juntos.',
+      '03-primeiras-lutas':'Quando a vida não estava pronta, o amor decidiu continuar mesmo assim.',
+      '04-grande-desafio':'Quando tudo apertou, foi o nosso amor que abriu espaço para seguir.',
+      '05-construcao':'O que hoje é lar, um dia foi só fé, poeira e coragem.',
+      '06-gravidez':'Antes de ser abraço, já era promessa, oração e espera.',
+      '07-familia':'Nosso amor ganhou nome, voz, riso e sentido de família.',
+      '08-hoje':'Depois de tudo, a certeza mais bonita continua sendo você.'
+    };
+
+    function injectChapterAnchors(){
+      document.querySelectorAll('.chapter').forEach((chapter)=>{
+        const folder = chapter.getAttribute('data-folder');
+        const card = chapter.querySelector('.chapter-card');
+        if(!card || card.querySelector('.chapter-anchor')) return;
+        const title = card.querySelector('h3');
+        if(!title) return;
+        const anchor = document.createElement('div');
+        anchor.className = 'chapter-anchor';
+        anchor.textContent = chapterAnchors[folder] || 'Cada etapa dessa história ainda escolhe o amor.';
+        title.insertAdjacentElement('afterend', anchor);
+      });
+    }
+
+    function applyMoodStage(chapter){
+      const moodLayer = document.getElementById('moodLayer');
+      if(!moodLayer || !chapter) return;
+      const chaptersList = [...document.querySelectorAll('.chapter')];
+      const idx = Math.max(0, chaptersList.indexOf(chapter)) + 1;
+      moodLayer.className = 'mood-layer stage-' + idx;
+    }
+
+
+
+    function calcularTempoJuntos(inicioStr){
+      const [dia, mes, ano] = inicioStr.split('/').map(Number);
+      const inicio = new Date(ano, mes - 1, dia);
+      const hoje = new Date();
+
+      let anos = hoje.getFullYear() - inicio.getFullYear();
+      let meses = hoje.getMonth() - inicio.getMonth();
+      let dias = hoje.getDate() - inicio.getDate();
+
+      if(dias < 0){
+        const ultimoDiaMesAnterior = new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
+        dias += ultimoDiaMesAnterior;
+        meses--;
+      }
+
+      if(meses < 0){
+        meses += 12;
+        anos--;
+      }
+
+      return { anos, meses, dias };
+    }
+
+    function renderContadorRelacionamento(){
+      const tempo = calcularTempoJuntos('29/04/2011');
+      const yearsEl = document.getElementById('counterYears');
+      const monthsEl = document.getElementById('counterMonths');
+      const daysEl = document.getElementById('counterDays');
+      const footEl = document.getElementById('counterFoot');
+
+      if(yearsEl) yearsEl.textContent = tempo.anos;
+      if(monthsEl) monthsEl.textContent = tempo.meses;
+      if(daysEl) daysEl.textContent = tempo.dias;
+      if(footEl) footEl.textContent = 'e ainda continua sendo a história mais bonita da minha vida.';
+    }
+
+
+    async function boot(){
+      createHearts();
+      renderContadorRelacionamento();
+      injectChapterAnchors();
+      updateProgress();
+      setupTimelineObserver();
+      setupModalTouch();
+      window.addEventListener('scroll', updateProgress, {passive:true});
+      window.addEventListener('resize', updateProgress);
+
+      document.getElementById('declarationModal').addEventListener('click', (e)=>{
+        if(e.target.id === 'declarationModal') fecharDeclaracao();
+      });
+
+      for(const chapter of chapters){
+        renderPreviews(chapter.folder);
+      }
+
+      const heroFiles = await discoverAlbum('02-casamento');
+      const hero = document.getElementById('heroImage');
+      const intro = document.getElementById('introImage');
+      if(heroFiles.length){
+        hero.src = heroFiles[0];
+        if(intro) intro.src = heroFiles[Math.min(1, heroFiles.length - 1)];
+      }
+
+      const portraitFiles = await discoverAlbum('09-jessica');
+      const portrait = document.getElementById('jessicaPortrait');
+      if(portraitFiles.length) portrait.src = portraitFiles[0];
+      else if(heroFiles.length) portrait.src = heroFiles[Math.min(1, heroFiles.length - 1)];
+    }
+
+
+    const bgAudio = document.getElementById('bgAudio');
+    const audioToggle = document.getElementById('audioToggle');
+
+    bgAudio.volume = audioBaseVolume;
+
+    function atualizarPlayer(playing){
+      audioToggle.classList.toggle('playing', playing);
+      audioToggle.setAttribute('aria-label', playing ? 'Pausar trilha instrumental' : 'Tocar ou pausar trilha instrumental');
+      audioToggle.setAttribute('title', playing ? 'Pausar trilha instrumental' : 'Tocar trilha instrumental');
+    }
+
+    let audioStartedOnce = false;
+
+    async function iniciarAudio(){
+      try{
+        if(!audioStartedOnce){
+          bgAudio.volume = 0.02;
+          await bgAudio.play();
+          atualizarPlayer(true);
+          audioStartedOnce = true;
+          await fadeAudioTo(audioBaseVolume, 1400);
+        }else{
+          await bgAudio.play();
+          atualizarPlayer(true);
+        }
+      }catch(err){
+        atualizarPlayer(false);
+      }
+    }
+
+    function pausarAudio(){
+      bgAudio.pause();
+      atualizarPlayer(false);
+    }
+
+    async function alternarAudio(){
+      if(bgAudio.paused) await iniciarAudio();
+      else pausarAudio();
+    }
+
+    audioToggle.addEventListener('click', alternarAudio);
+
+
+    boot();
+  
+// ===== CINEMATIC STAGE CONTROL =====
+const chapterStages = [...document.querySelectorAll('.chapter')];
+
+chapterStages.forEach((chapterEl, index) => {
+  chapterEl.dataset.chapter = String(index + 1);
+});
+
+const observerStage = new IntersectionObserver((entries)=>{
+  const visible = entries
+    .filter(entry => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+  if(!visible) return;
+
+  const id = visible.target.dataset.chapter || '1';
+  document.body.className = document.body.className.replace(/stage-\d/g,'').trim();
+  document.body.classList.add('stage-' + id);
+},{threshold:[0.35, 0.55, 0.75], rootMargin:'-18% 0px -18% 0px'});
+
+chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
+
+
+// ===== REVIVER HISTORIA =====
+const reviverBtn = document.getElementById('reviverHistoria');
+if(reviverBtn) reviverBtn.addEventListener('click', () => {
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  let totalHeight = document.body.scrollHeight - window.innerHeight;
+  let duration = 25000;
+  let start = null;
+
+  function autoScroll(timestamp){
+    if(!start) start = timestamp;
+    let progress = timestamp - start;
+    let percent = Math.min(progress / duration, 1);
+    window.scrollTo(0, totalHeight * percent);
+
+    if(percent < 1){
+      requestAnimationFrame(autoScroll);
+    }
+  }
+
+  requestAnimationFrame(autoScroll);
+});
+
+// ===== FINAL CINEMATICO =====
+function mostrarFinal(){
+  const final = document.getElementById('finalCinematico');
+  final.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if(typeof bgAudio !== 'undefined'){
+    bgAudio.volume = 0.05;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10){
+    setTimeout(mostrarFinal, 1200);
+  }
+});
+
+</script>
+
+<button id="reviverHistoria" style="
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+z-index:9999;
+padding:12px 20px;
+border-radius:999px;
+background:linear-gradient(135deg,#f29ab3,#f5d58c);
+color:#000;
+font-weight:bold;
+border:none;
+cursor:pointer;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+">
+Reviver nossa história
+</button>
+
+<div id="finalCinematico" style="
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.85);
+z-index:10000;
+color:white;
+text-align:center;
+padding:20px;
+">
+  <div style="max-width:600px;font-size:clamp(1.5rem,5vw,2.5rem);line-height:1.4;">
+    15 anos escolhendo você...<br><br>
+    e eu escolheria tudo de novo.
+  </div>
+</div>
+
+</body>
+</html>
