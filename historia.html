@@ -2387,9 +2387,9 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             <button class="btn btn-primary" type="button" onclick="abrirAlbumPorPasta('09-jessica','Jéssica — a mais bonita das minhas escolhas')">
               Ver o álbum da Jéssica
             </button>
-            <button class="btn btn-secondary declaration-trigger" type="button" onclick="abrirDeclaracao()">
+            <a class="btn btn-secondary declaration-trigger" href="declaracao.html">
               Abrir minha última declaração
-            </button>
+            </a>
           </div>
         </div>
 
@@ -2407,64 +2407,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   <footer class="container">
     Feito com amor para celebrar 15 anos de aliança, permanência, família e tudo o que ainda vamos viver.
   </footer>
-
-
-  <div class="declaration-modal" id="declarationModal" aria-hidden="true">
-    <div class="declaration-panel">
-      <button class="declaration-close" type="button" onclick="fecharDeclaracao()" aria-label="Fechar">×</button>
-      <div class="declaration-layout">
-        <aside class="declaration-aside">
-          <div class="badge">Última declaração</div>
-          <div class="declaration-kicker">o que permanece</div>
-          <h3>Se eu pudesse viver tudo de novo, eu ainda escolheria você</h3>
-          <div class="declaration-divider" aria-hidden="true"></div>
-          <div class="declaration-verse">
-            <p>“Portanto, o que Deus uniu, ninguém separe.”</p>
-            <span>Marcos 10:09</span>
-          </div>
-          <div class="declaration-quote">
-            Nem o tempo, nem a luta, nem a espera diminuíram aquilo que eu sinto por você.
-            Só tornaram tudo mais verdadeiro.
-          </div>
-        </aside>
-
-        <div class="declaration-copy">
-          <p>
-            Eu escolheria você no olhar de 2008.
-            Escolheria você no altar de 2011.
-          </p>
-          <p>
-            Escolheria você no improviso, no aluguel, na incerteza
-            e nos dias em que a coragem precisou ser maior do que o medo.
-          </p>
-          <p>
-            Escolheria você na poeira da obra, nas orações silenciosas,
-            na espera pela nossa filha e na vida que continuamos construindo
-            capítulo por capítulo.
-          </p>
-          <p>
-            Porque o mais bonito da nossa história nunca foi ter começado perfeita.
-          </p>
-          <p class="declaration-impact">
-            O mais bonito foi você ter permanecido.<br/>
-            Foi nós dois termos ficado.<br/>
-            Foi o amor ter virado casa, família e aliança.
-          </p>
-          <p class="declaration-impact">
-            Obrigado por ficar.<br/>
-            Obrigado por construir.<br/>
-            Obrigado por ser a escolha mais bonita da minha vida.
-          </p>
-          <div class="declaration-signature">Felipe, para Jéssica — 15 anos escolhendo você</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cinematic-bridge" id="cinematicBridge" aria-hidden="true">
-    <div class="cinematic-bridge-card">
-      <div class="mini">antes da última declaração</div>
-      <h3>Depois de tudo o que vivemos…</h3>
+<h3>Depois de tudo o que vivemos…</h3>
       <p>algumas palavras não encerram uma história.<br>elas apenas revelam o que resistiu, o que permaneceu e o que ainda escolhe amar.</p>
       <div class="bridge-line" aria-hidden="true"></div>
     </div>
@@ -2506,53 +2449,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
     let touchStartX = 0;
     let touchEndX = 0;
-
     let audioBaseVolume = 0.18;
-    let declarationOpening = false;
 
-    async function fadeAudioTo(target, duration = 700){
-      const safeTarget = Math.max(0, Math.min(1, target));
-      const steps = 18;
-      const start = bgAudio.volume;
-      for(let i = 1; i <= steps; i++){
-        bgAudio.volume = start + ((safeTarget - start) * (i / steps));
-        await new Promise(resolve => setTimeout(resolve, duration / steps));
-      }
-    }
-
-    async function abrirDeclaracao(){
-      if(declarationOpening) return;
-      declarationOpening = true;
-
-      const bridge = document.getElementById('cinematicBridge');
-      const modal = document.getElementById('declarationModal');
-
-      if(!bgAudio.paused){
-        await fadeAudioTo(0.06, 900);
-      }
-
-      bridge.classList.add('open');
-      bridge.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-
-      await new Promise(resolve => setTimeout(resolve, 2800));
-
-      bridge.classList.remove('open');
-      bridge.setAttribute('aria-hidden','true');
-
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      declarationOpening = false;
-    }
-
-    async function fecharDeclaracao(){
-      const modal = document.getElementById('declarationModal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-
-      if(!bgAudio.paused){
-        await fadeAudioTo(audioBaseVolume, 950);
-      }
 
       if(!document.getElementById('albumModal').classList.contains('open')){
         document.body.style.overflow = '';
@@ -2719,7 +2617,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('albumModal').classList.add('open');
       document.getElementById('albumModal').setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
+      
       renderModal();
     }
 
@@ -2870,10 +2768,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       window.addEventListener('scroll', updateProgress, {passive:true});
       window.addEventListener('resize', updateProgress);
 
-      document.getElementById('declarationModal').addEventListener('click', (e)=>{
-        if(e.target.id === 'declarationModal') fecharDeclaracao();
-      });
-
       for(const chapter of chapters){
         renderPreviews(chapter.folder);
       }
@@ -2960,82 +2854,8 @@ const observerStage = new IntersectionObserver((entries)=>{
 chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
 
 
-// ===== REVIVER HISTORIA =====
-const reviverBtn = document.getElementById('reviverHistoria');
-if(reviverBtn) reviverBtn.addEventListener('click', () => {
-  window.scrollTo({top:0, behavior:'smooth'});
-
-  let totalHeight = document.body.scrollHeight - window.innerHeight;
-  let duration = 25000;
-  let start = null;
-
-  function autoScroll(timestamp){
-    if(!start) start = timestamp;
-    let progress = timestamp - start;
-    let percent = Math.min(progress / duration, 1);
-    window.scrollTo(0, totalHeight * percent);
-
-    if(percent < 1){
-      requestAnimationFrame(autoScroll);
-    }
-  }
-
-  requestAnimationFrame(autoScroll);
-});
-
-// ===== FINAL CINEMATICO =====
-function mostrarFinal(){
-  const final = document.getElementById('finalCinematico');
-  final.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-
-  if(typeof bgAudio !== 'undefined'){
-    bgAudio.volume = 0.05;
-  }
-}
-
-window.addEventListener('scroll', () => {
-  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10){
-    setTimeout(mostrarFinal, 1200);
-  }
-});
-
 </script>
 
-<button id="reviverHistoria" style="
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-z-index:9999;
-padding:12px 20px;
-border-radius:999px;
-background:linear-gradient(135deg,#f29ab3,#f5d58c);
-color:#000;
-font-weight:bold;
-border:none;
-cursor:pointer;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-">
-Reviver nossa história
-</button>
-
-<div id="finalCinematico" style="
-position:fixed;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,.85);
-z-index:10000;
-color:white;
-text-align:center;
-padding:20px;
-">
-  <div style="max-width:600px;font-size:clamp(1.5rem,5vw,2.5rem);line-height:1.4;">
-    15 anos escolhendo você...<br><br>
-    e eu escolheria tudo de novo.
-  </div>
 </div>
 
 </body>
