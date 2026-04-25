@@ -1988,6 +1988,20 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
     body{overflow-x:hidden;}
 
+
+    /* ===== CORREÇÃO DEFINITIVA: REMOVER MENSAGEM QUEBRADA DO RODAPÉ ===== */
+    #cinematicBridge,
+    .cinematic-bridge,
+    .cinematic-bridge-card{
+      display:none !important;
+      visibility:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important;
+      width:0 !important;
+      height:0 !important;
+      overflow:hidden !important;
+    }
+
 </style>
 </head>
 <body>
@@ -2424,8 +2438,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   <footer class="container">
     Feito com amor para celebrar 15 anos de aliança, permanência, família e tudo o que ainda vamos viver.
   </footer>
-<h3>Depois de tudo o que vivemos…</h3>
-      <p>algumas palavras não encerram uma história.<br>elas apenas revelam o que resistiu, o que permaneceu e o que ainda escolhe amar.</p>
+<h3></h3>
+      <p><br></p>
       <div class="bridge-line" aria-hidden="true"></div>
     </div>
   </div>
@@ -2480,39 +2494,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
     }
 
-    async function abrirDeclaracao(){
-      if(declarationOpening) return;
-      declarationOpening = true;
-
-      const bridge = document.getElementById('cinematicBridge');
-      const modal = document.getElementById('declarationModal');
-
-      if(!bgAudio.paused){
-        await fadeAudioTo(0.06, 900);
-      }
-
-      bridge.classList.add('open');
-      bridge.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-
-      await new Promise(resolve => setTimeout(resolve, 2800));
-
-      bridge.classList.remove('open');
-      bridge.setAttribute('aria-hidden','true');
-
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      declarationOpening = false;
-    }
-
-    async function fecharDeclaracao(){
-      const modal = document.getElementById('declarationModal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-
-      if(!bgAudio.paused){
-        await fadeAudioTo(audioBaseVolume, 950);
-      }
 
       if(!document.getElementById('albumModal').classList.contains('open')){
         document.body.style.overflow = '';
