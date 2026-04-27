@@ -2561,6 +2561,110 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
     }
 
+
+
+    /* ===== V17 - CORREÇÃO MOBILE DO ÁLBUM ROTATIVO ===== */
+    .preview img.is-fading{
+      opacity:0;
+      transition:opacity .42s ease;
+    }
+
+    .preview.is-active img{
+      opacity:1;
+      transition:opacity .42s ease;
+    }
+
+    @media (max-width:720px){
+      .chapter.open .preview-grid,
+      .chapter.open .preview,
+      .chapter.open .preview img{
+        opacity:1 !important;
+        visibility:visible !important;
+      }
+    }
+
+
+    /* ===== AUDIO HINT / PRIMEIRO TOQUE ===== */
+    .audio-hint{
+      position:fixed;
+      left:50%;
+      bottom:92px;
+      transform:translate(-50%, 16px);
+      z-index:14001;
+      padding:11px 17px;
+      border-radius:999px;
+      background:rgba(12,7,11,.72);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--text);
+      font-size:.92rem;
+      line-height:1.25;
+      text-align:center;
+      box-shadow:0 18px 45px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.07);
+      backdrop-filter:blur(10px);
+      opacity:0;
+      pointer-events:none;
+      animation:audioHintIn 5.8s ease .45s forwards;
+      max-width:calc(100% - 28px);
+      white-space:nowrap;
+    }
+
+    .audio-hint.hide{
+      animation:none;
+      opacity:0 !important;
+      transform:translate(-50%, 8px) !important;
+      transition:opacity .45s ease, transform .45s ease;
+    }
+
+    @keyframes audioHintIn{
+      0%{opacity:0; transform:translate(-50%, 18px)}
+      16%{opacity:1; transform:translate(-50%, 0)}
+      82%{opacity:1; transform:translate(-50%, 0)}
+      100%{opacity:0; transform:translate(-50%, -6px)}
+    }
+
+    @media (max-width:720px){
+      .audio-hint{
+        bottom:84px;
+        font-size:.84rem;
+        padding:10px 14px;
+        white-space:normal;
+        width:max-content;
+        max-width:calc(100% - 32px);
+      }
+    }
+
+
+    /* ===== AJUSTES FINAIS: FOTO DA JÉSSICA LIMPA E CLICÁVEL ===== */
+    .portrait-album-trigger{
+      appearance:none;
+      border:1px solid var(--line);
+      padding:0;
+      cursor:pointer;
+      text-align:inherit;
+      color:inherit;
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease, filter .28s ease;
+    }
+
+    .portrait-album-trigger:hover{
+      transform:translateY(-3px);
+      border-color:rgba(246,221,160,.32);
+      box-shadow:0 30px 90px rgba(0,0,0,.45), 0 0 40px rgba(246,221,160,.10);
+      filter:brightness(1.03);
+    }
+
+    .portrait-album-trigger:focus-visible{
+      outline:3px solid rgba(246,221,160,.65);
+      outline-offset:4px;
+    }
+
+    .portrait-note{display:none !important;}
+
+    .final-letter .hero-actions{justify-content:flex-start;}
+
+     (max-width:720px){
+      .final-letter .hero-actions{justify-content:center;}
+    }
+
 </style>
 </head>
 <body>
@@ -2570,6 +2674,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
   <button type="button" class="disc-player" id="audioToggle" aria-label="Tocar ou pausar trilha instrumental" title="Tocar ou pausar trilha instrumental"></button>
   <div class="disc-pulse" aria-hidden="true"></div>
+
+  <div class="audio-hint" id="audioHint" aria-hidden="true">Toque na tela para ouvir a trilha da nossa história 🎵</div>
 
   <audio id="bgAudio" loop preload="auto">
     <source src="audio/fundo.mp3" type="audio/mpeg">
@@ -2982,7 +3088,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     <section>
       <div class="container final-letter">
         <div class="letter-card">
-          <div class="badge">Carta final</div>
           <h2>Entre todas as escolhas da minha vida, você continua sendo a mais bonita</h2>
           <p>
             Jéssica, quando eu olho para os nossos 15 anos de casamento,
@@ -3004,22 +3109,15 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
             Feliz 15 anos de casamento. <strong>Eu te amo ontem, hoje e para sempre.</strong>
           </p>
           <div class="hero-actions">
-            <button class="btn btn-primary" type="button" onclick="abrirAlbumPorPasta('09-jessica','Jéssica — a mais bonita das minhas escolhas')">
-              Ver o álbum da Jéssica
-            </button>
-            <a class="btn btn-secondary declaration-trigger" href="declaracao.html">
+            <a class="btn btn-primary declaration-trigger" href="declaracao.html">
               Abrir minha última declaração
             </a>
           </div>
         </div>
 
-        <div class="portrait-card">
+        <button class="portrait-card portrait-album-trigger" type="button" onclick="abrirAlbumPorPasta('09-jessica','Jéssica — a mais bonita das minhas escolhas')" aria-label="Abrir álbum da Jéssica">
           <img id="jessicaPortrait" src="" alt="Jéssica" />
-          <div class="portrait-note">
-            Você foi comigo no improviso, na escassez, na luta e na construção.
-            Muita gente ama quando está tudo bonito. Você amou quando ainda era só promessa.
-          </div>
-        </div>
+        </button>
       </div>
     </section>
   </main>
@@ -3269,15 +3367,18 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
         subtitle: 'Deus esteve presente em cada detalhe dessa parte da nossa história.'
       };
 
-      shuffled.forEach((src, idx)=>{
-        const frame = document.createElement('div');
-        frame.className = 'preview' + (idx === 0 ? ' is-active' : '');
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Foto ${idx+1} do álbum ${folder}`;
-        frame.appendChild(img);
-        previewBox.appendChild(frame);
-      });
+      // V17: usa uma foto principal por álbum e troca o src com preload seguro.
+      // Isso evita que alguns celulares escondam todos os frames empilhados.
+      const frame = document.createElement('div');
+      frame.className = 'preview is-active';
+
+      const img = document.createElement('img');
+      img.src = shuffled[0];
+      img.alt = `Foto do álbum ${folder}`;
+      img.loading = 'eager';
+      img.decoding = 'async';
+      frame.appendChild(img);
+      previewBox.appendChild(frame);
 
       const caption = document.createElement('div');
       caption.className = 'album-caption';
@@ -3295,13 +3396,37 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
       if(shuffled.length > 1){
         let activeIndex = 0;
-        const frames = [...previewBox.querySelectorAll('.preview:not(.empty)')];
         const current = previewBox.querySelector('[data-current-photo]');
+
+        const trocarFoto = ()=>{
+          let nextIndex = Math.floor(Math.random() * shuffled.length);
+          if(shuffled.length > 1 && nextIndex === activeIndex){
+            nextIndex = (nextIndex + 1) % shuffled.length;
+          }
+
+          const nextSrc = shuffled[nextIndex];
+          const preload = new Image();
+
+          preload.onload = ()=>{
+            img.classList.add('is-fading');
+            setTimeout(()=>{
+              activeIndex = nextIndex;
+              img.src = nextSrc;
+              if(current) current.textContent = String(activeIndex + 1);
+              img.classList.remove('is-fading');
+            }, 420);
+          };
+
+          preload.onerror = ()=>{
+            activeIndex = (nextIndex + 1) % shuffled.length;
+          };
+
+          preload.src = nextSrc;
+        };
+
         const timer = setInterval(()=>{
           if(!document.body.contains(previewBox)) return;
-          activeIndex = (activeIndex + 1) % frames.length;
-          frames.forEach((frame, idx)=>frame.classList.toggle('is-active', idx === activeIndex));
-          if(current) current.textContent = String(activeIndex + 1);
+          trocarFoto();
         }, 10000);
         previewBox.dataset.rotateTimer = String(timer);
       }
@@ -3624,7 +3749,48 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       else pausarAudio();
     }
 
-    audioToggle.addEventListener('click', alternarAudio);
+    const audioHint = document.getElementById('audioHint');
+
+    function esconderAudioHint(){
+      if(audioHint) audioHint.classList.add('hide');
+    }
+
+    function removerInicioPorToque(){
+      ['pointerdown','touchstart','click'].forEach(eventName=>{
+        document.removeEventListener(eventName, iniciarAudioNoPrimeiroToque, true);
+      });
+    }
+
+    let tentandoIniciarPorToque = false;
+
+    async function iniciarAudioNoPrimeiroToque(event){
+      if(tentandoIniciarPorToque) return;
+      if(event?.target?.closest?.('#audioToggle')) return;
+      if(!bgAudio || !bgAudio.paused){
+        esconderAudioHint();
+        removerInicioPorToque();
+        return;
+      }
+
+      tentandoIniciarPorToque = true;
+      await iniciarAudio();
+      tentandoIniciarPorToque = false;
+
+      if(!bgAudio.paused){
+        esconderAudioHint();
+        removerInicioPorToque();
+      }
+    }
+
+    ['pointerdown','touchstart','click'].forEach(eventName=>{
+      document.addEventListener(eventName, iniciarAudioNoPrimeiroToque, true);
+    });
+
+    audioToggle.addEventListener('click', async (event)=>{
+      event.stopPropagation();
+      await alternarAudio();
+      if(!bgAudio.paused) esconderAudioHint();
+    });
 
 
     boot();
