@@ -2410,7 +2410,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       z-index:2;
       pointer-events:none;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,.08) 48%, rgba(0,0,0,.54) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.02) 0%, rgba(0,0,0,.06) 42%, rgba(0,0,0,.68) 100%),
         radial-gradient(circle at 30% 18%, rgba(255,255,255,.11), transparent 28%);
     }
 
@@ -2475,18 +2475,20 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     .album-caption strong{
       display:block;
       color:#fff7fb;
-      font-size:1.04rem;
-      line-height:1.25;
-      text-shadow:0 8px 18px rgba(0,0,0,.35);
+      font-size:1.16rem;
+      line-height:1.22;
+      letter-spacing:-.02em;
+      text-shadow:0 10px 24px rgba(0,0,0,.46);
     }
 
     .album-caption span{
       display:block;
-      margin-top:4px;
-      color:rgba(255,247,251,.78);
-      font-size:.88rem;
-      line-height:1.35;
-      text-shadow:0 8px 18px rgba(0,0,0,.35);
+      max-width:34ch;
+      margin-top:6px;
+      color:rgba(255,247,251,.86);
+      font-size:.92rem;
+      line-height:1.42;
+      text-shadow:0 10px 24px rgba(0,0,0,.46);
     }
 
     .album-indicator{
@@ -3064,6 +3066,45 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       { folder:'09-jessica', title:'Jéssica — a mais bonita das minhas escolhas' }
     ];
 
+    const albumNarratives = {
+      '01-comeco': {
+        title: 'Tudo começou com um olhar',
+        subtitle: 'Deus já estava escrevendo a nossa história ali.'
+      },
+      '02-casamento': {
+        title: 'O nosso sim foi só o começo',
+        subtitle: 'Deus selou ali uma aliança que seguiria por toda a vida.'
+      },
+      '03-primeiras-lutas': {
+        title: 'Os primeiros passos da nossa casa',
+        subtitle: 'Deus esteve presente em cada detalhe, mesmo nos dias mais simples.'
+      },
+      '04-grande-desafio': {
+        title: 'Foi no aperto que crescemos',
+        subtitle: 'Mesmo sem espaço, Deus nunca deixou faltar o essencial.'
+      },
+      '05-construcao': {
+        title: 'O sonho começou a ganhar forma',
+        subtitle: 'Cada tijolo também carregava fé, renúncia e cuidado de Deus.'
+      },
+      '06-gravidez': {
+        title: 'Antes de ser abraço, já era promessa',
+        subtitle: 'Deus preparava uma nova alegria para a nossa casa.'
+      },
+      '07-familia': {
+        title: 'O amor ganhou um novo nome',
+        subtitle: 'Deus transformou a nossa história em família.'
+      },
+      '08-hoje': {
+        title: 'Até aqui, Deus nos sustentou',
+        subtitle: 'E continua sendo o centro de tudo o que ainda vamos viver.'
+      },
+      '09-jessica': {
+        title: 'A mais bonita das minhas escolhas',
+        subtitle: 'Deus me presenteou com você, e eu escolheria tudo de novo.'
+      }
+    };
+
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -3223,7 +3264,10 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       }
 
       const shuffled = [...files].sort(()=>Math.random() - 0.5);
-      const albumTitle = chapters.find(c=>c.folder===folder)?.title || 'Memória deste capítulo';
+      const albumInfo = albumNarratives[folder] || {
+        title: chapters.find(c=>c.folder===folder)?.title || 'Memória deste capítulo',
+        subtitle: 'Deus esteve presente em cada detalhe dessa parte da nossa história.'
+      };
 
       shuffled.forEach((src, idx)=>{
         const frame = document.createElement('div');
@@ -3239,8 +3283,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       caption.className = 'album-caption';
       caption.innerHTML = `
         <div>
-          <strong>${albumTitle}</strong>
-          <span>Uma lembrança por vez, alternando automaticamente.</span>
+          <strong>${albumInfo.title}</strong>
+          <span>${albumInfo.subtitle}</span>
         </div>
         <div class="album-indicator"><span data-current-photo>1</span>/${shuffled.length}</div>
       `;
