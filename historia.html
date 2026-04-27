@@ -2002,6 +2002,326 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       overflow:hidden !important;
     }
 
+
+
+/* ===== V6 PORTAL REAL - CAPÍTULOS INTERATIVOS CENTRALIZADOS ===== */
+.timeline::before,
+.timeline-nav{
+  display:none !important;
+}
+
+.cinematic-pause{
+  display:none !important;
+}
+
+.timeline{
+  display:grid !important;
+  gap:clamp(28px, 5vw, 58px) !important;
+  margin-top:34px !important;
+  scroll-snap-type:none !important;
+}
+
+.chapter{
+  width:100% !important;
+  min-height:clamp(560px, 86vh, 860px) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:clamp(28px, 6vw, 70px) 0 !important;
+  opacity:1 !important;
+  filter:none !important;
+  transform:none !important;
+  position:relative !important;
+  scroll-snap-align:none !important;
+}
+
+.chapter::before{
+  display:none !important;
+}
+
+.portal-gate{
+  width:min(780px, 100%) !important;
+  min-height:clamp(420px, 62vh, 620px) !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:36px !important;
+  background:
+    linear-gradient(180deg, rgba(18,12,17,.08), rgba(18,12,17,.74)),
+    radial-gradient(circle at 50% 28%, rgba(245,213,140,.16), transparent 28%),
+    rgba(255,255,255,.045) !important;
+  color:var(--text) !important;
+  cursor:pointer !important;
+  overflow:hidden !important;
+  position:relative !important;
+  display:grid !important;
+  place-items:center !important;
+  padding:clamp(24px, 5vw, 46px) !important;
+  box-shadow:0 28px 100px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.08) !important;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease, opacity .35s ease !important;
+  isolation:isolate !important;
+}
+
+.portal-gate::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:var(--portal-image);
+  background-size:cover;
+  background-position:center;
+  opacity:.23;
+  transform:scale(1.04);
+  filter:saturate(.86) contrast(1.03);
+  transition:opacity .55s ease, transform .75s cubic-bezier(.2,.8,.2,1), filter .55s ease;
+  z-index:-2;
+}
+
+.portal-gate::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center, rgba(0,0,0,.08), rgba(0,0,0,.58) 72%),
+    linear-gradient(180deg, rgba(12,7,11,.10), rgba(12,7,11,.74));
+  z-index:-1;
+}
+
+.portal-gate:hover{
+  transform:translateY(-8px) scale(1.012) !important;
+  border-color:rgba(245,213,140,.34) !important;
+  box-shadow:0 36px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(245,213,140,.06) inset !important;
+}
+
+.portal-gate:hover::before{
+  opacity:.34;
+  transform:scale(1.10);
+  filter:saturate(1.08) contrast(1.08);
+}
+
+.portal-inner{
+  width:min(560px, 100%);
+  display:grid;
+  justify-items:center;
+  gap:16px;
+  position:relative;
+  z-index:2;
+}
+
+.portal-gate .chapter-icon{
+  position:relative !important;
+  top:auto !important;
+  margin:0 auto 6px !important;
+  width:clamp(116px, 18vw, 164px) !important;
+  height:clamp(116px, 18vw, 164px) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255,255,255,.25), transparent 24%),
+    linear-gradient(135deg, rgba(242,154,179,.48), rgba(245,213,140,.34)) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  box-shadow:
+    0 22px 70px rgba(0,0,0,.38),
+    0 0 0 12px rgba(255,255,255,.035),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+  font-size:clamp(2.7rem, 7vw, 4.7rem) !important;
+  line-height:1 !important;
+  transition:transform 1.05s cubic-bezier(.18,.82,.22,1), opacity .85s ease, filter .85s ease, box-shadow .85s ease !important;
+  animation:portalPulse 3.2s ease-in-out infinite;
+}
+
+@keyframes portalPulse{
+  0%,100%{transform:scale(1); box-shadow:0 22px 70px rgba(0,0,0,.38),0 0 0 10px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.18)}
+  50%{transform:scale(1.045); box-shadow:0 26px 80px rgba(0,0,0,.42),0 0 0 18px rgba(242,154,179,.055),inset 0 1px 0 rgba(255,255,255,.20)}
+}
+
+.portal-kicker{
+  color:var(--gold);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  font-weight:800;
+}
+
+.portal-title{
+  margin:0;
+  font-size:clamp(2.2rem, 7vw, 5rem);
+  line-height:.96;
+  letter-spacing:-.06em;
+  text-wrap:balance;
+  text-shadow:0 16px 42px rgba(0,0,0,.36);
+}
+
+.portal-hint{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:4px;
+  padding:13px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.055));
+  border:1px solid rgba(255,255,255,.16);
+  color:var(--rose-2);
+  font-weight:800;
+  font-size:.98rem;
+}
+
+.portal-hint::before{
+  content:"❤";
+  color:var(--rose);
+  filter:drop-shadow(0 0 8px rgba(242,154,179,.38));
+}
+
+.chapter.opening .portal-gate{
+  pointer-events:none !important;
+  opacity:.82 !important;
+  transform:scale(1.02) !important;
+}
+
+.chapter.opening .portal-gate .chapter-icon{
+  animation:none !important;
+  transform:scale(4.8) rotate(4deg) !important;
+  opacity:0 !important;
+  filter:blur(1.2px) !important;
+  box-shadow:
+    0 0 80px rgba(242,154,179,.46),
+    0 0 150px rgba(245,213,140,.30),
+    0 22px 70px rgba(0,0,0,.28) !important;
+}
+
+.chapter.opening .portal-title,
+.chapter.opening .portal-kicker,
+.chapter.opening .portal-hint{
+  opacity:0;
+  transform:translateY(12px) scale(.985);
+  transition:opacity .55s ease, transform .65s cubic-bezier(.2,.8,.2,1);
+}
+
+.chapter:not(.open) .chapter-body{
+  display:none !important;
+}
+
+.chapter.open{
+  min-height:auto !important;
+  justify-content:flex-start !important;
+  padding-top:clamp(22px, 4vw, 48px) !important;
+}
+
+.chapter.open .portal-gate{
+  display:none !important;
+}
+
+.chapter.open .chapter-body{
+  width:min(1120px, 100%) !important;
+  display:grid !important;
+  grid-template-columns:minmax(0, 1.05fr) minmax(300px, .95fr) !important;
+  gap:24px !important;
+  align-items:stretch !important;
+  text-align:left !important;
+  opacity:0;
+  animation:revealChapter .9s cubic-bezier(.2,.8,.2,1) .18s forwards;
+}
+
+@keyframes revealChapter{
+  from{opacity:0; transform:translateY(18px) scale(.992)}
+  to{opacity:1; transform:none}
+}
+
+.chapter.open .chapter-card,
+.chapter.open .album-card,
+.chapter.open .story-illustration{
+  opacity:1 !important;
+  transform:none !important;
+  border-color:rgba(245,213,140,.18) !important;
+}
+
+.chapter.open .chapter-card .mini,
+.chapter.open .chapter-card h3,
+.chapter.open .chapter-card p,
+.chapter.open .chapter-card .hero-actions,
+.chapter.open .chapter-card .btn,
+.chapter.open .album-card .preview-grid,
+.chapter.open .album-card .album-meta,
+.chapter.open .album-card .album-button,
+.chapter.open .chapter-anchor{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+.portal-close-row{
+  grid-column:1 / -1;
+  display:flex;
+  justify-content:center;
+  margin-top:2px;
+}
+
+.portal-close{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.07);
+  color:var(--text);
+  border-radius:999px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-weight:800;
+  transition:.25s ease;
+}
+
+.portal-close:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.11);
+}
+
+.portal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:1199;
+  pointer-events:none;
+  background:radial-gradient(circle at center, rgba(245,213,140,.12), rgba(8,5,8,.38) 50%, rgba(8,5,8,.68));
+  opacity:0;
+  transition:opacity .45s ease;
+}
+
+.portal-backdrop.show{
+  opacity:1;
+}
+
+@media (max-width:980px){
+  .chapter.open .chapter-body{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (max-width:720px){
+  .timeline{
+    gap:24px !important;
+    margin-top:22px !important;
+  }
+  .chapter{
+    min-height:78vh !important;
+    padding:24px 0 !important;
+  }
+  .portal-gate{
+    min-height:66vh !important;
+    border-radius:28px !important;
+    padding:22px !important;
+  }
+  .portal-title{
+    font-size:clamp(2rem, 12vw, 3.8rem);
+  }
+  .portal-hint{
+    width:100%;
+    padding:13px 14px;
+  }
+  .chapter.open .chapter-body{
+    gap:16px !important;
+  }
+  .chapter.opening .portal-gate .chapter-icon{
+    transform:scale(4.2) rotate(4deg) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2495,11 +2815,6 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
-      if(!document.getElementById('albumModal').classList.contains('open')){
-        document.body.style.overflow = '';
-      }
-    }
-
     function updateProgress(){
       const scrollTop = window.scrollY || window.pageYOffset;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -2801,10 +3116,105 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     }
 
 
+
+
+    function setupChapterPortals(){
+      const backdrop = document.createElement('div');
+      backdrop.className = 'portal-backdrop';
+      document.body.appendChild(backdrop);
+
+      const chapterEls = [...document.querySelectorAll('.chapter')];
+
+      chapterEls.forEach((chapter, index)=>{
+        const icon = chapter.querySelector(':scope > .chapter-icon');
+        const title = chapter.querySelector('.chapter-card h3')?.textContent?.trim() || `Capítulo ${index + 1}`;
+        const mini = chapter.querySelector('.chapter-card .mini')?.textContent?.trim() || `Capítulo ${index + 1}`;
+        const year = chapter.querySelector('.timeline-year')?.textContent?.trim() || '';
+        const folder = chapter.dataset.folder;
+        const body = chapter.querySelector(':scope > .chapter-body');
+
+        if(!icon || !body || chapter.querySelector('.portal-gate')) return;
+
+        const gate = document.createElement('button');
+        gate.type = 'button';
+        gate.className = 'portal-gate';
+        gate.setAttribute('aria-expanded','false');
+        gate.setAttribute('aria-label', `Abrir ${title}`);
+
+        const inner = document.createElement('div');
+        inner.className = 'portal-inner';
+
+        const kicker = document.createElement('div');
+        kicker.className = 'portal-kicker';
+        kicker.textContent = year || mini;
+
+        const heading = document.createElement('h3');
+        heading.className = 'portal-title';
+        heading.textContent = title;
+
+        const hint = document.createElement('div');
+        hint.className = 'portal-hint';
+        hint.textContent = 'Tocar para revelar esse momento';
+
+        icon.setAttribute('aria-hidden','true');
+        inner.appendChild(icon);
+        inner.appendChild(kicker);
+        inner.appendChild(heading);
+        inner.appendChild(hint);
+        gate.appendChild(inner);
+        chapter.insertBefore(gate, body);
+
+        const closeRow = document.createElement('div');
+        closeRow.className = 'portal-close-row';
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'portal-close';
+        closeBtn.textContent = 'Escolher outro momento';
+        closeBtn.addEventListener('click', ()=>{
+          chapter.classList.remove('open','active');
+          gate.setAttribute('aria-expanded','false');
+          setTimeout(()=> chapter.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+        });
+        closeRow.appendChild(closeBtn);
+        body.appendChild(closeRow);
+
+        gate.addEventListener('click', ()=>{
+          if(chapter.classList.contains('open')) return;
+
+          chapterEls.forEach(other=>{
+            if(other !== chapter){
+              other.classList.remove('open','opening');
+              other.querySelector('.portal-gate')?.setAttribute('aria-expanded','false');
+            }
+          });
+
+          backdrop.classList.add('show');
+          chapter.classList.add('opening','active','revealed');
+          gate.setAttribute('aria-expanded','true');
+
+          setTimeout(()=>{
+            chapter.classList.remove('opening');
+            chapter.classList.add('open');
+            backdrop.classList.remove('show');
+            chapter.scrollIntoView({behavior:'smooth', block:'start'});
+          }, 920);
+        });
+
+        if(folder){
+          discoverAlbum(folder).then(files=>{
+            if(files && files.length){
+              gate.style.setProperty('--portal-image', `url("${files[0]}")`);
+            }
+          }).catch(()=>{});
+        }
+      });
+    }
+
     async function boot(){
       createHearts();
       renderContadorRelacionamento();
       injectChapterAnchors();
+      setupChapterPortals();
       updateProgress();
       setupTimelineObserver();
       setupModalTouch();
