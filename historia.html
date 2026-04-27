@@ -2127,7 +2127,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     inset 0 1px 0 rgba(255,255,255,.18) !important;
   font-size:clamp(2.7rem, 7vw, 4.7rem) !important;
   line-height:1 !important;
-  transition:transform 1.05s cubic-bezier(.18,.82,.22,1), opacity .85s ease, filter .85s ease, box-shadow .85s ease !important;
+  transition:transform 1.35s cubic-bezier(.16,.84,.24,1), opacity 1.05s ease, filter 1.05s ease, box-shadow 1.05s ease !important;
   animation:portalPulse 3.2s ease-in-out infinite;
 }
 
@@ -2182,7 +2182,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 
 .chapter.opening .portal-gate .chapter-icon{
   animation:none !important;
-  transform:scale(4.8) rotate(4deg) !important;
+  transform:scale(3.9) rotate(2deg) !important;
   opacity:0 !important;
   filter:blur(1.2px) !important;
   box-shadow:
@@ -2196,7 +2196,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
 .chapter.opening .portal-hint{
   opacity:0;
   transform:translateY(12px) scale(.985);
-  transition:opacity .55s ease, transform .65s cubic-bezier(.2,.8,.2,1);
+  transition:opacity .85s ease, transform .95s cubic-bezier(.2,.8,.2,1);
 }
 
 .chapter:not(.open) .chapter-body{
@@ -2221,7 +2221,7 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   align-items:stretch !important;
   text-align:left !important;
   opacity:0;
-  animation:revealChapter .9s cubic-bezier(.2,.8,.2,1) .18s forwards;
+  animation:revealChapter 1.15s cubic-bezier(.2,.8,.2,1) .28s forwards;
 }
 
 @keyframes revealChapter{
@@ -2318,8 +2318,48 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
     gap:16px !important;
   }
   .chapter.opening .portal-gate .chapter-icon{
-    transform:scale(4.2) rotate(4deg) !important;
+    transform:scale(3.2) rotate(2deg) !important;
   }
+}
+
+
+/* ===== V8 REFINO MOBILE: ABERTURA MAIS CLARA E SUAVE ===== */
+@media (max-width: 720px){
+  .portal-gate{
+    min-height:72vh !important;
+    transition:transform .85s cubic-bezier(.16,.84,.24,1), opacity .85s ease, border-color .55s ease, box-shadow .55s ease !important;
+  }
+
+  .portal-gate .chapter-icon{
+    transition:transform 1.65s cubic-bezier(.16,.84,.24,1), opacity 1.25s ease, filter 1.25s ease, box-shadow 1.25s ease !important;
+    animation-duration:3.8s !important;
+  }
+
+  .chapter.opening .portal-gate{
+    opacity:.9 !important;
+    transform:scale(1.008) !important;
+  }
+
+  .chapter.opening .portal-gate .chapter-icon{
+    transform:scale(3.05) rotate(1.5deg) !important;
+    opacity:0 !important;
+    filter:blur(.75px) !important;
+  }
+
+  .chapter.opening .portal-title,
+  .chapter.opening .portal-kicker,
+  .chapter.opening .portal-hint{
+    transition:opacity 1.05s ease, transform 1.15s cubic-bezier(.2,.8,.2,1) !important;
+  }
+
+  .chapter.open .chapter-body{
+    animation:revealChapterMobile 1.35s cubic-bezier(.2,.8,.2,1) .36s forwards !important;
+  }
+}
+
+@keyframes revealChapterMobile{
+  from{opacity:0; transform:translateY(26px) scale(.988)}
+  to{opacity:1; transform:none}
 }
 
 </style>
@@ -2476,13 +2516,24 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
                   ainda não tínhamos um lugar certo para morar, porque a casa que alugamos não tinha sido desocupada.
                 </p>
                 <p>
-                  Até na lua de mel existia a incerteza. Mas quando voltamos, conseguimos entrar na casa.
-                  E ali aprendemos uma das maiores verdades da nossa história:
-                  <strong>quando estamos juntos, até o improviso vira começo.</strong>
+                  Tivemos uma lua de mel maravilhosa.
+                  Deus cuidou de cada detalhe… de um jeito que só Ele sabe fazer.
                 </p>
                 <p>
-                  Moramos de aluguel por cinco anos. E mesmo sem luxo, fomos enchendo esse tempo de amor,
-                  cumplicidade e esperança.
+                  Quando voltamos, a casa ainda estava sendo liberada. Enquanto o inquilino retirava as coisas dele,
+                  nós entrávamos com todos os presentes que tínhamos ganhado.
+                </p>
+                <p>
+                  Parecia improviso, mas Deus fez tudo perfeito. Ele cuidou de cada detalhe e, no tempo certo,
+                  conseguimos entrar na nossa primeira casa.
+                </p>
+                <p>
+                  Ali moramos por cinco anos: eu, você e o Snoopy. Foram anos de lutas e vitórias que só nós sabemos,
+                  mas também anos em que vimos Deus cuidar de tudo.
+                </p>
+                <p>
+                  E foi ali que aprendemos uma das maiores verdades da nossa história:
+                  <strong>quando estamos juntos, até o improviso vira começo.</strong>
                 </p>
               </div>
               
@@ -2491,12 +2542,18 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
                 <h4>Os primeiros anos foram feitos de amor, improviso e permanência</h4>
                 <div class="story-line" aria-hidden="true"></div>
                 <p>
-                  Nem toda fase importante da vida fica registrada em foto.
-                  Algumas memórias ficam guardadas no coração, no que foi vivido em silêncio
-                  e naquilo que só quem esteve junto consegue lembrar.
+                  Eu me lembro dos primeiros móveis, dos presentes entrando pela porta,
+                  do Snoopy fazendo parte da nossa casa…
+                  e de tudo aquilo que só nós sabemos o quanto significou.
+                </p>
+                <p>
+                  Foram anos simples, mas nunca vazios.
+                  Porque em cada detalhe, em cada luta e em cada conquista,
+                  Deus esteve cuidando de tudo.
                 </p>
                 <p class="story-note">
-                  Aqui, a imagem mais forte não está em um álbum — está no que vocês enfrentaram lado a lado.
+                  E olhando pra trás, fica claro:
+                  nada foi por acaso — Ele sempre esteve no controle.
                 </p>
               </div>
 
@@ -2511,29 +2568,42 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
                 <div class="timeline-year"><span class="year-dot"></span>2016 • O grande desafio</div>
                 <h3>Quando a vida apertou, o nosso amor não recuou</h3>
                 <p>
-                  Depois de cinco anos, a dona pediu a casa e nós não tínhamos para onde ir.
-                  Foi um daqueles momentos em que a vida exige coragem.
+                  Depois de cinco anos morando de aluguel, veio a notícia que mudaria tudo:
+                  a dona pediu a casa.
                 </p>
                 <p>
-                  Minha mãe sugeriu construirmos a nossa casa no lote dela. E nós aceitamos o desafio.
+                  Foi ali que nasceu um dos nossos maiores desafios: ir para outro lugar e continuar pagando aluguel,
+                  ou arriscar um passo maior e começar a construir a nossa própria casa.
                 </p>
                 <p>
-                  Para isso, tivemos que morar em um cômodo, dormir em cama de solteiro, sem espaço, sem privacidade,
-                  sem conforto. Mas mesmo ali, o que mais importava continuava firme:
-                  <strong>nós dois.</strong>
+                  No meio da incerteza, Deus abriu caminho. Minha mãe nos ofereceu o lote para construirmos,
+                  e aquilo foi uma resposta que chegou no tempo certo.
+                </p>
+                <p>
+                  Mas morar de aluguel e construir ao mesmo tempo não dava. Então precisamos enfrentar uma renúncia maior:
+                  fomos morar em um quarto na casa da minha mãe enquanto a nossa casa era construída.
+                </p>
+                <p>
+                  Ali foi desafiador. Era apertado, sem conforto e sem privacidade.
+                  Mas mesmo naquele quarto, Deus continuou cuidando de cada detalhe.
+                </p>
+                <p>
+                  Foram dois anos vivendo esse processo. Nós sabemos as lutas que enfrentamos,
+                  as vitórias que celebramos e o quanto Deus sustentou a nossa caminhada até aqui.
                 </p>
               </div>
               
               <div class="story-illustration">
                 <div class="story-icon">🏠</div>
-                <h4>Foi quando tudo apertou que a coragem de vocês mais apareceu</h4>
+                <h4>Foi no aperto que Deus nos ensinou a confiar ainda mais</h4>
                 <div class="story-line" aria-hidden="true"></div>
                 <p>
-                  Esse capítulo representa o tempo em que a vida pediu coragem,
-                  e vocês responderam com presença, fé e decisão de continuar.
+                  Eu me lembro daquele quarto pequeno, da falta de espaço, da saudade de ter um canto só nosso
+                  e da coragem que precisávamos renovar todos os dias.
                 </p>
                 <p class="story-note">
-                  Nem sempre existe álbum para a fase mais difícil — mas existe marca, existe memória e existe história.
+                  Mas também me lembro da mão de Deus sustentando tudo. Ele cuidou da nossa casa antes mesmo dela ficar pronta,
+                  cuidou das nossas lutas, das nossas decisões e de cada vitória que nasceu naquele tempo.
                 </p>
               </div>
 
@@ -2544,8 +2614,8 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
           <div class="cinematic-pause">
             <div class="cinematic-pause-inner">
               <div class="pause-mini">quando tudo apertou</div>
-              <h4>Foi na luta que a nossa história ganhou profundidade</h4>
-              <p>Nem toda fase bonita nasce pronta. Algumas precisam ser sustentadas primeiro pela coragem.</p>
+              <h4>Foi na renúncia que Deus preparou o nosso lar</h4>
+              <p>Antes da casa ficar pronta, Deus já estava construindo em nós fé, paciência e permanência.</p>
               <div class="pause-line" aria-hidden="true"></div>
             </div>
           </div>
@@ -3192,12 +3262,13 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
           chapter.classList.add('opening','active','revealed');
           gate.setAttribute('aria-expanded','true');
 
+          const revealDelay = window.matchMedia('(max-width: 720px)').matches ? 1550 : 1180;
           setTimeout(()=>{
             chapter.classList.remove('opening');
             chapter.classList.add('open');
             backdrop.classList.remove('show');
             chapter.scrollIntoView({behavior:'smooth', block:'start'});
-          }, 920);
+          }, revealDelay);
         });
 
         if(folder){
