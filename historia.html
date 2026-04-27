@@ -2362,6 +2362,203 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
   to{opacity:1; transform:none}
 }
 
+
+
+    /* ===== V15 - ÁLBUM PROFISSIONAL COM FOTO ROTATIVA ===== */
+    .album-card{
+      position:relative;
+      overflow:hidden;
+      padding:18px !important;
+      min-height:420px;
+      justify-content:space-between;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(246,221,160,.12), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(242,154,179,.10), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.045)) !important;
+    }
+
+    .album-card::before{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.06);
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .preview-grid{
+      display:block !important;
+      position:relative;
+      width:100%;
+      min-height:310px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.045);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 20px 46px rgba(0,0,0,.28);
+      cursor:pointer;
+      isolation:isolate;
+    }
+
+    .preview-grid::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:2;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,.08) 48%, rgba(0,0,0,.54) 100%),
+        radial-gradient(circle at 30% 18%, rgba(255,255,255,.11), transparent 28%);
+    }
+
+    .preview{
+      position:absolute !important;
+      inset:0;
+      width:100%;
+      height:100%;
+      aspect-ratio:auto !important;
+      border-radius:0 !important;
+      border:0 !important;
+      opacity:0;
+      transform:scale(1.035);
+      transition:opacity 1.25s ease, transform 8.8s ease;
+      background:#120d12;
+    }
+
+    .preview.is-active{
+      opacity:1;
+      transform:scale(1.10);
+      z-index:1;
+    }
+
+    .preview img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:none !important;
+      animation:none !important;
+      filter:saturate(1.04) contrast(1.02);
+    }
+
+    .preview.empty{
+      position:relative !important;
+      opacity:1;
+      display:grid;
+      place-items:center;
+      min-height:310px;
+      transform:none;
+    }
+
+    .preview.empty::after{
+      content:"Álbum em preparação";
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .album-caption{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:16px;
+      z-index:3;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      pointer-events:none;
+    }
+
+    .album-caption strong{
+      display:block;
+      color:#fff7fb;
+      font-size:1.04rem;
+      line-height:1.25;
+      text-shadow:0 8px 18px rgba(0,0,0,.35);
+    }
+
+    .album-caption span{
+      display:block;
+      margin-top:4px;
+      color:rgba(255,247,251,.78);
+      font-size:.88rem;
+      line-height:1.35;
+      text-shadow:0 8px 18px rgba(0,0,0,.35);
+    }
+
+    .album-indicator{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:54px;
+      height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      color:#2a1319;
+      font-weight:900;
+      font-size:.82rem;
+      background:linear-gradient(180deg, var(--gold-soft), var(--gold));
+      box-shadow:0 10px 22px rgba(0,0,0,.24);
+    }
+
+    .album-meta{
+      position:relative;
+      z-index:3;
+      margin-top:2px;
+      padding:0 2px;
+    }
+
+    .album-meta span:last-child{
+      color:var(--gold);
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+
+    .album-button{
+      position:relative;
+      z-index:3;
+      margin-top:2px;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.07)) !important;
+    }
+
+    .album-card:hover .preview.is-active{
+      transform:scale(1.14);
+    }
+
+    @media (max-width:720px){
+      .album-card{
+        min-height:auto;
+        padding:14px !important;
+      }
+      .preview-grid{
+        min-height:270px;
+        border-radius:22px;
+      }
+      .album-caption{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        align-items:flex-start;
+        flex-direction:column;
+        gap:8px;
+      }
+      .album-caption strong{
+        font-size:.98rem;
+      }
+      .album-caption span{
+        font-size:.82rem;
+      }
+      .album-indicator{
+        height:30px;
+        min-width:48px;
+        font-size:.78rem;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -3012,26 +3209,58 @@ body.stage-6{background: radial-gradient(circle,#2a1a2a,#120808);}
       if(!previewBox || !countBox) return;
 
       previewBox.innerHTML = '';
+      if(previewBox.dataset.rotateTimer){
+        clearInterval(Number(previewBox.dataset.rotateTimer));
+        delete previewBox.dataset.rotateTimer;
+      }
+
       if(!files.length){
         const empty = document.createElement('div');
-        empty.className = 'preview empty';
+        empty.className = 'preview empty is-active';
         previewBox.appendChild(empty);
-        countBox.textContent = 'Nenhuma foto encontrada ainda.';
+        countBox.textContent = 'Álbum em preparação.';
         return;
       }
 
-      files.slice(0,4).forEach((src, idx)=>{
+      const shuffled = [...files].sort(()=>Math.random() - 0.5);
+      const albumTitle = chapters.find(c=>c.folder===folder)?.title || 'Memória deste capítulo';
+
+      shuffled.forEach((src, idx)=>{
         const frame = document.createElement('div');
-        frame.className = 'preview';
+        frame.className = 'preview' + (idx === 0 ? ' is-active' : '');
         const img = document.createElement('img');
         img.src = src;
         img.alt = `Foto ${idx+1} do álbum ${folder}`;
         frame.appendChild(img);
-        frame.onclick = ()=>abrirAlbum(folder);
         previewBox.appendChild(frame);
       });
 
-      countBox.textContent = files.length === 1 ? '1 foto neste capítulo' : `${files.length} fotos neste capítulo`;
+      const caption = document.createElement('div');
+      caption.className = 'album-caption';
+      caption.innerHTML = `
+        <div>
+          <strong>${albumTitle}</strong>
+          <span>Uma lembrança por vez, alternando automaticamente.</span>
+        </div>
+        <div class="album-indicator"><span data-current-photo>1</span>/${shuffled.length}</div>
+      `;
+      previewBox.appendChild(caption);
+
+      previewBox.onclick = ()=>abrirAlbum(folder);
+      countBox.textContent = shuffled.length === 1 ? '1 foto neste capítulo' : `${shuffled.length} fotos neste capítulo`;
+
+      if(shuffled.length > 1){
+        let activeIndex = 0;
+        const frames = [...previewBox.querySelectorAll('.preview:not(.empty)')];
+        const current = previewBox.querySelector('[data-current-photo]');
+        const timer = setInterval(()=>{
+          if(!document.body.contains(previewBox)) return;
+          activeIndex = (activeIndex + 1) % frames.length;
+          frames.forEach((frame, idx)=>frame.classList.toggle('is-active', idx === activeIndex));
+          if(current) current.textContent = String(activeIndex + 1);
+        }, 10000);
+        previewBox.dataset.rotateTimer = String(timer);
+      }
     }
 
     async function abrirAlbum(folder){
