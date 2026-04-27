@@ -11,6 +11,10 @@
       --muted:#f2e4ea;
       --gold:#f6dda0;
       --gold-soft:#fff1cc;
+      --rose:#f29ab3;
+      --line:rgba(255,255,255,.14);
+      --glass:rgba(12,7,11,.24);
+      --shadow:0 24px 80px rgba(0,0,0,.38);
     }
 
     *{box-sizing:border-box}
@@ -35,7 +39,7 @@
       align-items:center;
       padding:clamp(18px, 4vw, 58px);
       background:
-        linear-gradient(90deg, rgba(8,5,8,.88) 0%, rgba(8,5,8,.72) 28%, rgba(8,5,8,.40) 56%, rgba(8,5,8,.12) 100%),
+        linear-gradient(90deg, rgba(8,5,8,.91) 0%, rgba(8,5,8,.76) 30%, rgba(8,5,8,.44) 58%, rgba(8,5,8,.14) 100%),
         url('./fotos/assets/rosas-v40.png') right center / cover no-repeat;
       isolation:isolate;
     }
@@ -47,14 +51,56 @@
       pointer-events:none;
       z-index:0;
       background:
-        radial-gradient(circle at 18% 12%, rgba(246,221,160,.08), transparent 22%),
-        radial-gradient(circle at 82% 18%, rgba(255,120,130,.12), transparent 16%),
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.18));
+        radial-gradient(circle at 18% 14%, rgba(246,221,160,.09), transparent 28%),
+        radial-gradient(circle at 78% 18%, rgba(242,154,179,.10), transparent 20%),
+        radial-gradient(circle at 72% 82%, rgba(255,255,255,.05), transparent 20%),
+        linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.22));
+    }
+
+    .page::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size:56px 56px;
+      mask-image:linear-gradient(90deg, rgba(0,0,0,.8), transparent 70%);
+      opacity:.35;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+
+    .glow{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(246,221,160,.16), transparent 68%);
+      filter:blur(18px);
+      opacity:.65;
+      animation:slowFloat 16s ease-in-out infinite alternate;
+    }
+
+    .glow.one{left:8%; top:10%}
+    .glow.two{right:9%; bottom:10%; width:260px; height:260px; background:radial-gradient(circle, rgba(242,154,179,.14), transparent 68%); animation-delay:-5s}
+
+    @keyframes slowFloat{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(28px,18px,0) scale(1.08)}
     }
 
     .content{
       position:relative;
-      z-index:2;
+      z-index:3;
       width:min(1120px, 100%);
       margin:0 auto;
       display:flex;
@@ -63,7 +109,13 @@
     }
 
     .copy{
-      width:min(540px, 100%);
+      width:min(575px, 100%);
+      animation:enter .9s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    @keyframes enter{
+      from{opacity:0; transform:translateY(22px)}
+      to{opacity:1; transform:none}
     }
 
     .badge{
@@ -71,54 +123,72 @@
       align-items:center;
       padding:11px 16px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(12,7,11,.18);
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(12,7,11,.22);
       color:#ffe3ec;
-      letter-spacing:.09em;
+      letter-spacing:.11em;
       text-transform:uppercase;
-      font-size:.78rem;
-      font-weight:700;
-      backdrop-filter:blur(4px);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+      font-size:.76rem;
+      font-weight:800;
+      backdrop-filter:blur(8px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
       margin-bottom:18px;
     }
 
     h1{
       margin:0 0 18px;
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(3rem, 7vw, 6.2rem);
-      line-height:.9;
-      letter-spacing:-.065em;
-      text-shadow:0 16px 34px rgba(0,0,0,.22);
+      font-size:clamp(3.2rem, 7vw, 6.7rem);
+      line-height:.88;
+      letter-spacing:-.07em;
+      text-shadow:0 18px 42px rgba(0,0,0,.28);
       text-wrap:balance;
     }
 
+    .subtitle{
+      margin:-6px 0 18px;
+      color:var(--gold);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:.76rem;
+      font-weight:800;
+    }
+
     .intro{
-      max-width:17em;
+      max-width:32em;
       margin:0 0 14px;
       color:var(--muted);
       font-size:1.1rem;
-      line-height:1.75;
+      line-height:1.78;
       text-wrap:pretty;
+    }
+
+    .intro strong{
+      color:#fff;
+      font-weight:800;
     }
 
     .date{
       display:inline-flex;
       align-items:center;
       max-width:max-content;
-      margin-top:6px;
+      margin-top:10px;
       padding:12px 18px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
-      background:rgba(12,7,11,.18);
+      background:rgba(12,7,11,.22);
       color:#f3e7ed;
-      backdrop-filter:blur(4px);
+      backdrop-filter:blur(8px);
       box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
       font-size:.96rem;
     }
 
     .actions{
-      margin-top:22px;
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
     }
 
     .button{
@@ -130,16 +200,16 @@
       align-items:center;
       justify-content:center;
       gap:12px;
-      min-width:320px;
+      min-width:330px;
       padding:18px 24px;
       border-radius:999px;
-      background:linear-gradient(180deg, var(--gold-soft), var(--gold));
+      background:linear-gradient(135deg, var(--gold-soft), var(--gold));
       color:#24170d;
-      font-weight:800;
+      font-weight:900;
       font-size:1.04rem;
       box-shadow:
-        0 12px 34px rgba(0,0,0,.28),
-        0 0 34px rgba(255,220,150,.22);
+        0 14px 36px rgba(0,0,0,.30),
+        0 0 38px rgba(255,220,150,.22);
       transition:transform .25s ease, filter .25s ease, box-shadow .25s ease;
       position:relative;
       overflow:hidden;
@@ -149,174 +219,131 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(100deg, transparent, rgba(255,255,255,.30), transparent);
+      background:linear-gradient(100deg, transparent, rgba(255,255,255,.34), transparent);
       transform:translateX(-120%);
-      transition:transform .7s ease;
+      transition:transform .75s ease;
     }
 
     .button:hover{
       transform:translateY(-2px);
       filter:brightness(1.03);
       box-shadow:
-        0 16px 40px rgba(0,0,0,.32),
-        0 0 38px rgba(255,220,150,.26);
+        0 18px 46px rgba(0,0,0,.36),
+        0 0 44px rgba(255,220,150,.26);
     }
 
-    .button:hover::after{
-      transform:translateX(120%);
+    .button:hover::after{transform:translateX(120%)}
+
+    .hint{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:rgba(255,255,255,.78);
+      font-size:.92rem;
+      line-height:1.4;
     }
 
-    .invite{
-      margin-top:18px;
-      color:rgba(255,255,255,.74);
-      font-size:.95rem;
-      letter-spacing:.04em;
-      font-style:italic;
+    .hint::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--gold);
+      box-shadow:0 0 0 0 rgba(246,221,160,.38);
+      animation:pulse 1.8s ease infinite;
     }
 
-    .petals{
-      position:absolute;
-      inset:0;
-      overflow:hidden;
-      pointer-events:none;
-      z-index:1;
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(246,221,160,.38)}
+      70%{box-shadow:0 0 0 12px rgba(246,221,160,0)}
+      100%{box-shadow:0 0 0 0 rgba(246,221,160,0)}
     }
 
-    .petal{
-      position:absolute;
-      top:-60px;
-      width:18px;
-      height:30px;
-      border-radius:60% 40% 60% 40%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,180,190,.72), transparent 28%),
-        linear-gradient(180deg, rgba(180,16,52,.95), rgba(92,4,25,.98));
-      opacity:.38;
-      filter:blur(.2px);
-      animation:fall linear infinite;
+    .closing-note{
+      margin-top:20px;
+      max-width:36em;
+      padding:17px 18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+      backdrop-filter:blur(8px);
+      color:rgba(255,255,255,.82);
+      line-height:1.65;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
     }
 
-    .petal.small{width:12px;height:20px;opacity:.28}
-    .petal.large{width:24px;height:36px;opacity:.42}
-
-    @keyframes fall{
-      0%{transform:translate3d(0,-40px,0) rotate(0deg);opacity:0}
-      8%{opacity:.38}
-      100%{transform:translate3d(42px,110vh,0) rotate(320deg);opacity:0}
-    }
+    .closing-note strong{color:var(--gold)}
 
     @media (max-width:980px){
-      .page{
-        background-position:68% center;
-      }
-
-      .copy{
-        width:min(560px, 100%);
-      }
-
-      .button{
-        width:100%;
-        min-width:0;
-      }
+      .page{background-position:68% center}
+      .copy{width:min(590px, 100%)}
+      .button{width:100%; min-width:0}
+      .actions{display:block}
+      .hint{margin-top:14px}
     }
 
     @media (max-width:720px){
-      body{
-        overflow:auto;
-      }
-
+      body{overflow:auto}
       .page{
         min-height:100svh;
         align-items:center;
-        padding:18px 14px;
+        padding:20px 14px;
         background:
-          linear-gradient(90deg, rgba(8,5,8,.84) 0%, rgba(8,5,8,.62) 48%, rgba(8,5,8,.20) 100%),
+          linear-gradient(180deg, rgba(8,5,8,.78) 0%, rgba(8,5,8,.58) 45%, rgba(8,5,8,.86) 100%),
           url('./fotos/assets/rosas-v40.png') center center / cover no-repeat;
       }
 
-      .copy{
-        width:100%;
-      }
+      .page::after{opacity:.18; background-size:42px 42px}
+      .glow{width:220px; height:220px; opacity:.42}
+      .copy{width:100%}
+      .badge{margin-bottom:12px; padding:10px 14px; font-size:.68rem}
+      h1{font-size:clamp(2.85rem, 13vw, 4.35rem); margin-bottom:14px}
+      .subtitle{font-size:.68rem; margin-bottom:14px}
+      .intro{max-width:none; font-size:.98rem; line-height:1.68}
+      .date{width:100%; max-width:none; font-size:.84rem; line-height:1.34; padding:11px 13px; justify-content:center}
+      .actions{margin-top:18px}
+      .button{width:100%; min-width:0; padding:16px 18px}
+      .hint{font-size:.82rem}
+      .closing-note{font-size:.9rem; padding:15px 16px; border-radius:18px}
+    }
 
-      .badge{
-        margin-bottom:12px;
-        padding:10px 14px;
-        font-size:.72rem;
-      }
-
-      h1{
-        font-size:clamp(2.65rem, 12vw, 4.15rem);
-        margin-bottom:12px;
-      }
-
-      .intro{
-        max-width:none;
-        font-size:.97rem;
-        line-height:1.64;
-      }
-
-      .date{
-        width:100%;
-        max-width:none;
-        font-size:.84rem;
-        line-height:1.34;
-        padding:10px 12px;
-      }
-
-      .actions{
-        margin-top:16px;
-      }
-
-      .button{
-        width:100%;
-        min-width:0;
-        padding:16px 18px;
-      }
-
-      .invite{
-        font-size:.84rem;
-      }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important}
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="petals" id="petals" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true">
+      <span class="glow one"></span>
+      <span class="glow two"></span>
+    </div>
 
     <section class="content" aria-label="Página inicial das bodas de cristal">
       <div class="copy">
-        <div class="badge">15 anos escolhendo você</div>
+        <div class="badge">Bodas de Cristal • 15 anos</div>
         <h1>Felipe &amp; Jéssica</h1>
+        <div class="subtitle">uma história escrita por Deus</div>
 
         <p class="intro">
-          Entre todas as escolhas da minha vida, você continua sendo a mais bonita.
-          Eu preparei essa lembrança para que você entre nela com calma, como quem abre
-          um presente feito de história, fé e amor.
+          Entre todas as escolhas da minha vida, <strong>você continua sendo a mais bonita.</strong>
+          Preparei essa lembrança para você entrar com calma, como quem abre uma cápsula de tempo
+          feita de história, fé e amor.
         </p>
 
         <div class="date">29 de abril de 2011 — 29 de abril de 2026</div>
 
         <div class="actions">
-          <a class="button" href="historia.html">Começar nossa história <span aria-hidden="true">→</span></a>
+          <a class="button" href="historia.html">Abrir nossa história <span aria-hidden="true">→</span></a>
+          <span class="hint">toque para começar a experiência</span>
         </div>
 
-        <p class="invite">Bem-vinda à nossa bodas de cristal</p>
+        <div class="closing-note">
+          Uma homenagem para reviver o que construímos, lembrar o cuidado de Deus em cada detalhe
+          e celebrar <strong>15 anos escolhendo você.</strong>
+        </div>
       </div>
     </section>
   </main>
-
-  <script>
-    const petals = document.getElementById('petals');
-    for(let i = 0; i < 24; i++){
-      const petal = document.createElement('span');
-      petal.className = 'petal';
-      if(i % 3 === 0) petal.classList.add('small');
-      if(i % 5 === 0) petal.classList.add('large');
-      petal.style.left = Math.random() * 100 + '%';
-      petal.style.animationDuration = (7 + Math.random() * 8) + 's';
-      petal.style.animationDelay = (Math.random() * 7) + 's';
-      petals.appendChild(petal);
-    }
-  </script>
 </body>
 </html>
