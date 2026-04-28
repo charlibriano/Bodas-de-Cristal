@@ -3841,6 +3841,1104 @@ body.music-playing #cinematicHearts .cinema-heart{
   z-index:2;
 }
 
+
+/* ===== AJUSTE FINAL: CONTADOR MOBILE + MODAL DOS ÁLBUNS ===== */
+.modal{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:30000 !important;
+}
+
+.declaration-modal{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:30001 !important;
+}
+
+.modal.open{
+  display:block !important;
+}
+
+#albumModal.open{
+  display:block !important;
+}
+
+#albumModal .modal-wrap{
+  position:relative !important;
+  z-index:30002 !important;
+}
+
+#cinematicHearts{
+  z-index:1 !important;
+}
+
+.container,
+.hero-card,
+.hero-media,
+.chapter-card,
+.album-card,
+.quote-card,
+.letter-card,
+.portrait-card,
+.relationship-counter{
+  position:relative;
+  z-index:2;
+}
+
+@media (max-width:720px){
+  .relationship-counter{
+    width:100% !important;
+    max-width:360px !important;
+    margin:18px auto 0 !important;
+    padding:12px 10px !important;
+  }
+
+  .relationship-counter .counter-label{
+    font-size:.72rem !important;
+    line-height:1.35 !important;
+    white-space:normal !important;
+    text-align:center !important;
+  }
+
+  .relationship-counter .counter-main{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:7px !important;
+    width:100% !important;
+  }
+
+  .relationship-counter .counter-pill{
+    min-width:0 !important;
+    width:100% !important;
+    padding:8px 6px !important;
+    font-size:.74rem !important;
+    line-height:1.1 !important;
+    justify-content:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  .relationship-counter .counter-pill strong{
+    font-size:.78rem !important;
+  }
+
+  .relationship-counter .counter-time:last-child{
+    grid-column:1 / -1 !important;
+    max-width:52% !important;
+    margin:0 auto !important;
+  }
+
+  .relationship-counter .counter-foot{
+    font-size:.72rem !important;
+    line-height:1.45 !important;
+    max-width:290px !important;
+    margin:0 auto !important;
+  }
+
+  .hero-card p{
+    font-size:.92rem !important;
+    line-height:1.68 !important;
+  }
+
+  .hero-actions .btn{
+    min-height:46px !important;
+    font-size:.78rem !important;
+    letter-spacing:.02em !important;
+  }
+}
+
+
+/* ===== AJUSTE DO CONTADOR COM SEGUNDOS ===== */
+.relationship-counter .counter-pill{
+  transition:background .25s ease, transform .25s ease;
+}
+
+.relationship-counter .counter-pill.counter-time strong{
+  min-width:1.8ch;
+  display:inline-block;
+  text-align:right;
+}
+
+@media (max-width:720px){
+  .relationship-counter{
+    max-width:370px !important;
+  }
+
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .relationship-counter .counter-time:last-child{
+    grid-column:auto !important;
+    max-width:none !important;
+    margin:0 !important;
+  }
+
+  .relationship-counter .counter-pill{
+    font-size:.70rem !important;
+    padding:7px 5px !important;
+  }
+
+  .relationship-counter .counter-pill strong{
+    font-size:.76rem !important;
+  }
+}
+
+
+/* ===== FIX FINAL SEGUNDOS: MESMO PADRÃO DAS OUTRAS PÍLULAS ===== */
+.relationship-counter .counter-main{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.relationship-counter .counter-pill{
+  width:auto !important;
+  min-width:112px;
+}
+
+.relationship-counter .counter-time:last-child{
+  grid-column:auto !important;
+  max-width:none !important;
+  margin:0 !important;
+}
+
+@media (max-width:720px){
+  .relationship-counter .counter-main{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .relationship-counter .counter-pill{
+    min-width:0 !important;
+    width:100% !important;
+  }
+}
+
+
+/* ===== FINAL DEFINITIVA CONTADOR ===== */
+.relationship-counter .counter-main{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+
+.relationship-counter .counter-pill{
+  width:100px !important;
+  min-width:100px !important;
+  text-align:center;
+  padding:8px 6px !important;
+}
+
+.relationship-counter .counter-pill strong{
+  display:block;
+  font-size:.9rem;
+}
+
+.relationship-counter .counter-time:last-child{
+  max-width:100px !important;
+  margin:0 auto !important;
+}
+
+@media (max-width:720px){
+  .relationship-counter .counter-main{
+    display:grid !important;
+    grid-template-columns:repeat(2, 1fr) !important;
+    gap:6px;
+  }
+
+  .relationship-counter .counter-pill{
+    width:100% !important;
+    min-width:0 !important;
+    font-size:.72rem !important;
+  }
+
+  .relationship-counter .counter-pill strong{
+    font-size:.78rem !important;
+  }
+}
+
+
+/* ===== CONTADOR PREMIUM FINAL - REFINADO ===== */
+.relationship-counter{
+  width:min(760px, 100%) !important;
+  margin:22px auto 0 !important;
+  padding:22px 24px 24px !important;
+  border-radius:28px !important;
+  background:
+    radial-gradient(circle at top, rgba(245,213,140,.10), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)) !important;
+  border:1px solid rgba(245,213,140,.18) !important;
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+.relationship-counter .counter-label{
+  display:block !important;
+  text-align:center !important;
+  margin-bottom:16px !important;
+  color:rgba(248,238,245,.86) !important;
+  font-size:1.02rem !important;
+  letter-spacing:.035em !important;
+}
+
+.relationship-counter .counter-main{
+  display:grid !important;
+  grid-template-columns:repeat(6, minmax(86px, 1fr)) !important;
+  gap:10px !important;
+  align-items:stretch !important;
+  justify-content:center !important;
+}
+
+.relationship-counter .counter-pill{
+  width:100% !important;
+  min-width:0 !important;
+  height:72px !important;
+  padding:10px 8px !important;
+  border-radius:22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:3px !important;
+  text-align:center !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.045)) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.16),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+  color:rgba(248,238,245,.88) !important;
+  font-size:.76rem !important;
+  line-height:1.1 !important;
+  white-space:normal !important;
+}
+
+.relationship-counter .counter-pill strong{
+  display:block !important;
+  min-width:0 !important;
+  text-align:center !important;
+  color:var(--gold) !important;
+  font-size:1.32rem !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:-.03em !important;
+  text-shadow:0 0 18px rgba(245,213,140,.14) !important;
+}
+
+.relationship-counter .counter-time:last-child{
+  max-width:none !important;
+  margin:0 !important;
+}
+
+.relationship-counter .counter-foot{
+  margin:18px auto 0 !important;
+  max-width:620px !important;
+  text-align:center !important;
+  color:#f5d58c !important;
+  font-size:.95rem !important;
+  line-height:1.55 !important;
+}
+
+@media (max-width:980px){
+  .relationship-counter{
+    width:min(680px, 100%) !important;
+  }
+
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:720px){
+  .relationship-counter{
+    width:100% !important;
+    max-width:390px !important;
+    margin:18px auto 0 !important;
+    padding:16px 14px 18px !important;
+    border-radius:24px !important;
+  }
+
+  .relationship-counter .counter-label{
+    font-size:.86rem !important;
+    line-height:1.35 !important;
+    margin-bottom:12px !important;
+  }
+
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:7px !important;
+  }
+
+  .relationship-counter .counter-pill{
+    height:58px !important;
+    border-radius:18px !important;
+    padding:7px 4px !important;
+    font-size:.64rem !important;
+    gap:2px !important;
+  }
+
+  .relationship-counter .counter-pill strong{
+    font-size:1.02rem !important;
+  }
+
+  .relationship-counter .counter-foot{
+    margin-top:13px !important;
+    font-size:.76rem !important;
+    line-height:1.45 !important;
+    max-width:310px !important;
+  }
+}
+
+@media (max-width:380px){
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .relationship-counter .counter-pill{
+    height:54px !important;
+  }
+}
+
+
+/* ===== CONTADOR CINEMATOGRÁFICO FINAL ===== */
+.relationship-counter{
+  width:min(680px, 100%) !important;
+  margin:24px auto 0 !important;
+  padding:24px 24px 22px !important;
+  border-radius:30px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(245,213,140,.12), transparent 36%),
+    radial-gradient(circle at 10% 100%, rgba(242,154,179,.08), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.082), rgba(255,255,255,.032)) !important;
+  border:1px solid rgba(245,213,140,.20) !important;
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 0 0 1px rgba(255,255,255,.025) !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+
+.relationship-counter::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(255,255,255,.08) 42%, transparent 58%);
+  transform:translateX(-130%);
+  animation:counterCinematicSweep 9s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.relationship-counter::after{
+  content:"";
+  position:absolute;
+  left:18%;
+  right:18%;
+  top:74px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(245,213,140,.32), transparent);
+  pointer-events:none;
+}
+
+@keyframes counterCinematicSweep{
+  0%, 68%, 100%{transform:translateX(-130%)}
+  82%{transform:translateX(130%)}
+}
+
+.relationship-counter .counter-label{
+  position:relative !important;
+  z-index:1 !important;
+  display:block !important;
+  text-align:center !important;
+  margin:0 0 18px !important;
+  color:rgba(248,238,245,.88) !important;
+  font-size:1rem !important;
+  line-height:1.35 !important;
+  letter-spacing:.045em !important;
+}
+
+.relationship-counter .counter-main{
+  position:relative !important;
+  z-index:1 !important;
+  display:grid !important;
+  grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  gap:10px !important;
+  align-items:stretch !important;
+  justify-content:center !important;
+  width:100% !important;
+  max-width:580px !important;
+  margin:0 auto !important;
+}
+
+.relationship-counter .counter-pill{
+  width:100% !important;
+  min-width:0 !important;
+  height:78px !important;
+  padding:10px 8px !important;
+  border-radius:22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  text-align:center !important;
+  white-space:normal !important;
+  background:
+    radial-gradient(circle at top, rgba(245,213,140,.105), transparent 54%),
+    linear-gradient(180deg, rgba(255,255,255,.088), rgba(255,255,255,.038)) !important;
+  border:1px solid rgba(255,255,255,.105) !important;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.085) !important;
+  color:rgba(248,238,245,.82) !important;
+  font-size:.72rem !important;
+  line-height:1.05 !important;
+  letter-spacing:.015em !important;
+  transition:
+    transform .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background .28s ease !important;
+}
+
+.relationship-counter .counter-pill:hover{
+  transform:translateY(-2px);
+  border-color:rgba(245,213,140,.28) !important;
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.22),
+    0 0 24px rgba(245,213,140,.06),
+    inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+
+.relationship-counter .counter-pill strong{
+  display:block !important;
+  width:auto !important;
+  min-width:0 !important;
+  text-align:center !important;
+  color:var(--gold) !important;
+  font-size:1.58rem !important;
+  line-height:.95 !important;
+  font-weight:900 !important;
+  letter-spacing:-.045em !important;
+  text-shadow:
+    0 0 16px rgba(245,213,140,.16),
+    0 8px 22px rgba(0,0,0,.16) !important;
+}
+
+.relationship-counter .counter-time:last-child{
+  max-width:none !important;
+  margin:0 !important;
+  opacity:.84 !important;
+}
+
+.relationship-counter .counter-time:last-child strong{
+  animation:secondsAlive 1s ease-in-out infinite;
+}
+
+@keyframes secondsAlive{
+  0%,100%{
+    transform:scale(1);
+    text-shadow:
+      0 0 14px rgba(245,213,140,.14),
+      0 8px 20px rgba(0,0,0,.14);
+  }
+  50%{
+    transform:scale(1.045);
+    text-shadow:
+      0 0 20px rgba(245,213,140,.26),
+      0 8px 22px rgba(0,0,0,.16);
+  }
+}
+
+.relationship-counter .counter-foot{
+  position:relative !important;
+  z-index:1 !important;
+  margin:18px auto 0 !important;
+  max-width:520px !important;
+  text-align:center !important;
+  color:#f5d58c !important;
+  font-size:.92rem !important;
+  line-height:1.55 !important;
+  text-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+/* remove qualquer sobra dos estilos anteriores do campo segundos */
+.relationship-counter .counter-pill,
+.relationship-counter .counter-time:last-child{
+  grid-column:auto !important;
+}
+
+@media (max-width:720px){
+  .relationship-counter{
+    width:100% !important;
+    max-width:390px !important;
+    margin:18px auto 0 !important;
+    padding:16px 13px 17px !important;
+    border-radius:24px !important;
+  }
+
+  .relationship-counter::after{
+    top:60px;
+    left:14%;
+    right:14%;
+  }
+
+  .relationship-counter .counter-label{
+    font-size:.82rem !important;
+    line-height:1.35 !important;
+    margin-bottom:13px !important;
+  }
+
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:7px !important;
+    max-width:100% !important;
+  }
+
+  .relationship-counter .counter-pill{
+    height:62px !important;
+    border-radius:18px !important;
+    padding:7px 4px !important;
+    font-size:.58rem !important;
+    gap:3px !important;
+  }
+
+  .relationship-counter .counter-pill strong{
+    font-size:1.08rem !important;
+    letter-spacing:-.04em !important;
+  }
+
+  .relationship-counter .counter-foot{
+    margin-top:13px !important;
+    font-size:.74rem !important;
+    line-height:1.45 !important;
+    max-width:310px !important;
+  }
+}
+
+@media (max-width:360px){
+  .relationship-counter .counter-main{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .relationship-counter .counter-pill{
+    height:58px !important;
+  }
+}
+
+
+
+/* ===== CONTADOR CINEMATOGRÁFICO DEFINITIVO - INTEGRADO ===== */
+.relationship-counter.love-counter{
+  margin-top:24px !important;
+  padding:26px 24px 24px !important;
+  border-radius:30px !important;
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  text-align:center !important;
+  background:
+    radial-gradient(circle at 50% -12%, rgba(245,213,140,.22), transparent 34%),
+    radial-gradient(circle at 12% 18%, rgba(242,154,179,.15), transparent 32%),
+    radial-gradient(circle at 88% 78%, rgba(255,213,223,.10), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.035)) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:
+    0 28px 80px rgba(0,0,0,.44),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(245,213,140,.04) inset !important;
+}
+.relationship-counter.love-counter::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:12px !important;
+  border-radius:24px !important;
+  border:1px solid rgba(255,255,255,.055) !important;
+  pointer-events:none !important;
+  z-index:0 !important;
+}
+.relationship-counter.love-counter::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:-40% -70% !important;
+  background:linear-gradient(115deg, transparent 35%, rgba(255,255,255,.105) 50%, transparent 65%) !important;
+  transform:translateX(-45%) rotate(8deg) !important;
+  animation:loveCounterLight 8.5s ease-in-out infinite !important;
+  pointer-events:none !important;
+  z-index:0 !important;
+}
+@keyframes loveCounterLight{
+  0%,68%,100%{transform:translateX(-45%) rotate(8deg); opacity:0}
+  76%{opacity:.9}
+  88%{transform:translateX(45%) rotate(8deg); opacity:0}
+}
+.relationship-counter .counter-label.love-counter-title{
+  position:relative !important;
+  z-index:1 !important;
+  display:grid !important;
+  gap:7px !important;
+  margin:0 0 18px !important;
+  color:var(--muted) !important;
+  font-size:.94rem !important;
+  letter-spacing:.02em !important;
+  text-align:center !important;
+}
+.relationship-counter .counter-kicker{
+  color:var(--gold) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.16em !important;
+  font-size:.72rem !important;
+  font-weight:800 !important;
+  opacity:.92 !important;
+}
+.relationship-counter .counter-label.love-counter-title strong{
+  color:#fff7fb !important;
+  font-size:clamp(1.05rem, 2.2vw, 1.36rem) !important;
+  font-weight:800 !important;
+  letter-spacing:-.035em !important;
+  text-shadow:0 10px 26px rgba(0,0,0,.20) !important;
+}
+.relationship-counter .counter-main.love-grid{
+  position:relative !important;
+  z-index:1 !important;
+  display:grid !important;
+  grid-template-columns:1.28fr 1fr 1fr !important;
+  gap:12px !important;
+  align-items:stretch !important;
+  margin:0 0 18px !important;
+}
+.relationship-counter .counter-pill.love-item{
+  min-width:0 !important;
+  display:grid !important;
+  place-items:center !important;
+  gap:6px !important;
+  padding:15px 8px !important;
+  border-radius:19px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.035)) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:0 13px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.045) !important;
+  color:#fff !important;
+  font-size:0 !important;
+  line-height:1 !important;
+  transition:transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease !important;
+  white-space:normal !important;
+}
+.relationship-counter .counter-pill.love-item:hover{
+  transform:translateY(-3px) scale(1.018) !important;
+  border-color:rgba(245,213,140,.22) !important;
+  box-shadow:0 18px 36px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+.relationship-counter .counter-pill.love-item strong{
+  display:block !important;
+  color:#fffafc !important;
+  font-size:clamp(1.42rem, 3.7vw, 2.18rem) !important;
+  line-height:.95 !important;
+  font-weight:900 !important;
+  letter-spacing:-.055em !important;
+  text-shadow:0 8px 18px rgba(0,0,0,.24) !important;
+}
+.relationship-counter .counter-pill.love-item span{
+  display:block !important;
+  color:rgba(248,238,245,.68) !important;
+  font-size:.68rem !important;
+  line-height:1 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.12em !important;
+  font-weight:800 !important;
+}
+.relationship-counter .counter-pill.love-item.destaque{
+  grid-row:span 2 !important;
+  padding:20px 10px !important;
+  background:
+    radial-gradient(circle at top, rgba(245,213,140,.20), transparent 44%),
+    linear-gradient(150deg, rgba(245,213,140,.16), rgba(242,154,179,.115)) !important;
+  border-color:rgba(245,213,140,.30) !important;
+  box-shadow:0 20px 48px rgba(0,0,0,.30), 0 0 30px rgba(245,213,140,.075), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+.relationship-counter .counter-pill.love-item.destaque strong{
+  color:var(--gold) !important;
+  font-size:clamp(2.6rem, 8vw, 4.9rem) !important;
+  text-shadow:0 12px 28px rgba(0,0,0,.26), 0 0 28px rgba(245,213,140,.16) !important;
+}
+.relationship-counter .counter-pill.love-item.destaque span{
+  color:#fff3c7 !important;
+  font-size:.78rem !important;
+}
+.relationship-counter .counter-pill.love-item.sub strong{
+  font-size:clamp(1.08rem, 2.6vw, 1.54rem) !important;
+  opacity:.94 !important;
+}
+.relationship-counter .counter-pill.love-item.segundos strong{
+  color:rgba(255,255,255,.78) !important;
+  animation:secondsBreath 1s ease-in-out infinite !important;
+}
+@keyframes secondsBreath{
+  0%,100%{transform:scale(1); opacity:.72}
+  50%{transform:scale(1.045); opacity:1}
+}
+.relationship-counter .counter-foot.love-frase{
+  position:relative !important;
+  z-index:1 !important;
+  max-width:480px !important;
+  margin:0 auto !important;
+  padding-top:2px !important;
+  color:var(--rose-2) !important;
+  font-size:.96rem !important;
+  line-height:1.68 !important;
+  letter-spacing:.01em !important;
+  text-align:center !important;
+  opacity:.92 !important;
+}
+@media (max-width:720px){
+  .relationship-counter.love-counter{
+    margin-top:20px !important;
+    padding:20px 14px 18px !important;
+    border-radius:24px !important;
+  }
+  .relationship-counter.love-counter::before{inset:9px !important; border-radius:19px !important;}
+  .relationship-counter .counter-main.love-grid{
+    grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin-bottom:14px !important;
+  }
+  .relationship-counter .counter-pill.love-item{
+    border-radius:15px !important;
+    padding:11px 5px !important;
+    gap:5px !important;
+  }
+  .relationship-counter .counter-pill.love-item.destaque{
+    grid-column:1 / -1 !important;
+    grid-row:auto !important;
+    padding:16px 8px !important;
+  }
+  .relationship-counter .counter-pill.love-item.destaque strong{
+    font-size:clamp(2rem, 13vw, 3.05rem) !important;
+  }
+  .relationship-counter .counter-pill.love-item strong{
+    font-size:clamp(1.08rem, 6vw, 1.55rem) !important;
+  }
+  .relationship-counter .counter-pill.love-item.sub strong{
+    font-size:clamp(.98rem, 5vw, 1.25rem) !important;
+  }
+  .relationship-counter .counter-pill.love-item span{
+    font-size:.56rem !important;
+    letter-spacing:.08em !important;
+  }
+  .relationship-counter .counter-label.love-counter-title{
+    gap:6px !important;
+    margin-bottom:14px !important;
+  }
+  .relationship-counter .counter-label.love-counter-title strong{
+    font-size:1rem !important;
+  }
+  .relationship-counter .counter-kicker{
+    font-size:.63rem !important;
+    letter-spacing:.12em !important;
+  }
+  .relationship-counter .counter-foot.love-frase{
+    font-size:.86rem !important;
+    line-height:1.55 !important;
+    max-width:320px !important;
+  }
+}
+@media (max-width:390px){
+  .relationship-counter .counter-main.love-grid{gap:7px !important;}
+  .relationship-counter .counter-pill.love-item{padding:10px 4px !important;}
+  .relationship-counter .counter-pill.love-item span{font-size:.52rem !important;}
+}
+
+/* ===== CONTADOR CINEMATOGRÁFICO PREMIUM - REFINADO ===== */
+.relationship-counter{width:min(880px,100%)!important;margin:26px auto 0!important;padding:30px clamp(18px,3vw,34px) 28px!important;border-radius:34px!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;text-align:center!important;background:radial-gradient(circle at 18% 12%,rgba(245,213,140,.18),transparent 30%),radial-gradient(circle at 88% 86%,rgba(242,154,179,.13),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035))!important;border:1px solid rgba(255,255,255,.15)!important;box-shadow:0 34px 95px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px rgba(245,213,140,.04)!important;backdrop-filter:blur(14px) saturate(1.08)!important}
+.relationship-counter::before{content:""!important;position:absolute!important;inset:12px!important;border-radius:26px!important;border:1px solid rgba(255,255,255,.055)!important;pointer-events:none!important;z-index:-1!important}
+.relationship-counter::after{content:""!important;position:absolute!important;width:360px!important;height:360px!important;left:50%!important;top:-210px!important;transform:translateX(-50%)!important;border-radius:50%!important;background:radial-gradient(circle,rgba(245,213,140,.18),transparent 68%)!important;filter:blur(10px)!important;opacity:.9!important;animation:none!important;pointer-events:none!important;z-index:-2!important}
+.relationship-counter .counter-label{margin:0 0 22px!important;color:var(--gold)!important;font-weight:800!important;font-size:clamp(.78rem,1.5vw,.94rem)!important;letter-spacing:.26em!important;text-transform:uppercase!important;text-shadow:0 10px 24px rgba(0,0,0,.26)!important}
+.relationship-counter .counter-main{display:grid!important;grid-template-columns:1.22fr 1fr 1fr!important;grid-template-areas:"years months days" "years hours minutes" "seconds seconds seconds"!important;gap:16px!important;align-items:stretch!important;margin:0!important}
+.relationship-counter .counter-pill{margin:0!important;min-width:0!important;min-height:116px!important;padding:18px 16px!important;border-radius:26px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important;background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.045))!important;border:1px solid rgba(255,255,255,.13)!important;box-shadow:0 18px 38px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.08)!important;color:#fff!important;transform:none!important;transition:transform .22s ease,border-color .22s ease,background .22s ease!important}
+.relationship-counter .counter-pill:hover{transform:translateY(-3px)!important;border-color:rgba(245,213,140,.25)!important}
+.relationship-counter .counter-pill:nth-child(1){grid-area:years!important;min-height:248px!important;background:radial-gradient(circle at top,rgba(245,213,140,.23),transparent 38%),linear-gradient(180deg,rgba(245,213,140,.145),rgba(242,154,179,.055))!important;border-color:rgba(245,213,140,.30)!important}
+.relationship-counter .counter-pill:nth-child(2){grid-area:months!important}.relationship-counter .counter-pill:nth-child(3){grid-area:days!important}.relationship-counter .counter-pill:nth-child(4){grid-area:hours!important}.relationship-counter .counter-pill:nth-child(5){grid-area:minutes!important}
+.relationship-counter .counter-pill:nth-child(6){grid-area:seconds!important;min-height:74px!important;flex-direction:row!important;gap:14px!important;border-radius:22px!important;background:linear-gradient(90deg,rgba(255,255,255,.065),rgba(255,255,255,.035))!important}
+.relationship-counter .counter-pill strong{display:block!important;color:#fff7fb!important;font-size:clamp(2.05rem,4.8vw,3.25rem)!important;line-height:.88!important;font-weight:900!important;letter-spacing:-.055em!important;font-family:"Segoe UI",system-ui,-apple-system,sans-serif!important;text-shadow:0 16px 28px rgba(0,0,0,.28)!important}
+.relationship-counter .counter-pill:nth-child(1) strong{color:var(--gold)!important;font-size:clamp(5.6rem,12vw,9rem)!important;letter-spacing:-.09em!important;text-shadow:0 24px 48px rgba(0,0,0,.36),0 0 34px rgba(245,213,140,.13)!important}
+.relationship-counter .counter-pill:nth-child(6) strong{font-size:clamp(1.45rem,3vw,2.05rem)!important;letter-spacing:-.035em!important;color:rgba(255,255,255,.88)!important}
+.relationship-counter .counter-pill span,.relationship-counter .counter-pill small{display:block!important;margin:0!important;color:rgba(248,238,245,.76)!important;font-size:clamp(.72rem,1.18vw,.88rem)!important;font-weight:900!important;letter-spacing:.22em!important;line-height:1.1!important;text-transform:uppercase!important}
+.relationship-counter .counter-pill:nth-child(1) span{color:#fff2c6!important;font-size:clamp(.9rem,1.7vw,1.15rem)!important}.relationship-counter .counter-pill:nth-child(6) span{font-size:.74rem!important;color:rgba(248,238,245,.62)!important}
+.relationship-counter .counter-foot{width:min(620px,100%)!important;margin:24px auto 0!important;color:#ffd5df!important;font-size:clamp(.98rem,1.8vw,1.18rem)!important;line-height:1.65!important;text-wrap:balance!important}
+@media(max-width:760px){.relationship-counter{padding:24px 16px 22px!important;border-radius:28px!important}.relationship-counter .counter-label{letter-spacing:.16em!important;margin-bottom:18px!important}.relationship-counter .counter-main{grid-template-columns:1fr 1fr!important;grid-template-areas:"years years" "months days" "hours minutes" "seconds seconds"!important;gap:10px!important}.relationship-counter .counter-pill{min-height:96px!important;border-radius:20px!important;padding:14px 8px!important}.relationship-counter .counter-pill:nth-child(1){min-height:150px!important}.relationship-counter .counter-pill:nth-child(1) strong{font-size:clamp(4.8rem,25vw,6.6rem)!important}.relationship-counter .counter-pill strong{font-size:clamp(2rem,11vw,2.75rem)!important}.relationship-counter .counter-pill:nth-child(6){min-height:58px!important;border-radius:18px!important}.relationship-counter .counter-foot{margin-top:18px!important;font-size:.96rem!important}}
+@media(max-width:390px){.relationship-counter{padding-inline:12px!important}.relationship-counter .counter-main{gap:8px!important}.relationship-counter .counter-pill{min-height:84px!important}.relationship-counter .counter-pill:nth-child(1){min-height:132px!important}.relationship-counter .counter-pill span{letter-spacing:.16em!important}}
+
+
+
+/* ===== CONTADOR DISCRETO FINAL — pequeno detalhe premium ===== */
+.relationship-counter,
+.relationship-counter.love-counter{
+  width:min(620px, 100%) !important;
+  max-width:620px !important;
+  margin:18px auto 0 !important;
+  padding:16px 18px 15px !important;
+  border-radius:22px !important;
+  text-align:center !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  background:
+    radial-gradient(circle at 50% -40%, rgba(245,213,140,.18), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032)) !important;
+  border:1px solid rgba(245,213,140,.18) !important;
+  box-shadow:
+    0 16px 44px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.07) !important;
+  backdrop-filter:blur(10px) !important;
+}
+
+.relationship-counter::before,
+.relationship-counter.love-counter::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:8px !important;
+  border-radius:17px !important;
+  border:1px solid rgba(255,255,255,.045) !important;
+  pointer-events:none !important;
+  z-index:-1 !important;
+}
+
+.relationship-counter::after,
+.relationship-counter.love-counter::after{
+  content:"" !important;
+  position:absolute !important;
+  left:20% !important;
+  right:20% !important;
+  top:48px !important;
+  width:auto !important;
+  height:1px !important;
+  transform:none !important;
+  border-radius:0 !important;
+  filter:none !important;
+  opacity:1 !important;
+  background:linear-gradient(90deg, transparent, rgba(245,213,140,.28), transparent) !important;
+  animation:none !important;
+  pointer-events:none !important;
+  z-index:0 !important;
+}
+
+.relationship-counter .counter-label,
+.relationship-counter .counter-label.love-counter-title{
+  margin:0 0 14px !important;
+  display:block !important;
+  color:rgba(245,213,140,.92) !important;
+  font-size:.72rem !important;
+  line-height:1.25 !important;
+  font-weight:800 !important;
+  letter-spacing:.18em !important;
+  text-transform:uppercase !important;
+  text-shadow:0 8px 18px rgba(0,0,0,.24) !important;
+}
+
+.relationship-counter .counter-label strong,
+.relationship-counter .counter-label.love-counter-title strong{
+  display:block !important;
+  margin-top:5px !important;
+  color:#fff7fb !important;
+  font-size:clamp(1.05rem, 2.4vw, 1.45rem) !important;
+  line-height:1.05 !important;
+  font-weight:900 !important;
+  letter-spacing:-.035em !important;
+  text-transform:none !important;
+}
+
+.relationship-counter .counter-main,
+.relationship-counter .counter-main.love-grid{
+  display:grid !important;
+  grid-template-columns:1.2fr repeat(5, 1fr) !important;
+  grid-template-areas:none !important;
+  gap:6px !important;
+  align-items:stretch !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:0 auto 12px !important;
+  position:relative !important;
+  z-index:1 !important;
+}
+
+.relationship-counter .counter-pill,
+.relationship-counter .counter-pill.love-item,
+.relationship-counter .counter-pill.love-item.destaque,
+.relationship-counter .counter-pill.love-item.sub,
+.relationship-counter .counter-pill.love-item.segundos{
+  grid-area:auto !important;
+  grid-column:auto !important;
+  grid-row:auto !important;
+  min-width:0 !important;
+  min-height:58px !important;
+  height:58px !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:8px 5px !important;
+  border-radius:15px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  white-space:normal !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.078), rgba(255,255,255,.028)) !important;
+  border:1px solid rgba(255,255,255,.09) !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.055) !important;
+  transform:none !important;
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease !important;
+}
+
+.relationship-counter .counter-pill:hover,
+.relationship-counter .counter-pill.love-item:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(245,213,140,.20) !important;
+  box-shadow:0 13px 28px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+.relationship-counter .counter-pill:first-child,
+.relationship-counter .counter-pill.love-item.destaque:first-child{
+  background:
+    radial-gradient(circle at top, rgba(245,213,140,.19), transparent 58%),
+    linear-gradient(180deg, rgba(245,213,140,.13), rgba(255,255,255,.035)) !important;
+  border-color:rgba(245,213,140,.24) !important;
+}
+
+.relationship-counter .counter-pill strong,
+.relationship-counter .counter-pill.love-item strong,
+.relationship-counter .counter-pill.love-item.destaque strong,
+.relationship-counter .counter-pill.love-item.sub strong,
+.relationship-counter .counter-pill.love-item.segundos strong{
+  display:block !important;
+  margin:0 !important;
+  color:#fff8fb !important;
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:clamp(1.28rem, 2.8vw, 1.86rem) !important;
+  line-height:.9 !important;
+  font-weight:700 !important;
+  letter-spacing:-.045em !important;
+  text-shadow:0 8px 18px rgba(0,0,0,.26) !important;
+  animation:none !important;
+  opacity:1 !important;
+}
+
+.relationship-counter .counter-pill:first-child strong,
+.relationship-counter .counter-pill.love-item.destaque:first-child strong{
+  color:var(--gold) !important;
+  font-size:clamp(1.8rem, 4vw, 2.65rem) !important;
+  text-shadow:0 10px 24px rgba(0,0,0,.30), 0 0 18px rgba(245,213,140,.12) !important;
+}
+
+.relationship-counter .counter-pill span,
+.relationship-counter .counter-pill small,
+.relationship-counter .counter-pill.love-item span{
+  display:block !important;
+  margin:0 !important;
+  color:rgba(248,238,245,.67) !important;
+  font-size:.54rem !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:.13em !important;
+  text-transform:uppercase !important;
+}
+
+.relationship-counter .counter-pill:first-child span,
+.relationship-counter .counter-pill.love-item.destaque:first-child span{
+  color:#fff0c3 !important;
+}
+
+.relationship-counter .counter-foot,
+.relationship-counter .counter-foot.love-frase{
+  width:min(500px,100%) !important;
+  max-width:500px !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  color:rgba(255,213,223,.86) !important;
+  font-size:.82rem !important;
+  line-height:1.45 !important;
+  letter-spacing:.01em !important;
+  text-align:center !important;
+  text-wrap:balance !important;
+}
+
+@media(max-width:760px){
+  .relationship-counter,
+  .relationship-counter.love-counter{
+    width:min(350px,100%) !important;
+    max-width:350px !important;
+    margin-top:16px !important;
+    padding:14px 12px 13px !important;
+    border-radius:20px !important;
+  }
+  .relationship-counter::before,
+  .relationship-counter.love-counter::before{inset:7px !important;border-radius:15px !important;}
+  .relationship-counter::after,
+  .relationship-counter.love-counter::after{top:44px !important;left:18% !important;right:18% !important;}
+  .relationship-counter .counter-label,
+  .relationship-counter .counter-label.love-counter-title{
+    margin-bottom:12px !important;
+    font-size:.62rem !important;
+    letter-spacing:.14em !important;
+  }
+  .relationship-counter .counter-label strong,
+  .relationship-counter .counter-label.love-counter-title strong{
+    font-size:1rem !important;
+  }
+  .relationship-counter .counter-main,
+  .relationship-counter .counter-main.love-grid{
+    grid-template-columns:repeat(3, 1fr) !important;
+    gap:6px !important;
+    margin-bottom:10px !important;
+  }
+  .relationship-counter .counter-pill,
+  .relationship-counter .counter-pill.love-item,
+  .relationship-counter .counter-pill.love-item.destaque,
+  .relationship-counter .counter-pill.love-item.sub,
+  .relationship-counter .counter-pill.love-item.segundos{
+    height:52px !important;
+    min-height:52px !important;
+    padding:7px 4px !important;
+    border-radius:13px !important;
+  }
+  .relationship-counter .counter-pill strong,
+  .relationship-counter .counter-pill.love-item strong,
+  .relationship-counter .counter-pill.love-item.destaque strong,
+  .relationship-counter .counter-pill.love-item.sub strong,
+  .relationship-counter .counter-pill.love-item.segundos strong{
+    font-size:1.22rem !important;
+  }
+  .relationship-counter .counter-pill:first-child strong,
+  .relationship-counter .counter-pill.love-item.destaque:first-child strong{
+    font-size:1.58rem !important;
+  }
+  .relationship-counter .counter-pill span,
+  .relationship-counter .counter-pill small,
+  .relationship-counter .counter-pill.love-item span{
+    font-size:.48rem !important;
+    letter-spacing:.10em !important;
+  }
+  .relationship-counter .counter-foot,
+  .relationship-counter .counter-foot.love-frase{
+    font-size:.74rem !important;
+    line-height:1.4 !important;
+    max-width:290px !important;
+  }
+}
+
+@media(max-width:360px){
+  .relationship-counter,
+  .relationship-counter.love-counter{width:100% !important;padding-inline:10px !important;}
+  .relationship-counter .counter-main,
+  .relationship-counter .counter-main.love-grid{gap:5px !important;}
+  .relationship-counter .counter-pill,
+  .relationship-counter .counter-pill.love-item{height:48px !important;min-height:48px !important;}
+  .relationship-counter .counter-pill strong,
+  .relationship-counter .counter-pill.love-item strong{font-size:1.08rem !important;}
+  .relationship-counter .counter-pill:first-child strong{font-size:1.4rem !important;}
+}
+
 </style>
 </head>
 <body>
@@ -3888,16 +4986,24 @@ body.music-playing #cinematicHearts .cinema-heart{
           E depois de tudo o que vivemos, a certeza continua a mesma: <strong>eu escolheria você de novo.</strong>
         </p>
 
-        <div class="relationship-counter" id="relationshipCounter">
-          <div class="counter-label">Desde 29 de abril de 2011, já são:</div>
-          <div class="counter-main">
-            <div class="counter-pill"><strong id="counterYears">0</strong> anos</div>
-            <div class="counter-pill"><strong id="counterMonths">0</strong> meses</div>
-            <div class="counter-pill"><strong id="counterDays">0</strong> dias</div>
-            <div class="counter-pill counter-time"><strong id="counterHours">0</strong> horas</div>
-            <div class="counter-pill counter-time"><strong id="counterMinutes">00</strong> minutos</div>
+        <div class="relationship-counter love-counter" id="relationshipCounter" aria-label="Contador do tempo de casamento">
+          <div class="counter-label love-counter-title">
+            <span class="counter-kicker">Desde 29 de abril de 2011</span>
+            <strong>o tempo virou memória viva</strong>
           </div>
-          <div class="counter-foot" id="counterFoot">cada etapa dessa história foi construída um dia de cada vez.</div>
+
+          <div class="counter-main love-grid">
+            <div class="counter-pill love-item destaque"><strong id="counterYears">0</strong><span>anos</span></div>
+            <div class="counter-pill love-item"><strong id="counterMonths">0</strong><span>meses</span></div>
+            <div class="counter-pill love-item"><strong id="counterDays">0</strong><span>dias</span></div>
+            <div class="counter-pill counter-time love-item sub"><strong id="counterHours">0</strong><span>horas</span></div>
+            <div class="counter-pill counter-time love-item sub"><strong id="counterMinutes">00</strong><span>minutos</span></div>
+            <div class="counter-pill counter-time love-item sub segundos"><strong id="counterSeconds">00</strong><span>segundos</span></div>
+          </div>
+
+          <div class="counter-foot love-frase" id="counterFoot">
+            E cada segundo ao seu lado ainda é uma forma de Deus me lembrar do quanto eu fui presenteado.
+          </div>
         </div>
 
         <div class="hero-actions">
@@ -4507,30 +5613,27 @@ Porque a nossa história nunca foi só nossa.
     async function discoverAlbum(folder){
       if(loadedAlbums[folder]) return loadedAlbums[folder];
 
-      const files = [];
       const extensions = ['jpg','jpeg','png','JPG','JPEG','PNG','webp','WEBP'];
-      let misses = 0;
 
-      for(let i=1;i<=30;i++){
-        const num = String(i).padStart(2,'0');
-        let found = false;
+      async function findImage(num){
+        const candidates = extensions.map(ext => `fotos/${folder}/${num}.${ext}`);
+        const checks = candidates.map(src =>
+          tryLoad(src).then(() => src).catch(() => null)
+        );
+        const results = await Promise.all(checks);
+        return results.find(Boolean) || null;
+      }
 
-        for(const ext of extensions){
-          const src = `fotos/${folder}/${num}.${ext}`;
-          try{
-            await tryLoad(src);
-            files.push(src);
-            found = true;
-            break;
-          }catch(e){}
-        }
+      const firstBatch = Array.from({length:16}, (_,i)=>String(i+1).padStart(2,'0'));
+      const firstResults = await Promise.all(firstBatch.map(findImage));
 
-        if(!found){
-          misses++;
-          if(i > 6 && misses >= 4) break;
-        }else{
-          misses = 0;
-        }
+      let files = firstResults.filter(Boolean);
+
+      const missingAfterSix = firstResults.slice(6).filter(Boolean).length === 0;
+      if(!missingAfterSix){
+        const secondBatch = Array.from({length:14}, (_,i)=>String(i+17).padStart(2,'0'));
+        const secondResults = await Promise.all(secondBatch.map(findImage));
+        files = files.concat(secondResults.filter(Boolean));
       }
 
       loadedAlbums[folder] = files;
@@ -4631,15 +5734,34 @@ Porque a nossa história nunca foi só nossa.
     async function abrirAlbum(folder){
       const meta = chapters.find(c=>c.folder===folder);
       const title = meta ? meta.title : 'Álbum';
+      const modal = document.getElementById('albumModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalImage = document.getElementById('modalImage');
+      const modalCounter = document.getElementById('modalCounter');
+      const modalThumbs = document.getElementById('modalThumbs');
+
+      modalTitle.textContent = title;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      if(modalImage){
+        modalImage.removeAttribute('src');
+        modalImage.alt = 'Carregando fotos do álbum...';
+      }
+      if(modalCounter) modalCounter.textContent = 'Carregando fotos...';
+      if(modalThumbs) modalThumbs.innerHTML = '';
+
       const files = await discoverAlbum(folder);
-      if(!files.length) return;
+
+      if(!files.length){
+        if(modalCounter) modalCounter.textContent = 'Nenhuma foto encontrada nesta pasta.';
+        return;
+      }
+
       currentAlbum = files;
       currentIndex = 0;
       currentTitle = title;
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('albumModal').classList.add('open');
-      document.getElementById('albumModal').setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
       renderModal();
     }
 
@@ -5168,6 +6290,90 @@ chapterStages.forEach(chapterEl => observerStage.observe(chapterEl));
   }else{
     initCinematicHearts();
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  const weddingStart = new Date(2011, 3, 29, 0, 0, 0);
+
+  function plural(value, singular, pluralText){
+    return Number(value) === 1 ? singular : pluralText;
+  }
+
+  function setText(id, value){
+    const el = document.getElementById(id);
+    if(el) el.textContent = String(value).padStart(id === "counterMinutes" || id === "counterSeconds" ? 2 : 1, "0");
+  }
+
+  function updateRelationshipCounterWithSeconds(){
+    const now = new Date();
+
+    let years = now.getFullYear() - weddingStart.getFullYear();
+    let months = now.getMonth() - weddingStart.getMonth();
+    let days = now.getDate() - weddingStart.getDate();
+    let hours = now.getHours() - weddingStart.getHours();
+    let minutes = now.getMinutes() - weddingStart.getMinutes();
+    let seconds = now.getSeconds() - weddingStart.getSeconds();
+
+    if(seconds < 0){
+      seconds += 60;
+      minutes--;
+    }
+
+    if(minutes < 0){
+      minutes += 60;
+      hours--;
+    }
+
+    if(hours < 0){
+      hours += 24;
+      days--;
+    }
+
+    if(days < 0){
+      const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      days += previousMonth.getDate();
+      months--;
+    }
+
+    if(months < 0){
+      months += 12;
+      years--;
+    }
+
+    setText("counterYears", years);
+    setText("counterMonths", months);
+    setText("counterDays", days);
+    setText("counterHours", hours);
+    setText("counterMinutes", minutes);
+    setText("counterSeconds", seconds);
+
+    const labels = {
+      counterYears: ["ano", "anos"],
+      counterMonths: ["mês", "meses"],
+      counterDays: ["dia", "dias"],
+      counterHours: ["hora", "horas"],
+      counterMinutes: ["minuto", "minutos"],
+      counterSeconds: ["segundo", "segundos"]
+    };
+
+    Object.keys(labels).forEach(function(id){
+      const strong = document.getElementById(id);
+      if(!strong || !strong.parentElement) return;
+      const value = Number(strong.textContent);
+      const textNode = Array.from(strong.parentElement.childNodes).find(function(node){
+        return node.nodeType === Node.TEXT_NODE && node.textContent.trim().length;
+      });
+      if(textNode){
+        textNode.textContent = " " + plural(value, labels[id][0], labels[id][1]);
+      }
+    });
+  }
+
+  updateRelationshipCounterWithSeconds();
+  setInterval(updateRelationshipCounterWithSeconds, 1000);
 })();
 </script>
 
