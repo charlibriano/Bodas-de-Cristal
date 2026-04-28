@@ -894,83 +894,114 @@
       margin-bottom:6px;
       font-size:1.15rem;
     }
+    
     .disc-player{
       position:fixed;
       right:18px;
       bottom:18px;
       z-index:14000;
-      width:72px;
-      height:72px;
+      width:76px;
+      height:76px;
       border:none;
-      border-radius:50%;
+      border-radius:26px;
       cursor:pointer;
       padding:0;
       background:
-        radial-gradient(circle at center, rgba(255,255,255,.22) 0 7px, rgba(255,255,255,.06) 7px 11px, transparent 11px),
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 38%),
-        conic-gradient(from 220deg, #23151c, #4a2a34, #170e14, #5a3340, #1f1218, #23151c);
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,.18), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+      border:1px solid rgba(255,255,255,.16);
       box-shadow:
-        0 16px 34px rgba(0,0,0,.35),
-        inset 0 2px 2px rgba(255,255,255,.14),
-        inset 0 -12px 20px rgba(0,0,0,.28);
-      transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
-      opacity:.95;
+        0 22px 55px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.16),
+        inset 0 -18px 28px rgba(0,0,0,.18);
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+      opacity:.96;
       overflow:hidden;
+      backdrop-filter:blur(14px);
     }
     .disc-player::before{
       content:"";
       position:absolute;
-      inset:8px;
-      border-radius:50%;
-      background:repeating-radial-gradient(circle at center, rgba(255,255,255,.05) 0 2px, rgba(0,0,0,.08) 2px 4px);
-      opacity:.8;
+      inset:14px;
+      border-radius:22px;
+      background:
+        linear-gradient(135deg, rgba(245,213,140,.92), rgba(255,213,223,.72));
+      mask:
+        radial-gradient(circle at 50% 50%, transparent 0 7px, #000 8px),
+        linear-gradient(#000,#000);
+      -webkit-mask:
+        radial-gradient(circle at 50% 50%, transparent 0 7px, #000 8px),
+        linear-gradient(#000,#000);
+      box-shadow:
+        0 12px 26px rgba(245,213,140,.12),
+        inset 0 1px 0 rgba(255,255,255,.32);
+      opacity:.95;
       pointer-events:none;
     }
     .disc-player::after{
-      content:"";
+      content:"♫";
       position:absolute;
-      inset:27px;
-      border-radius:50%;
-      background:linear-gradient(180deg, var(--gold), #f2cf7d);
-      box-shadow:0 0 0 4px rgba(21,13,18,.38);
+      inset:0;
+      display:grid;
+      place-items:center;
+      color:#1f1218;
+      font-weight:900;
+      font-size:1.25rem;
+      text-shadow:0 1px 0 rgba(255,255,255,.22);
       pointer-events:none;
+      transform:translateY(-1px);
     }
     .disc-player:hover{
-      transform:translateY(-2px) scale(1.03);
+      transform:translateY(-3px) scale(1.03);
+      border-color:rgba(245,213,140,.32);
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,.24), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.055));
       box-shadow:
-        0 20px 40px rgba(0,0,0,.42),
-        inset 0 2px 2px rgba(255,255,255,.18),
-        inset 0 -12px 20px rgba(0,0,0,.3);
+        0 28px 70px rgba(0,0,0,.52),
+        0 0 38px rgba(245,213,140,.10),
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -18px 28px rgba(0,0,0,.18);
     }
     .disc-player.playing{
-      animation:discSpin 4.6s linear infinite;
+      animation:musicFloat 3.6s ease-in-out infinite;
+      border-color:rgba(245,213,140,.36);
+    }
+    .disc-player.playing::before{
+      animation:softRotate 8s linear infinite;
     }
     .disc-pulse{
       position:fixed;
-      right:13px;
-      bottom:13px;
-      width:82px;
-      height:82px;
-      border-radius:50%;
-      border:1px solid rgba(245,213,140,.14);
+      right:12px;
+      bottom:12px;
+      width:88px;
+      height:88px;
+      border-radius:30px;
+      border:1px solid rgba(245,213,140,.16);
       pointer-events:none;
       z-index:13999;
       opacity:0;
       transform:scale(.92);
+      box-shadow:0 0 34px rgba(245,213,140,.08);
     }
     .disc-player.playing + .disc-pulse{
       opacity:1;
-      animation:discPulse 2.2s ease infinite;
+      animation:softPulse 2.8s ease infinite;
     }
-    @keyframes discSpin{
+    @keyframes musicFloat{
+      0%,100%{transform:translateY(0) scale(1)}
+      50%{transform:translateY(-3px) scale(1.015)}
+    }
+    @keyframes softRotate{
       from{transform:rotate(0deg)}
       to{transform:rotate(360deg)}
     }
-    @keyframes discPulse{
-      0%{transform:scale(.96); opacity:.26}
-      75%{transform:scale(1.14); opacity:.05}
+    @keyframes softPulse{
+      0%{transform:scale(.94); opacity:.24}
+      70%{transform:scale(1.14); opacity:.05}
       100%{transform:scale(1.18); opacity:0}
     }
+
     .audio-meta{
       display:grid;
       gap:2px;
@@ -1006,14 +1037,14 @@
       .nav-btn{width:46px;height:46px;font-size:1.35rem}
       .thumb{flex-basis:70px;height:70px}
       .timeline-nav{display:none}
-      .disc-player{right:12px; bottom:12px; width:60px; height:60px}
-      .disc-player::before{inset:7px}
-      .disc-player::after{inset:22px}
-      .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
-      .disc-player{right:12px; bottom:12px; width:60px; height:60px}
-      .disc-player::before{inset:7px}
-      .disc-player::after{inset:22px}
-      .disc-pulse{right:8px; bottom:8px; width:68px; height:68px}
+      .disc-player{right:12px; bottom:12px; width:64px; height:64px; border-radius:22px}
+      .disc-player::before{inset:12px; border-radius:18px}
+      .disc-player::after{font-size:1.08rem}
+      .disc-pulse{right:8px; bottom:8px; width:72px; height:72px; border-radius:26px}
+      .disc-player{right:12px; bottom:12px; width:64px; height:64px; border-radius:22px}
+      .disc-player::before{inset:12px; border-radius:18px}
+      .disc-player::after{font-size:1.08rem}
+      .disc-pulse{right:8px; bottom:8px; width:72px; height:72px; border-radius:26px}
       .intro-panel{padding:22px}
       .intro-copy p{font-size:1.04rem}
       .intro-date{font-size:.95rem}
