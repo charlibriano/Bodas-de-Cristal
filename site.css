@@ -6,6 +6,8 @@
    centrais — sem precisar apagar nada do que já existia.
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,650;1,9..144,400;1,9..144,500&display=swap');
+
 :root{
   /* Paleta unificada — antes havia 3 pretos e 2 dourados
      ligeiramente diferentes entre index/historia/declaração. */
@@ -27,6 +29,36 @@
    vencer só a sub-propriedade, sem reescrever cada página. ── */
 @media (max-width:720px){
   body{ background-attachment: scroll !important; }
+}
+
+/* ============================================================
+   TIPOGRAFIA — troca a Georgia (fonte padrão de sistema, muda
+   de cara em cada aparelho) por uma serifa com identidade
+   própria. Peso variável: mais leve nos títulos grandes, mais
+   presente nas citações em itálico.
+   ============================================================ */
+h1, h2, h3,
+.section-title,
+.chapter-card h3,
+.declaration-panel h3,
+.cinematic-bridge h3,
+.letter-card h2,
+.closing-vow p,
+.final-message,
+.scripture-card blockquote{
+  font-family:'Fraunces', Georgia, 'Times New Roman', serif !important;
+}
+
+h1{ font-weight:500 !important; }
+h2, .section-title{ font-weight:500 !important; }
+.chapter-card h3, .declaration-panel h3, .cinematic-bridge h3, .letter-card h2{
+  font-weight:650 !important;
+}
+
+.scripture-card blockquote,
+.closing-vow p{
+  font-style:italic;
+  font-weight:400 !important;
 }
 
 /* ============================================================
