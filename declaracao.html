@@ -523,6 +523,28 @@
             <p>Depois de cada luta, cada conquista, cada espera e cada recomeço… eu olho para você hoje e escolheria tudo de novo. Mil vezes. Para sempre.</p>
           </div>
 
+          <div class="time-capsule" id="timeCapsule" data-abre="2031-04-29">
+            <div class="time-capsule-frozen" id="capsuleFrozen">
+              <span class="time-capsule-icon">💎</span>
+              <span class="time-capsule-label">Cápsula do tempo</span>
+              <p class="time-capsule-text">Uma carta escrita hoje, guardada até o nosso 20º aniversário.</p>
+              <p class="time-capsule-date" id="capsuleCountdown">Abre em 29 de abril de 2031.</p>
+            </div>
+            <div class="time-capsule-open" id="capsuleOpen" hidden>
+              <span class="time-capsule-label">Uma carta de 2026 para nós em 2031</span>
+              <!-- Carta de Felipe para os 20 anos, escrita em 28/07/2026. -->
+              <p class="time-capsule-text">Se estamos lendo esta mensagem hoje, significa que o tempo passou mais rápido do que imaginávamos. Espero que, ao abrir esta cápsula, possamos sorrir, nos abraçar e agradecer a Deus por tudo o que vivemos até aqui.</p>
+              <p class="time-capsule-text">No dia em que escrevo isto — celebrando nossos 15 anos de casados —, tenho a certeza absoluta de uma coisa: escolher você foi uma das melhores e mais abençoadas decisões da minha vida. O nosso amor nunca foi apenas um sentimento bonito. Ele foi construído nos dias simples, fortalecido nos dias difíceis e renovado em cada recomeço.</p>
+              <p class="time-capsule-text">Espero que ainda estejamos dando risada das mesmas bobagens, sonhando novos sonhos e segurando a mão um do outro com a mesma vontade de continuar caminhando juntos.</p>
+              <p class="time-capsule-text">Talvez nossos cabelos estejam mais brancos, talvez nossa filha já esteja trilhando seu próprio caminho, talvez muita coisa tenha mudado ao nosso redor. Mas meu desejo é que o mais importante permaneça intacto: nossa fé em Deus, o respeito, a amizade e a certeza de que sempre valeu a pena lutar pelo nosso casamento.</p>
+              <p class="time-capsule-text">Se ao longo destes vinte anos houve desafios, eles nos ensinaram e provaram a força do nosso amor. Se houve vitórias, elas nos lembraram da fidelidade de Deus.</p>
+              <p class="time-capsule-text">Obrigado por dividir a vida comigo, por acreditar em nós e por fazer do nosso lar o lugar onde sempre encontro paz.</p>
+              <p class="time-capsule-text">Que, ao terminar esta leitura, possamos olhar um para o outro e dizer:</p>
+              <p class="time-capsule-text"><strong>"Valeu a pena cada segundo. E eu escolheria você novamente, todos os dias."</strong></p>
+              <p class="time-capsule-text">Com todo o meu amor,<br>Felipe</p>
+            </div>
+          </div>
+
           <div class="signature">Felipe, para Jéssica — 15 anos escolhendo você, com Deus em cada capítulo</div>
         </div>
       </div>
@@ -556,6 +578,28 @@
     finalScreen.addEventListener('click', () => {
       finalScreen.classList.remove('open');
     });
+
+    // ── Cápsula do tempo: revela sozinha na data marcada em data-abre.
+    // Importante: é uma trava VISUAL, não uma trava de segurança — o
+    // texto já existe no código da página, só fica escondido até a
+    // data. Suficiente para um link privado que só vocês dois têm;
+    // não impede alguém de ver o texto abrindo "ver código-fonte". ──
+    (function initTimeCapsule(){
+      const capsule = document.getElementById('timeCapsule');
+      if (!capsule) return;
+      const abreEm = new Date(capsule.dataset.abre + 'T00:00:00');
+      const hoje = new Date();
+
+      if (hoje >= abreEm) {
+        document.getElementById('capsuleFrozen').hidden = true;
+        document.getElementById('capsuleOpen').hidden = false;
+        capsule.classList.add('unlocked');
+      } else {
+        const dias = Math.ceil((abreEm - hoje) / 86400000);
+        const contador = document.getElementById('capsuleCountdown');
+        if (contador) contador.textContent = `Abre em ${dias.toLocaleString('pt-BR')} dias — 29 de abril de 2031.`;
+      }
+    })();
   </script>
 </body>
 </html>
