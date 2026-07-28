@@ -346,7 +346,28 @@
 
         <div class="gem-nav" aria-label="Navegar pelos capítulos da nossa história">
           <svg id="gemSvg" viewBox="0 0 300 300" role="img" aria-hidden="false">
-            <g id="gemFacets"></g>
+            <defs>
+              <linearGradient id="gemGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f0cf83" stop-opacity="0.5"></stop>
+                <stop offset="100%" stop-color="#8a6a2a" stop-opacity="0.28"></stop>
+              </linearGradient>
+              <linearGradient id="gemRosaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ea94ae" stop-opacity="0.48"></stop>
+                <stop offset="100%" stop-color="#7a3648" stop-opacity="0.26"></stop>
+              </linearGradient>
+              <linearGradient id="gemCristalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#cdeaff" stop-opacity="0.4"></stop>
+                <stop offset="100%" stop-color="#3d5a70" stop-opacity="0.24"></stop>
+              </linearGradient>
+              <filter id="gemGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+                <feMerge>
+                  <feMergeNode in="blur"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+            </defs>
+            <g id="gemFacets" filter="url(#gemGlow)"></g>
             <circle class="gem-center-ring" cx="150" cy="150" r="44"></circle>
             <text class="gem-center-label" x="150" y="145">Nossa</text>
             <text class="gem-center-label" x="150" y="163">história</text>
