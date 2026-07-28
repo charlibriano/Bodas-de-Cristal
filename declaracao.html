@@ -545,6 +545,14 @@
             </div>
           </div>
 
+          <div class="reply-space">
+            <span class="reply-label">Um espaço só seu</span>
+            <p class="reply-intro">Depois de ler tudo isso, se quiser me responder — mesmo que seja só uma palavra, um pensamento solto ou tudo o que estiver sentindo agora — pode escrever aqui. Isso vai direto pro meu e-mail.</p>
+            <textarea id="respostaJessica" class="reply-textarea" placeholder="Escreva o que quiser..." rows="5"></textarea>
+            <button type="button" class="btn btn-primary" id="enviarResposta">Enviar minha resposta</button>
+            <p class="reply-hint" id="respostaAviso" hidden>Escreve algo antes de enviar 🤍</p>
+          </div>
+
           <div class="signature">Felipe, para Jéssica — 15 anos escolhendo você, com Deus em cada capítulo</div>
         </div>
       </div>
@@ -599,6 +607,32 @@
         const contador = document.getElementById('capsuleCountdown');
         if (contador) contador.textContent = `Abre em ${dias.toLocaleString('pt-BR')} dias — 29 de abril de 2031.`;
       }
+    })();
+
+    // ── Espaço de resposta: monta um e-mail pronto, endereçado
+    // pro Felipe, com o que a Jéssica escrever. Sem servidor,
+    // sem conta em serviço nenhum — só abre o app de e-mail dela. ──
+    (function initReplySpace(){
+      const btn = document.getElementById('enviarResposta');
+      const textarea = document.getElementById('respostaJessica');
+      const aviso = document.getElementById('respostaAviso');
+      if (!btn || !textarea) return;
+
+      btn.addEventListener('click', () => {
+        const texto = textarea.value.trim();
+        if (!texto) {
+          if (aviso) aviso.hidden = false;
+          textarea.focus();
+          return;
+        }
+        if (aviso) aviso.hidden = true;
+
+        const destino = 'feliper.palhares@gmail.com';
+        const assunto = 'Minha resposta — Bodas de Cristal';
+        const corpo = texto + '\n\n— Jéssica';
+        const link = `mailto:${destino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+        window.location.href = link;
+      });
     })();
   </script>
 </body>
