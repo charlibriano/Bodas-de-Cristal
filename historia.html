@@ -4954,6 +4954,7 @@ body.music-playing #cinematicHearts .cinema-heart{
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <a href="index.html" class="foco-voltar" id="focoVoltar" hidden>← Voltar e escolher outro capítulo</a>
 <div id="cinematicHearts" aria-hidden="true"></div>
   <section class="opening-cinema refined-opening" aria-label="Abertura cinematográfica">
     <div class="film-grain" aria-hidden="true"></div>
@@ -6030,18 +6031,29 @@ Porque a nossa história nunca foi só nossa.
       setupTimelineObserver();
       setupModalTouch();
       // ── Chegou pela pedra facetada do index.html (#chapter-XX-nome):
-      // abre o portal daquele capítulo de verdade (mesmo clique que o
-      // usuário daria) — só rolar até lá não adianta, porque o capítulo
-      // nasce fechado/recolhido até alguém abrir o portal dele. ──
+      // isola SÓ aquele capítulo — esconde abertura, cabeçalho, os
+      // outros 7 capítulos e a carta final. Fica só o escolhido, com
+      // um jeito claro de voltar pra pedra e escolher outro. ──
       if (location.hash.startsWith('#chapter-')) {
         setTimeout(() => {
           const chapterEl = document.querySelector(location.hash);
-          const gate = chapterEl?.querySelector('.portal-gate');
-          if (gate) {
-            gate.click();
-          } else {
-            chapterEl?.scrollIntoView({behavior:'smooth', block:'center'});
-          }
+          if (!chapterEl) return;
+
+          document.body.classList.add('foco-capitulo');
+          document.getElementById('focoVoltar').hidden = false;
+
+          document.querySelector('.opening-cinema')?.setAttribute('hidden', '');
+          document.querySelector('.hero')?.setAttribute('hidden', '');
+          document.getElementById('timelineNav')?.setAttribute('hidden', '');
+          document.querySelector('.section-title')?.setAttribute('hidden', '');
+          document.querySelectorAll('.chapter').forEach(c => {
+            if (c !== chapterEl) c.setAttribute('hidden', '');
+          });
+          document.querySelector('.final-letter')?.closest('section')?.setAttribute('hidden', '');
+
+          const gate = chapterEl.querySelector('.portal-gate');
+          if (gate) gate.click();
+          window.scrollTo(0, 0);
         }, 400);
       }
       window.addEventListener('scroll', updateProgress, {passive:true});
