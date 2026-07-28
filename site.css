@@ -21,6 +21,22 @@
   --cristal:  #cdeaff;   /* nota de gelo/cristal — só no elemento-assinatura */
   --linha:    rgba(255,255,255,.14);
   --sombra:   0 24px 80px rgba(0,0,0,.38);
+
+  /* Realias: cada página nasceu com nomes próprios pras mesmas
+     cores (--gold, --rose, --bg...). Em vez de caçar seletor por
+     seletor, isto aponta os nomes antigos pra paleta nova —
+     conserta de uma vez qualquer lugar que ainda não tocamos. */
+  --bg: var(--noite);
+  --bg-soft: var(--vinho);
+  --text: var(--pergaminho);
+  --gold: var(--ouro);
+  --gold-2: var(--ouro-2);
+  --gold-soft: var(--ouro-2);
+  --rose: var(--rosa);
+  --rose-2: var(--rosa);
+  --wine: var(--vinho);
+  --line: var(--linha);
+  --shadow: var(--sombra);
 }
 
 /* ── Correção técnica: fundo fixo quebra/engasga no Safari do
@@ -69,6 +85,32 @@ h2, .section-title{ font-weight:500 !important; }
    ============================================================ */
 #heroImage, #jessicaPortrait, #modalImage, .thumb img{
   filter:sepia(.12) saturate(1.12) contrast(1.04) brightness(1.02);
+}
+
+/* ============================================================
+   NAVEGAÇÃO DOS CAPÍTULOS NO CELULAR — hoje some completamente
+   abaixo de 720px (era display:none no historia.html original).
+   No aparelho onde a Jéssica provavelmente vai ler, restaura
+   numa versão compacta, encostada na lateral.
+   ============================================================ */
+@media (max-width:720px){
+  .timeline-nav{
+    display:flex !important;
+    flex-direction:column;
+    gap:8px;
+    position:fixed;
+    right:8px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:40;
+  }
+  .timeline-nav button{
+    width:8px !important;
+    height:8px !important;
+  }
+  .timeline-nav button.active{
+    transform:scale(1.5) !important;
+  }
 }
 
 /* ============================================================
