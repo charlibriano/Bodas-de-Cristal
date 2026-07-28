@@ -190,6 +190,40 @@ h2, .section-title{ font-weight:500 !important; }
 }
 
 /* ============================================================
+   DIA ESPECIAL — 29 de abril, uma vez por ano. Reaproveita o
+   mesmo brilho prismático do final-message: reservado pra
+   ocasiões genuinamente raras, e esta é uma delas.
+   ============================================================ */
+.badge.is-today{
+  border-color:rgba(240,207,131,.7);
+  background:rgba(240,207,131,.14);
+  color:#fff3d6;
+  position:relative;
+  overflow:hidden;
+  animation:badgePulseToday 2.2s ease-in-out infinite;
+}
+.badge.is-today::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(100deg,
+    transparent 0%, rgba(205,234,255,.22) 45%,
+    rgba(240,207,131,.3) 50%, rgba(234,148,174,.2) 55%, transparent 100%);
+  background-size:60% 100%;
+  background-repeat:no-repeat;
+  animation:prismSweep 2.6s ease-out .3s infinite;
+}
+@keyframes badgePulseToday{
+  0%,100%{ box-shadow:0 0 0 0 rgba(240,207,131,.35); }
+  50%    { box-shadow:0 0 24px 4px rgba(240,207,131,.35); }
+}
+@media (prefers-reduced-motion: reduce){
+  .badge.is-today{ animation:none; }
+  .badge.is-today::before{ animation:none; opacity:.5; }
+}
+
+/* ============================================================
    ESPAÇO DE RESPOSTA — o site deixa de ser só monólogo.
    ============================================================ */
 .reply-space{
