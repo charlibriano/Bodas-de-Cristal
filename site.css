@@ -158,3 +158,68 @@
 @media (prefers-reduced-motion: reduce){
   .final-message::before{ animation:none; opacity:0; }
 }
+
+/* ============================================================
+   CAMINHO DE VOLTA — hoje não existia nenhum, só o botão
+   "voltar" do navegador.
+   ============================================================ */
+.home-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:14px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:.84rem;
+  font-weight:800;
+  letter-spacing:.02em;
+  transition:color .2s ease;
+}
+.home-link:hover{ color:var(--ouro); }
+
+/* ============================================================
+   FOCO DE TECLADO — o site inteiro tinha praticamente zero
+   estado de foco visível. Um anel discreto, na cor do cristal,
+   em qualquer elemento navegável por Tab.
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--cristal);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* ============================================================
+   IMPRESSÃO — a declaração final é, na prática, uma carta.
+   Hoje imprimir gastaria tinta no fundo escuro e sairia com
+   botões/brilhos na folha. Isto converte pra papel: fundo
+   claro, tipografia preta, só o texto que importa.
+   ============================================================ */
+@media print{
+  body::before, body::after,
+  .ambient, .glow,
+  .actions, .home-link, .final-screen,
+  .disc-player, audio,
+  button, .btn, .button,
+  .badge::after, .chapter-card::after, .letter-card::after, .closing-vow::after{
+    display:none !important;
+  }
+  body{
+    background:#fff !important;
+    color:#161016 !important;
+  }
+  .panel, .scripture-card, .line-card, .closing-vow, .side-note, .letter-card{
+    background:none !important;
+    border:none !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    color:#161016 !important;
+    padding:0 !important;
+  }
+  h1, h2, .scripture-card blockquote, .closing-vow p{
+    color:#161016 !important;
+    text-shadow:none !important;
+  }
+  .letter, p{ color:#2a1f26 !important; }
+}
