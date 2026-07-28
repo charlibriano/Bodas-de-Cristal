@@ -6030,11 +6030,19 @@ Porque a nossa história nunca foi só nossa.
       setupTimelineObserver();
       setupModalTouch();
       // ── Chegou pela pedra facetada do index.html (#chapter-XX-nome):
-      // rola suave até o capítulo certo, mesmo comportamento dos pontinhos ──
+      // abre o portal daquele capítulo de verdade (mesmo clique que o
+      // usuário daria) — só rolar até lá não adianta, porque o capítulo
+      // nasce fechado/recolhido até alguém abrir o portal dele. ──
       if (location.hash.startsWith('#chapter-')) {
         setTimeout(() => {
-          document.querySelector(location.hash)?.scrollIntoView({behavior:'smooth', block:'center'});
-        }, 350);
+          const chapterEl = document.querySelector(location.hash);
+          const gate = chapterEl?.querySelector('.portal-gate');
+          if (gate) {
+            gate.click();
+          } else {
+            chapterEl?.scrollIntoView({behavior:'smooth', block:'center'});
+          }
+        }, 400);
       }
       window.addEventListener('scroll', updateProgress, {passive:true});
       window.addEventListener('resize', updateProgress);
