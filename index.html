@@ -332,7 +332,7 @@
 
     <section class="content" aria-label="Página inicial das bodas de cristal">
       <div class="copy">
-        <div class="badge">Bodas de Cristal • 15 anos</div>
+        <div class="badge" id="heroBadge">Bodas de Cristal • 15 anos</div>
         <h1>Felipe &amp; Jéssica</h1>
         <div class="subtitle">uma história escrita por Deus</div>
 
@@ -356,5 +356,23 @@
       </div>
     </section>
   </main>
+
+  <script>
+    // ── Dia especial: 29 de abril, todo ano, sem precisar editar
+    // o código de novo. Calcula os anos de casados automaticamente
+    // a partir de 2011, então em 2027 já mostra 16 sozinho. ──
+    (function checkDiaEspecial(){
+      const hoje = new Date();
+      const ehHoje = hoje.getMonth() === 3 && hoje.getDate() === 29; // abril = mês 3
+      if (!ehHoje) return;
+
+      const anos = hoje.getFullYear() - 2011;
+      const badge = document.getElementById('heroBadge');
+      if (badge) {
+        badge.textContent = `🎉 Hoje é o nosso aniversário — ${anos} anos`;
+        badge.classList.add('is-today');
+      }
+    })();
+  </script>
 </body>
 </html>
