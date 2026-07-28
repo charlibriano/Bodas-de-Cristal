@@ -6039,17 +6039,22 @@ Porque a nossa história nunca foi só nossa.
           const chapterEl = document.querySelector(location.hash);
           if (!chapterEl) return;
 
+          // Esconde de verdade: o atributo `hidden` sozinho perde pra
+          // qualquer regra de CSS que já defina `display` no elemento
+          // (e .chapter já define). style.display='none' sempre vence.
+          const esconder = (el) => { if (el) el.style.display = 'none'; };
+
           document.body.classList.add('foco-capitulo');
           document.getElementById('focoVoltar').hidden = false;
 
-          document.querySelector('.opening-cinema')?.setAttribute('hidden', '');
-          document.querySelector('.hero')?.setAttribute('hidden', '');
-          document.getElementById('timelineNav')?.setAttribute('hidden', '');
-          document.querySelector('.section-title')?.setAttribute('hidden', '');
+          esconder(document.querySelector('.opening-cinema'));
+          esconder(document.querySelector('.hero'));
+          esconder(document.getElementById('timelineNav'));
+          esconder(document.querySelector('.section-title'));
           document.querySelectorAll('.chapter').forEach(c => {
-            if (c !== chapterEl) c.setAttribute('hidden', '');
+            if (c !== chapterEl) esconder(c);
           });
-          document.querySelector('.final-letter')?.closest('section')?.setAttribute('hidden', '');
+          esconder(document.querySelector('.final-letter')?.closest('section'));
 
           const gate = chapterEl.querySelector('.portal-gate');
           if (gate) gate.click();
