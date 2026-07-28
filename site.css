@@ -62,6 +62,16 @@ h2, .section-title{ font-weight:500 !important; }
 }
 
 /* ============================================================
+   GRADE DE COR — as fotos vão de 2008 até hoje: câmeras,
+   celulares e luzes diferentes em cada época. Um tratamento
+   sutil e único em todas unifica a sensação, como um álbum
+   com curadoria de verdade, não fotos soltas do WhatsApp.
+   ============================================================ */
+#heroImage, #jessicaPortrait, #modalImage, .thumb img{
+  filter:sepia(.12) saturate(1.12) contrast(1.04) brightness(1.02);
+}
+
+/* ============================================================
    COMPONENTES COMPARTILHADOS
    ============================================================ */
 
