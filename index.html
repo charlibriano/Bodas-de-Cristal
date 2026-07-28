@@ -344,9 +344,17 @@
 
         <div class="date">29 de abril de 2011 — 29 de abril de 2026</div>
 
-        <div class="actions">
-          <a class="button" href="historia.html">Abrir nossa história <span aria-hidden="true">→</span></a>
-          <span class="hint">toque para começar a experiência</span>
+        <div class="gem-nav" aria-label="Navegar pelos capítulos da nossa história">
+          <svg id="gemSvg" viewBox="0 0 300 300" role="img" aria-hidden="false">
+            <g id="gemFacets"></g>
+            <circle class="gem-center-ring" cx="150" cy="150" r="44"></circle>
+            <text class="gem-center-label" x="150" y="145">Nossa</text>
+            <text class="gem-center-label" x="150" y="163">história</text>
+          </svg>
+          <div class="gem-peek empty" id="gemPeek">
+            <span class="gem-peek-year" id="gemPeekYear">•</span>
+            <span class="gem-peek-title" id="gemPeekTitle">toque numa faceta pra abrir aquele capítulo</span>
+          </div>
         </div>
 
         <div class="closing-note">
@@ -358,6 +366,77 @@
   </main>
 
   <script>
+    // ── Pedra facetada: cada faceta é um capítulo real da história,
+    // com tamanho levemente irregular — como uma pedra lapidada, não
+    // um octógono perfeito. Clicar leva direto pro capítulo em
+    // historia.html, com a rolagem já pronta lá (#chapter-XX). ──
+    const chapters = [
+      { folder:'01-comeco',        year:'2008–2009',       title:'Tudo começou com um olhar', tone:'' },
+      { folder:'02-casamento',     year:'2011',             title:'O altar foi só o começo', tone:'rosa' },
+      { folder:'03-primeiras-lutas', year:'2011–2016',      title:'Começamos sem certezas, mas juntos', tone:'' },
+      { folder:'04-grande-desafio', year:'2016',            title:'Quando a vida apertou, o nosso amor não recuou', tone:'rosa' },
+      { folder:'05-construcao',    year:'2016–2018',        title:'O que hoje é casa, um dia foi luta diária', tone:'' },
+      { folder:'06-gravidez',      year:'2021',             title:'Antes de ser abraço, já era promessa', tone:'cristal' },
+      { folder:'07-familia',       year:'2021 em diante',   title:'Nossa família ganhou um novo nome para o nosso amor', tone:'rosa' },
+      { folder:'08-hoje',          year:'Hoje',              title:'Depois de tudo, eu ainda escolheria você', tone:'cristal' }
+    ];
+
+    (function buildGem(){
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const g = document.getElementById('gemFacets');
+      if (!g) return;
+      const cx = 150, cy = 150, rInner = 44, n = chapters.length;
+      // Raios variados por faceta — pedra lapidada, não octógono perfeito
+      const radii = [148, 132, 152, 128, 144, 136, 150, 130];
+
+      function pt(radius, angleDeg){
+        const a = (angleDeg - 90) * Math.PI / 180;
+        return [cx + radius * Math.cos(a), cy + radius * Math.sin(a)];
+      }
+
+      chapters.forEach((chapter, i) => {
+        const a0 = (360 / n) * i;
+        const a1 = (360 / n) * (i + 1);
+        const [ox0, oy0] = pt(radii[i], a0);
+        const [ox1, oy1] = pt(radii[(i + 1) % n], a1);
+        const [ix0, iy0] = pt(rInner, a0);
+        const [ix1, iy1] = pt(rInner, a1);
+
+        const path = document.createElementNS(svgNS, 'path');
+        const d = `M ${ix0.toFixed(1)} ${iy0.toFixed(1)} L ${ox0.toFixed(1)} ${oy0.toFixed(1)} L ${ox1.toFixed(1)} ${oy1.toFixed(1)} L ${ix1.toFixed(1)} ${iy1.toFixed(1)} Z`;
+        path.setAttribute('d', d);
+        path.setAttribute('class', 'gem-facet' + (chapter.tone ? ' f-' + chapter.tone : ''));
+        path.setAttribute('tabindex', '0');
+        path.setAttribute('role', 'button');
+        path.setAttribute('aria-label', `Capítulo: ${chapter.title}`);
+
+        const go = () => { window.location.href = `historia.html#chapter-${chapter.folder}`; };
+        path.addEventListener('mouseenter', () => showPeek(chapter));
+        path.addEventListener('mouseleave', clearPeek);
+        path.addEventListener('click', go);
+        path.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        path.addEventListener('focus', () => showPeek(chapter));
+        path.addEventListener('blur', clearPeek);
+
+        g.appendChild(path);
+      });
+
+      const peek = document.getElementById('gemPeek');
+      const peekYear = document.getElementById('gemPeekYear');
+      const peekTitle = document.getElementById('gemPeekTitle');
+
+      function showPeek(chapter){
+        peek.classList.remove('empty');
+        peekYear.textContent = chapter.year;
+        peekTitle.textContent = chapter.title;
+      }
+      function clearPeek(){
+        peek.classList.add('empty');
+        peekYear.textContent = '•';
+        peekTitle.textContent = 'toque numa faceta pra abrir aquele capítulo';
+      }
+    })();
+
     // ── Dia especial: 29 de abril, todo ano, sem precisar editar
     // o código de novo. Calcula os anos de casados automaticamente
     // a partir de 2011, então em 2027 já mostra 16 sozinho. ──
