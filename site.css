@@ -224,6 +224,87 @@ h2, .section-title{ font-weight:500 !important; }
 }
 
 /* ============================================================
+   PEDRA FACETADA — a navegação de entrada do site. Cada faceta
+   é um capítulo real, com cor conforme o tom emocional dele.
+   ============================================================ */
+.gem-nav{
+  margin-top:28px;
+  max-width:320px;
+}
+
+.gem-nav svg{
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+
+.gem-facet{
+  fill:rgba(255,255,255,.035);
+  stroke:rgba(255,255,255,.16);
+  stroke-width:1;
+  cursor:pointer;
+  transition:fill .35s ease, stroke .35s ease;
+}
+.gem-facet:hover, .gem-facet:focus-visible{
+  fill:rgba(240,207,131,.18);
+  stroke:var(--ouro);
+  stroke-width:1.4;
+  outline:none;
+}
+.gem-facet.f-rosa:hover, .gem-facet.f-rosa:focus-visible{
+  fill:rgba(234,148,174,.18);
+  stroke:var(--rosa);
+}
+.gem-facet.f-cristal:hover, .gem-facet.f-cristal:focus-visible{
+  fill:rgba(205,234,255,.16);
+  stroke:var(--cristal);
+}
+
+.gem-center-ring{
+  fill:none;
+  stroke:rgba(255,255,255,.2);
+  stroke-width:1;
+  pointer-events:none;
+}
+.gem-center-label{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-size:13px;
+  fill:var(--muted);
+  text-anchor:middle;
+  pointer-events:none;
+}
+
+.gem-peek{
+  margin-top:18px;
+  min-height:52px;
+  transition:opacity .25s ease;
+}
+.gem-peek-year{
+  display:block;
+  color:var(--ouro);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:.68rem;
+  font-weight:800;
+  margin-bottom:4px;
+}
+.gem-peek-title{
+  display:block;
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--pergaminho);
+  max-width:34ch;
+}
+.gem-peek.empty .gem-peek-year,
+.gem-peek.empty .gem-peek-title{ opacity:.4; }
+
+@media (max-width:720px){
+  .gem-nav{ max-width:240px; }
+}
+
+/* ============================================================
    ESPAÇO DE RESPOSTA — o site deixa de ser só monólogo.
    ============================================================ */
 .reply-space{
