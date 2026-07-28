@@ -5044,7 +5044,7 @@ body.music-playing #cinematicHearts .cinema-heart{
       <div class="container">
         <h2 class="section-title">Nossa história em capítulos</h2>
         <div class="timeline">
-          <article class="chapter stage-tone-1" data-folder="01-comeco">
+          <article class="chapter stage-tone-1" data-folder="01-comeco" id="chapter-01-comeco">
             <div class="chapter-icon">💗</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5076,7 +5076,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </article>
 
-          <article class="chapter stage-tone-2" data-folder="02-casamento">
+          <article class="chapter stage-tone-2" data-folder="02-casamento" id="chapter-02-casamento">
             <div class="chapter-icon">💍</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5119,7 +5119,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </div>
 
-          <article class="chapter stage-tone-3" data-folder="03-primeiras-lutas">
+          <article class="chapter stage-tone-3" data-folder="03-primeiras-lutas" id="chapter-03-primeiras-lutas">
             <div class="chapter-icon">🕊️</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5175,7 +5175,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </article>
 
-          <article class="chapter stage-tone-4" data-folder="04-grande-desafio">
+          <article class="chapter stage-tone-4" data-folder="04-grande-desafio" id="chapter-04-grande-desafio">
             <div class="chapter-icon">🏠</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5235,7 +5235,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </div>
 
-          <article class="chapter stage-tone-5" data-folder="05-construcao">
+          <article class="chapter stage-tone-5" data-folder="05-construcao" id="chapter-05-construcao">
             <div class="chapter-icon">🧱</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5273,7 +5273,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </article>
 
-          <article class="chapter stage-tone-6" data-folder="06-gravidez">
+          <article class="chapter stage-tone-6" data-folder="06-gravidez" id="chapter-06-gravidez">
             <div class="chapter-icon">🤰</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5316,7 +5316,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </div>
 
-          <article class="chapter stage-tone-7" data-folder="07-familia">
+          <article class="chapter stage-tone-7" data-folder="07-familia" id="chapter-07-familia">
             <div class="chapter-icon">👨‍👩‍👧</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -5347,7 +5347,7 @@ body.music-playing #cinematicHearts .cinema-heart{
             </div>
           </article>
 
-          <article class="chapter stage-tone-8" data-folder="08-hoje">
+          <article class="chapter stage-tone-8" data-folder="08-hoje" id="chapter-08-hoje">
             <div class="chapter-icon">✨</div>
             <div class="chapter-body">
               <div class="chapter-card">
@@ -6029,6 +6029,13 @@ Porque a nossa história nunca foi só nossa.
       updateProgress();
       setupTimelineObserver();
       setupModalTouch();
+      // ── Chegou pela pedra facetada do index.html (#chapter-XX-nome):
+      // rola suave até o capítulo certo, mesmo comportamento dos pontinhos ──
+      if (location.hash.startsWith('#chapter-')) {
+        setTimeout(() => {
+          document.querySelector(location.hash)?.scrollIntoView({behavior:'smooth', block:'center'});
+        }, 350);
+      }
       window.addEventListener('scroll', updateProgress, {passive:true});
       window.addEventListener('resize', updateProgress);
 
