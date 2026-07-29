@@ -6031,36 +6031,27 @@ Porque a nossa história nunca foi só nossa.
       setupTimelineObserver();
       setupModalTouch();
       // ── Chegou pela pedra facetada do index.html (#chapter-XX-nome):
-      // isola SÓ aquele capítulo — esconde abertura, cabeçalho, os
-      // outros 7 capítulos e a carta final. Fica só o escolhido, com
-      // um jeito claro de voltar pra pedra e escolher outro. ──
+      // isola SÓ aquele capítulo. Marca o alvo com uma classe e deixa
+      // o CSS (com !important) esconder o resto — mais confiável que
+      // mexer em style.display por JS, que outro script pode disputar. ──
       if (location.hash.startsWith('#chapter-')) {
-        setTimeout(() => {
-          const chapterEl = document.querySelector(location.hash);
-          if (!chapterEl) return;
-
-          // Esconde de verdade: o atributo `hidden` sozinho perde pra
-          // qualquer regra de CSS que já defina `display` no elemento
-          // (e .chapter já define). style.display='none' sempre vence.
-          const esconder = (el) => { if (el) el.style.display = 'none'; };
-
+        const chapterEl = document.querySelector(location.hash);
+        if (chapterEl) {
+          chapterEl.classList.add('foco-alvo');
           document.body.classList.add('foco-capitulo');
           document.getElementById('focoVoltar').hidden = false;
+          if (chapterEl.dataset.folder === '08-hoje') {
+            document.body.classList.add('foco-mostra-carta-final');
+          }
 
-          esconder(document.querySelector('.opening-cinema'));
-          esconder(document.querySelector('.hero'));
-          esconder(document.getElementById('timelineNav'));
-          esconder(document.querySelector('.section-title'));
-          document.querySelectorAll('.chapter').forEach(c => {
-            if (c !== chapterEl) esconder(c);
-          });
-          esconder(document.querySelector('.final-letter')?.closest('section'));
-
-          const gate = chapterEl.querySelector('.portal-gate');
-          if (gate) gate.click();
-          window.scrollTo(0, 0);
-        }, 400);
+          setTimeout(() => {
+            const gate = chapterEl.querySelector('.portal-gate');
+            if (gate) gate.click();
+            window.scrollTo(0, 0);
+          }, 400);
+        }
       }
+
       window.addEventListener('scroll', updateProgress, {passive:true});
       window.addEventListener('resize', updateProgress);
 
