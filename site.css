@@ -344,6 +344,18 @@ h2, .section-title{ font-weight:500 !important; }
   background:rgba(28,15,24,.92);
 }
 
+body.foco-capitulo .opening-cinema,
+body.foco-capitulo .hero,
+body.foco-capitulo #timelineNav,
+body.foco-capitulo .section-title{
+  display:none !important;
+}
+body.foco-capitulo .chapter:not(.foco-alvo){
+  display:none !important;
+}
+body.foco-capitulo:not(.foco-mostra-carta-final) .final-letter{
+  display:none !important;
+}
 body.foco-capitulo .timeline::before{
   display:none;
 }
